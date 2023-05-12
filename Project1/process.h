@@ -22,7 +22,7 @@ public:
 	int data;
 	process* next;
 
-	process();
+	process(int id, int at, int ct, int n, int rt, int tt);
 	process(int id, int at, int ct, int n, int rt, int tt);
 
 

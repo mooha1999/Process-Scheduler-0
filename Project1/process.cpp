@@ -1,7 +1,7 @@
 //written by nouran wisam 
 #include "process.h"
 
-process::process() { //default constructor // initialization
+process::process(int id, int at, int ct, int n, int rt, int tt) { //default constructor // initialization
 	PID = 1;
 	AT = 1; //arrival time 
 	RT = 1; //response time 
