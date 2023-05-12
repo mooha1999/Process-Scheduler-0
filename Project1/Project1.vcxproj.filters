@@ -10,19 +10,59 @@
     <ClCompile Include="RRobin.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="FCFS.h" />
-    <ClInclude Include="LinkedList.h" />
-    <ClInclude Include="PriortyQueue.h" />
-    <ClInclude Include="process.h" />
-    <ClInclude Include="processor.h" />
-    <ClInclude Include="Queue.h" />
-    <ClInclude Include="QueueNode.h" />
-    <ClInclude Include="RRobin.h" />
-    <ClInclude Include="Scheduler.h" />
-    <ClInclude Include="SJF.h" />
-    <ClInclude Include="Cicularqueue.h" />
-    <ClInclude Include="node.h" />
-    <ClInclude Include="qqueue.h" />
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="process.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RR.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SJF.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FCFS.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LinkedList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="FCFS.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="process.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="processor.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SJF.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LinkedList.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Scheduler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="QueueNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Queue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PriortyQueue.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RRobin.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="input.txt" />

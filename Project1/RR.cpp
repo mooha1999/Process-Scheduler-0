@@ -5,15 +5,18 @@
 //fffff
 class RRobin : public Processor
 {
- public:
+public:
 
-    Queue<process*> *Rdy; // pointer Queue
+    Queue<process*>* Rdy; // pointer Queue
     process* Finish; // this process to put the finished process
-    int time_slice;  
-    
+    int time_slice;
+    RRobin(int TS)
+    {
+        TS = time_slice;
+    }
     virtual void push(process* p)
     {
-        Rdy->Push(p);   
+        Rdy->Push(p);
     }
     virtual void schedulago()
     {
@@ -21,7 +24,7 @@ class RRobin : public Processor
         {
             RUN = Rdy->Pop();   //return the value of the firt process in rdy list
         }
-        else 
+        else
         {
             if (RUN->getEX() == RUN->getCT()) //Ex-time=CPU-time  
             {
@@ -41,12 +44,12 @@ class RRobin : public Processor
                 RUN->incEX();
             }
         }
-        
+
     }
     Queue<int> GetID()
     {
-        Queue<process*>temp = *Rdy;   //*Rdy to return the value of Rdy (copy)
-        Queue<int>Ids;
+        Queue<process*>temp = *Rdy;   //*Rdy to return the value of Rdy (copy the rdy queue )
+        Queue<int>Ids; //Id of each process 
         while (!temp.IsEmpty())
         {
             int x = temp.Pop()->getPID();  //return id 
@@ -55,6 +58,19 @@ class RRobin : public Processor
         return Ids;
 
     }
+    virtual int GetWT()
+    {
+        Queue<process*>temp = *Rdy;
+        int SumWT = 0;
+        while (!temp.IsEmpty())
+        {
+            int x = temp.Pop()->getWT();  //return waiting time 
+            SumWT = SumWT + x;
+        }
+        return SumWT;
+
+    }
+
 
 
 

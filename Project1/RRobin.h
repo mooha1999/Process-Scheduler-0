@@ -10,7 +10,10 @@ public:
     Queue<process*>* Rdy; // pointer Queue
     process* Finish; // this process to put the finished process
     int time_slice;
-
+    RRobin(int TS)
+    {
+        TS = time_slice;
+    }
     virtual void push(process* p)
     {
         Rdy->Push(p);
@@ -23,12 +26,20 @@ public:
         }
         else
         {
+            BUSY = true; //busy when running 
+            TBT++; //total busy time
+<<<<<<< HEAD
+=======
+
+>>>>>>> b0362be4cbf0ebed416d312ee586785e360e4eae
             if (RUN->getEX() == RUN->getCT()) //Ex-time=CPU-time  
             {
+                AR = AR + RUN->getTRT();
                 Finish = RUN;
                 RUN = nullptr;
+
             }
-            //case 1  if the execution time is equal to time slicev
+            //case 1  if the execution time is equal to time slice
             if (RUN->getEX() % time_slice == 0) // reminder ( 
             {
                 RUN->incEX(); // hna 34an mayd5ol4 be nafs el ex-time (resulting infinte loop)
@@ -43,7 +54,7 @@ public:
         }
 
     }
-    Queue<int> GetIDRR()
+    Queue<int> GetID()
     {
         Queue<process*>temp = *Rdy;   //*Rdy to return the value of Rdy (copy the rdy queue )
         Queue<int>Ids; //Id of each process 
@@ -55,7 +66,7 @@ public:
         return Ids;
 
     }
-    int GetWT()
+   virtual int GetWT()
     {
         Queue<process*>temp = *Rdy;
         int SumWT=0;
