@@ -151,6 +151,8 @@
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="process.h" />
     <ClInclude Include="processor.h" />
+    <ClInclude Include="Queue.h" />
+    <ClInclude Include="QueueNode.h" />
     <ClInclude Include="Scheduler.h" />
     <ClInclude Include="SJF.h" />
   </ItemGroup>
