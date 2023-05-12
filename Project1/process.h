@@ -23,8 +23,8 @@ public:
 	process* next;
 
 	process();
-	process(int id, int at, int ct, int n);
-	process(int id, int at, int rt, int ct, int tt);
+	process(int id, int at, int ct, int n, int rt, int tt);
+
 
 	int getPID();
 	int getAT();
