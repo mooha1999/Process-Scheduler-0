@@ -9,7 +9,7 @@ void SJF::push(process p)
 	FT += p.getCT();
 	if (!this->BUSY)
 	{
-		this->RUN = p;
+		this->RUN == p;
 		this->BUSY = true;
 		return;
 	}

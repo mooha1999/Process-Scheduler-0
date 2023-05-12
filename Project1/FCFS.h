@@ -4,8 +4,8 @@ public:
     process* front;
     process* rear;
 
-    FCFS();
-    void enqueue(int data);
-    int dequeue();
-    void migrate(process x, int MaxW);
+   // FCFS();
+    //void enqueue(int data);
+    //int dequeue();
+    //void migrate(process x, int MaxW);
     };
