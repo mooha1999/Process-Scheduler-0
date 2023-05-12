@@ -6,7 +6,7 @@ class Processor
 {
 
 public:
-	int BT;
+	int TBT = 0; //total busy time of processes
 	bool BUSY;
 	process* RUN;
 
@@ -14,8 +14,7 @@ public:
 	virtual void push(process*p)=0;
 	virtual Queue<int> GetID()=0;
 	virtual int GetWT()=0;
-	virtual int GetBT(bool BUSY) = 0; //calculate busy time 
-
+	
 
 
 
