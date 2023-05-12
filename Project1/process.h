@@ -8,7 +8,7 @@ using namespace std;
 
 class process {
 
-protected:
+private:
 	int PID; //unique identifier 
 	int AT; //arrival time 
 	int RT; //response time 
