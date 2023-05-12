@@ -58,15 +58,6 @@ public:
         return SumWT;
 
     }
-
-    virtual void fork(process* kid, int t, int id) {
-        kid->setAT(t);
-        kid->setPID(id);
-        int oldct = RUN->getCT();
-        int exe = RUN->getEX();
-        int newct = oldct - exe;
-        kid->setCT(newct);
   
-    }
 
 };
