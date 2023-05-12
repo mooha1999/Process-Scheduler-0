@@ -6,6 +6,7 @@ process::process() { //default constructor // initialization
 	AT = 1; //arrival time 
 	RT = 1; //response time 
 	TT = 1; //termination time 
+	EX = 0; //execution time starting from zero 
 	int TRT = TT - AT; //turnaround duration
 	int WT = TRT - CT; //waiting time 
 }
@@ -45,6 +46,9 @@ int process::getTRT() {
 int process::getWT() {
 	return WT;
 }
+void process::getEX() {
+	return EX;
+}
 void process::setPID(int id) {
 	PID = id;
 }
@@ -65,6 +69,10 @@ void process::setTRT(int tt, int at) {
 }
 void process::setWT(int tt, int at, int ct) {
 	WT = tt - ct;
+}
+
+void process::incEX(int ex) {
+	EX = ex++;
 }
 
 //void process :: setstate(); //fn that set the process state according to variables
