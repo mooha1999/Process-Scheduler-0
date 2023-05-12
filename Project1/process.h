@@ -22,8 +22,8 @@ public:
 	int data;
 	process* next;
 
-	process(int id, int at, int ct, int n, int rt, int tt);
-	process(int id, int at, int ct, int n, int rt, int tt);
+	process();
+	process(int ct, int n, int tt);
 
 
 	int getPID();

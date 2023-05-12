@@ -1,7 +1,7 @@
 //written by nouran wisam 
 #include "process.h"
 
-process::process(int id, int at, int ct, int n, int rt, int tt) { //default constructor // initialization
+process::process() { //default constructor // initialization
 	PID = 1;
 	AT = 1; //arrival time 
 	RT = 1; //response time 
@@ -10,13 +10,10 @@ process::process(int id, int at, int ct, int n, int rt, int tt) { //default cons
 	int TRT = TT - AT; //turnaround duration
 	int WT = TRT - CT; //waiting time 
 }
-process::process(int id, int at, int ct, int n, int rt, int tt)
+process::process(int ct, int n, int tt)
 {
-	PID = id;
-	AT = at;
 	CT = ct;
 	N = n;
-	RT = rt;
 	TT = tt;
 }
 
