@@ -79,12 +79,12 @@ void process::incEX()
 //void process :: getstate(); //still needs implementation 
 
 
-void process::fork(int t, int id) {
+process*process ::fork(int t, int id){
 	int oldct = getCT();
 	int exe = getEX();
 	int newct = oldct - exe;
 	kid = new process(id, t, newct, Queue<pair<int, int>>()); 
 
+	return kid;
 	
-
 }
