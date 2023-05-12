@@ -11,9 +11,6 @@ public:
     process* RUN;
     int time_slice;
     int Num_of_jobs;
-    
-    void Add_process(process *data); //add data in the linkedlist of the Rdy list
-    void  schedulalgo();
 
    void schedulago()
    {
@@ -23,14 +20,17 @@ public:
       return;
     }
     else
-   {
+    {
 
-    RUN=rdy.front(RUN);
+      RUN=rdy.front(RUN);
+       rdy.pop();
+       //case 1
+       if (time_slice == )
+       {
 
-    //case 1
-    if(times)
+       }
 
-   }
+     }
 
    }
 
