@@ -13,7 +13,7 @@ class PriortyQueue
 		front= nullptr;
 	}
 
-	void Push(T data,T Prio)
+	void Push(T data,int Prio)
 	{
 		Node<T>* temp = front;
 		Node<T>* newnode = new Node<T>(data, Prio);

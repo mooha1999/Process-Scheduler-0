@@ -1,17 +1,22 @@
 #include "processor.h"
 #include"process.h"
-#include"Queue.h"
+#include"PriortyQueue.h"
+
 
 class SJF :public Processor
 {
  public:
 
-    Queue<process*>* Rdy;
+    PriortyQueue<process*>* Rdy;
     process* Finish;
 
+    int GetSCT()
+    {
+
+    }
     virtual void push(process* p)
     {
-        Rdy->Push(p);
+        Rdy->Push(p,p->getCT());
     }
     virtual void schedulago()
     {
