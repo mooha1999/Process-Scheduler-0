@@ -1,21 +1,22 @@
 #include "processor.h"
 #include"process.h"
-#include"Queue.h"
+#include"PriortyQueue.h"
 
 class SJF :public Processor
 {
  public:
 
-    Queue<process*>* Rdy;
+    PriortyQueue<process*>* Rdy;
     process* Finish;
 
+   
+    
     virtual void push(process* p)
     {
-        Rdy->Push(p);
+        Rdy->Push(p,p->getCT()); // take the process and the cpu time 
     }
     virtual void schedulago()
     {
-
         if (!RUN)
         {
             RUN = Rdy->Pop();   //return the value of the firt process in rdy list
@@ -38,7 +39,7 @@ class SJF :public Processor
 
     Queue<int> GetID()
     {
-        Queue<process*>temp = *Rdy;
+        PriortyQueue<process*>temp = *Rdy;
         Queue<int>ID;
         while (temp.IsEmpty())
         {
@@ -49,7 +50,7 @@ class SJF :public Processor
     }
     virtual int GetWT()
     {
-        Queue<process*>temp = *Rdy;
+        PriortyQueue<process*>temp = *Rdy;
         int SumWT = 0;
         while (!temp.IsEmpty())
         {
@@ -59,16 +60,5 @@ class SJF :public Processor
         return SumWT;
 
     }
-
-
-
-
-
-
-
-
-
-
-
 
 };

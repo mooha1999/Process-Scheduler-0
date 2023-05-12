@@ -157,6 +157,7 @@
     <ClInclude Include="RRobin.h" />
     <ClInclude Include="Scheduler.h" />
     <ClInclude Include="SJF.h" />
+    <ClInclude Include="UI.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="input.txt" />
