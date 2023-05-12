@@ -2,14 +2,11 @@
 #include <string>
 #include <iostream>
 #pragma once
-using namespace std;
-
 class Processor
 {
 
 public:
 	int FT = 0;
-
 	bool BUSY = false;
 	process* RUN;
 	Processor();

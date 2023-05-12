@@ -23,7 +23,8 @@ public:
 	process* next;
 
 	process();
-	process(int id, int at, int ct, int n, int rt, int tt);
+	process(int pid, int at, int rt, int ct, int tt, int n, int ex);
+
 
 
 	int getPID();
@@ -33,7 +34,7 @@ public:
 	int getCT();
 	int getTRT();
 	int getWT();
-        int getEX();
+    int getEX();
 
 
 	void setPID(int id);
@@ -45,8 +46,8 @@ public:
 	void setWT(int tt, int at, int ct);
  	
 
-	void setstate(); //fn that set the process state according to variables
-	void getstate();
+	//void setstate(); //fn that set the process state according to variables
+	//void getstate();
 
 	void incEX();
 };
