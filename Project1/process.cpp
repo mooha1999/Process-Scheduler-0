@@ -46,7 +46,7 @@ int process::getTRT() {
 int process::getWT() {
 	return WT;
 }
-void process::getEX() {
+int process::getEX() {
 	return EX;
 }
 void process::setPID(int id) {
@@ -71,8 +71,10 @@ void process::setWT(int tt, int at, int ct) {
 	WT = tt - ct;
 }
 
-void process::incEX(int ex) {
-	EX = ex++;
+
+
+void process::incEX() {
+	EX++;
 }
 
 //void process :: setstate(); //fn that set the process state according to variables
