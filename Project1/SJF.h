@@ -23,6 +23,10 @@ class SJF :public Processor
         }
         else
         {
+
+            BUSY = true; //busy when running 
+            TBT++; //total busy time
+
             if (RUN->getEX() == RUN->getCT())
             {
                 Finish = RUN;
