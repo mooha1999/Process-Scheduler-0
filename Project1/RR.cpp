@@ -2,10 +2,10 @@
 #include "processor.h"
 #include"process.h"
 #include"Queue.h"
-//fffff
+
 class RRobin : public Processor
 {
-public:
+ public:
 
     Queue<process*>* Rdy; // pointer Queue
     process* Finish; // this process to put the finished process
