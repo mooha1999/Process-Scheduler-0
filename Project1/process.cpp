@@ -10,6 +10,7 @@ process::process(int pid, int at, int ct, Queue<pair<int, int>> q) {
 	CT = ct;
 	int TRT = TT - AT; //turnaround duration
 	int WT = TRT - CT; //waiting time 
+	Q = q;
 	
 }
 
