@@ -12,12 +12,12 @@ process::process(int pid, int at, int ct) {
 	int WT = TRT - CT; //waiting time 
 }
 
-int process::getPID() {
-	return PID;
-}
-int process::getAT() {
-	return AT;
-}
+//int process::getPID() {
+//	return PID;
+//}
+//int process::getAT() {
+	//return AT;
+//}
 int process::getRT() {
 	return RT;
 }
