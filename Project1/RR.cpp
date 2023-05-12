@@ -3,36 +3,60 @@
 #include"process.h"
 #include"Queue.h"
 //fffff
-class RRobin
+class RRobin : public Processor
 {
 public:
 
-    Queue<process*> Rdy;
-    process* RUN;
+    Queue<process*> *Rdy; // pointer Queue 
+    process* Finish;
     int time_slice;
-    int Num_of_jobs;
-
-    void schedulago()
+    
+    virtual void push(process* p)
     {
 
-        RUN = Rdy.Pop();   //return the value of the firt process in rdy list
+        Rdy->Push(p);   
+    }
+    virtual void schedulago()
+    {
+       
 
-         //case 1  if the execution time is equal to time slice
-
-        if (RUN->getEX() == time_slice)
+        if (!RUN)
         {
-            Rdy.Push(RUN);
+            RUN = Rdy->Pop();   //return the value of the firt process in rdy list
         }
-        // case 2
-        else  
+        else
         {
-            RUN->incEX();
+            if (RUN->getEX() == RUN->getCT())
+            {
+                Finish = RUN;
+                RUN = nullptr;
+            }
+            //case 1  if the execution time is equal to time slicev
+            if (RUN->getEX() % time_slice == 0) // reminder ( 
+            {
+                RUN->incEX(); // hna 34an mayd5ol4 be nafs el ex-time (resulting infinte loop)
+                Rdy->Push(RUN);
+                RUN = nullptr;
+            }
+            // case 2
+            else
+            {
+                RUN->incEX();
+            }
         }
-
-
-
-
         
+    }
+    Queue<int> GetID()
+    {
+        Queue<process*>temp = *Rdy;   //*Rdy to return the value of Rdy (copy)
+        Queue<int>Id;
+        while (temp.)
+        {
+            int x = temp.Pop()->getPID();  //return id 
+            Id.Push(x); //push the id in the queue
+        }
+
+
     }
 
 

@@ -3,6 +3,7 @@
 template<typename T>
 class Queue
 {
+	// any operation O(1) 
 	Node<T>* Head, * Tail;
 	int size;
 public:
