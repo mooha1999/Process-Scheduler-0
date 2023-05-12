@@ -69,7 +69,8 @@ void process::setWT(int tt, int at, int ct) {
 
 
 
-void process::incEX() {
+void process::incEX() 
+{
 	EX++;
 }
 
