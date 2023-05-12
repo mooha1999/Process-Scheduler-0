@@ -1,6 +1,6 @@
 #include "SJF.h"
 
-void SJF::SchaduelAlgo() {
+/*void SJF::SchaduelAlgo() {
 }
 
 void SJF::push(process* p)
@@ -14,4 +14,4 @@ void SJF::push(process* p)
 	}
 
 	RDY.push(p);
-}
+}*/

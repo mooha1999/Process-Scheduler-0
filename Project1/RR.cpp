@@ -7,7 +7,7 @@ class RRobin
 {
 public:
 
-    Queue<process> Rdy;
+    Queue<process*> Rdy;
     process* RUN;
     int time_slice;
     int Num_of_jobs;
@@ -24,9 +24,9 @@ public:
             Rdy.Push(RUN);
         }
         // case 2
-        else  (RUN->getEX() != time_slice || RUN->getEX() < time_slice)
+        else  
         {
-            RUN=RUN->incEX();
+            RUN->incEX();
         }
 
 
