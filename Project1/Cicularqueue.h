@@ -1,7 +1,7 @@
 #pragma once
 #include "processor.h"
 #include"process.h"
-class RRobin 
+class Circularqueue
 {
 public:
     process* front;
@@ -10,7 +10,7 @@ public:
 
  // for queue of RR
 
- RRobin()
+  Circularqeueu()
 	{
 		front = NULL;
 		rear = front;
