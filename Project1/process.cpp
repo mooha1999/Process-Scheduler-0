@@ -10,20 +10,16 @@ process::process() { //default constructor // initialization
 	int TRT = TT - AT; //turnaround duration
 	int WT = TRT - CT; //waiting time 
 }
-process::process(int id, int at, int ct, int n)
+process::process(int id, int at, int ct, int n, int rt, int tt)
 {
 	PID = id;
 	AT = at;
 	CT = ct;
 	N = n;
-}
-process::process(int id, int at, int rt, int ct, int tt) {
-	PID = id;
-	AT = at;
 	RT = rt;
-	CT = ct;
 	TT = tt;
 }
+
 
 int process::getPID() {
 	return PID;
