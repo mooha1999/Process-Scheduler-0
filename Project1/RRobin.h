@@ -1,6 +1,5 @@
 #pragma once
 #include "processor.h"
-#include <string>
 #include"process.h"
 #include"cicularqueue.h"
 //fffff
@@ -50,3 +49,7 @@ public:
  
    
 };
+int main()
+{
+    return 0;
+}
