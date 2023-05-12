@@ -19,11 +19,15 @@ public:
         if (!RUN)
         {
             RUN = Rdy->Pop();   //return the value of the firt process in rdy list
-            BUSY = true;
            
+    
         }
         else
         {
+            BUSY = true; //busy when running 
+            BT++;
+
+
             if (RUN->getEX() == RUN->getCT())
             {
                 Finish = RUN;
@@ -64,7 +68,7 @@ public:
     virtual int GetBT(bool BUSY, int BT)
     {
         while (BUSY != false) {
-            int BT = BT++;
+            BT++;
         }
            return BT;
     
