@@ -4,7 +4,7 @@
 
 class SJF :public Processor
 {
-public:
+ public:
 
     Queue<process*>* Rdy;
     process* Finish;
