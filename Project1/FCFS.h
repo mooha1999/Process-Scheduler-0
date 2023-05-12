@@ -60,8 +60,10 @@ public:
 
     }
 
-    void fork() {
-        
+    virtual void fork(process* kid, int t) {
+        kid->getAT() = t;
+
+    
     }
 
 };
