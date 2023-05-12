@@ -2,6 +2,7 @@
 #pragma
 
 #include <iostream>
+#include "Queue.h"
 using namespace std;
 
 
@@ -17,8 +18,10 @@ private:
 	int WT = TRT - CT; //waiting time 
 	int N; //number of times the process requests the io
 	int EX = 0;
+	Queue<pair<int, int>> q;
 	int ior;
 	int iod;
+
 public:
 	//the process is a node in the queue
 	int data;
@@ -37,6 +40,7 @@ public:
 	int getTRT();
 	int getWT();
     int getEX();
+	int getpair();
 
 
 	void setPID(int id);
@@ -46,7 +50,9 @@ public:
 	void setTT(int tt);
 	void setTRT(int tt, int at);
 	void setWT(int tt, int at, int ct);
- 	
+	void setpair(queue<pair<int, int>> Q);
+
+
 
 	//void setstate(); //fn that set the process state according to variables
 	//void getstate();

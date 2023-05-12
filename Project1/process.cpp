@@ -44,6 +44,10 @@ int process::getWT() {
 int process::getEX() {
 	return EX;
 }
+int process::getpair()
+{
+	return q;
+}
 void process::setPID(int id) {
 	PID = id;
 }
@@ -64,6 +68,13 @@ void process::setTRT(int tt, int at) {
 }
 void process::setWT(int tt, int at, int ct) {
 	WT = tt - ct;
+}
+
+void process::setpair(Queue<pair<int, int>> Q)
+{ 
+
+	
+
 }
 
 
