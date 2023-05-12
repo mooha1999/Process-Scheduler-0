@@ -9,7 +9,6 @@ class Processor
 
 public:
 	int FT = 0;
-
 	bool BUSY = false;
 	process* RUN;
 	Processor();
