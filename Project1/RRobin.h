@@ -3,7 +3,7 @@
 #include"process.h"
 #include"Queue.h"
 //fffff
-class RRobin
+class RRobin : public processor
 {
 public:
 
