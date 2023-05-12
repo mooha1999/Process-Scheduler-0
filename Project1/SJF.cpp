@@ -1,10 +1,9 @@
 #include "SJF.h"
 
 void SJF::SchaduelAlgo() {
-
 }
 
-void SJF::push(process p)
+void SJF::push(process* p)
 {
 	FT += p.getCT();
 	if (!this->BUSY)
