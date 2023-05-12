@@ -6,7 +6,7 @@ class Processor
 {
 
 public:
-	int FT = 0;
+	int BT = 0;
 	bool BUSY = false;
 	process* RUN;
 

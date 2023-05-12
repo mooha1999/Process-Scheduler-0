@@ -43,7 +43,7 @@ public:
         }
 
     }
-    Queue<int> GetIDRR()
+    Queue<int> GetID()
     {
         Queue<process*>temp = *Rdy;   //*Rdy to return the value of Rdy (copy the rdy queue )
         Queue<int>Ids; //Id of each process 
@@ -55,7 +55,7 @@ public:
         return Ids;
 
     }
-    int GetWT()
+    virtual int GetWT()
     {
         Queue<process*>temp = *Rdy;
         int SumWT = 0;
