@@ -14,8 +14,8 @@ private:
 	int RT; //response time 
 	int CT; //CPU time
 	int TT; //termination time 
-	int TRT = TT - AT; //turnaround duration
-	int WT = TRT - CT; //waiting time 
+	int TRT;//turnaround duration
+	int WT; //waiting time 
 	int N; //number of times the process requests the io
 	int EX;
 	Queue<pair<int, int>> Q;
