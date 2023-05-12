@@ -32,8 +32,8 @@ public:
 
 
 
-	int getPID();
-	int getAT();
+	//int getPID();
+	//int getAT();
 	int getRT();
 	int getTT();
 	int getCT();
