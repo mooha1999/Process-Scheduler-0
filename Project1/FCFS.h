@@ -66,8 +66,7 @@ public:
         int exe = RUN->getEX();
         int newct = oldct - exe;
         kid->setCT(newct);
-        
-    
+  
     }
 
 };
