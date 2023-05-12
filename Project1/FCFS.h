@@ -19,6 +19,8 @@ public:
         if (!RUN)
         {
             RUN = Rdy->Pop();   //return the value of the firt process in rdy list
+            BUSY = true;
+           
         }
         else
         {
@@ -58,6 +60,16 @@ public:
         return SumWT;
 
     }
-  
+    
+    virtual int GetBT(bool BUSY, int BT)
+    {
+        while (BUSY != false) {
+            int BT = BT++;
+        }
+           return BT;
+    
+    }
+
+ 
 
 };
