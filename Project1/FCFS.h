@@ -35,7 +35,7 @@ public:
         }
 
     }
-    Queue<int> GetID()
+    Queue<int> GetIDFCFS()
     {
         Queue<process*>temp = *Rdy;   //*Rdy to return the value of Rdy (copy)
         Queue<int>Id;
