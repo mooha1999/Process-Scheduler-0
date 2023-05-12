@@ -15,15 +15,15 @@ class PriortyQueue
 
 	void Push(T data,T Prio)
 	{
-		Node<T>* temp = new Node<T>;
-		temp->getItem() = data;
-		temp->getPrio() = prio;
+		Node<T>* temp = new Node<T>(data,Prio);
 		Node<T>* curr=nullptr;
 		Node<T>* prev=nullptr;
-		if (front == nullptr || prio >= front->prio)
+
+		if (front==nullptr  || prio < front->prio)
 		{
-			temp->setItem(data)= front;
+			temp->next = front;
 			front = temp;
+			
 		}
 		else
 		{
@@ -35,25 +35,25 @@ class PriortyQueue
 				curr = curr->getNext();
 			}
 
-			temp->getNext() = prev->getNext();
-			prev->getNext() = temp;
 		}
 	}
-	
 
-	
-
-	
-
-	T Pop() {
-		T item = Head->getItem();
-		Head = Head->getNext();
-		size--;
+	T Pop()
+	{
+		T item = front->getItem();
+		front = front->getNext();
+		
 		return item;
 	}
 
-	T Peek() { return Head->getItem(); }
+	T Peek() 
+	{ 
+		return front->getItem();
+	}
 
-
+	bool IsEmpty()
+	{ 
+		return 
+	}
 };
 

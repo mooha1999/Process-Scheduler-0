@@ -16,7 +16,6 @@ public:
     virtual void schedulago()
     {
 
-
         if (!RUN)
         {
             RUN = Rdy->Pop();   //return the value of the firt process in rdy list
