@@ -44,7 +44,7 @@ int process::getWT() {
 int process::getEX() {
 	return EX;
 }
-int process::getpair()
+Queue<pair<int, int>> process::getpair()
 {
 	return q;
 }
@@ -70,11 +70,10 @@ void process::setWT(int tt, int at, int ct) {
 	WT = tt - ct;
 }
 
-void process::setpair(Queue<pair<int, int>> Q)
-{ 
-
-	
-
+void process::addpair(int r, int d)
+{
+	ior = r;
+	iod = d;
 }
 
 
