@@ -9,30 +9,46 @@ public:
 
     Queue<process*> Rdy;
     process* RUN;
+    process* Finish;
     int time_slice;
     int Num_of_jobs;
-
+    void push(process* p)
+    {
+        Rdy.Push(p);
+    }
     void schedulago()
     {
 
-        RUN = Rdy.Pop();   //return the value of the firt process in rdy list
-
-         //case 1  if the execution time is equal to time slice
-
-        if (RUN->getEX() == time_slice)
+        if (!RUN)
         {
-            Rdy.Push(RUN);
+            RUN = Rdy.Pop();   //return the value of the firt process in rdy list
         }
-        // case 2
-        else  
+        else
         {
-            RUN->incEX();
+            if (RUN->getEX() == RUN->getCT())
+            {
+                Finish = RUN;
+                RUN = nullptr;
+            }
+            //case 1  if the execution time is equal to time slicev
+            if (RUN->getEX() % time_slice == 0) // reminder ( 
+            {
+                RUN->incEX(); // hna 34an mayd5ol4 be nafs el ex-time (resulting infinte loop)
+                Rdy.Push(RUN);
+                RUN = nullptr;
+            }
+            // case 2
+            else
+            {
+                RUN->incEX();
+            }
         }
 
 
 
 
-        
+
+
     }
 
 
