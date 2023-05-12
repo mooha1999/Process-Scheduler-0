@@ -24,11 +24,17 @@ public:
 
       RUN=rdy.front(RUN);
        rdy.pop();
-       //case 1
-       if (time_slice == )
+       //case 1  if the CT is equal to time slice 
+       if (RUN->getCT()== time_slice)
        {
+           rdy.rear(RUN);
+       }
+       else if (RUN->getCT() != time_slice|| RUN->getCT() < time_slice)
+       {
+           RUN->incEX();
 
        }
+
 
      }
 

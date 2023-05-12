@@ -29,6 +29,10 @@ public:
     {
         firstp=front->data;
     }
+	void rear(process* last)
+	{
+		last = rear->data;
+	}
 	void push(process * p) //push the value but it is queue 
 	{
 
