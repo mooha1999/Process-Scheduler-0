@@ -60,5 +60,8 @@ public:
 
     }
 
+    void fork() {
+        
+    }
 
 };

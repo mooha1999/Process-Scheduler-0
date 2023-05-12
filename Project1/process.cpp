@@ -16,6 +16,9 @@ process::process(int pid, int at, int ct, Queue<pair<int, int>> q) {
 	//N = 1; //number of times the process requests the io
 }
 
+process::process() {
+}
+
 int process::getPID() {
 	return PID;
 }

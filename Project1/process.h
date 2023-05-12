@@ -26,7 +26,7 @@ public:
 	//this is the child created by FCFS in fork a child
 	process* kid;
 	process(int pid, int at, int rt, Queue<pair<int, int>> q);
-
+	process();
 
 
 	int getPID();
@@ -45,9 +45,9 @@ public:
 	void setRT(int rt);
 	void setCT(int ct);
 	void setTT(int tt);
-	void setTRT(int tt, int at);
-	void setWT(int tt, int at, int ct);
-	void addpair(int r, int d);
+	//void setTRT(int tt, int at);
+	//void setWT(int tt, int at, int ct);
+	//void addpair(int r, int d);
 
 
 
