@@ -4,7 +4,7 @@
 process::process() { //default constructor // initialization
 	EX = 0; //execution time starting from zero 
 	}
-process::process(int pid, int at, int ct) {
+process::process(int pid, int at, int ct, Queue<pair<int, int>> q) {
 	PID = pid;
 	AT = at;
 	CT = ct;

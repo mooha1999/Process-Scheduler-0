@@ -18,7 +18,7 @@ private:
 	int WT = TRT - CT; //waiting time 
 	int N; //number of times the process requests the io
 	int EX = 0;
-	Queue<pair<int, int>> q;
+	Queue<pair<int, int>> Q;
 	int ior;
 	int iod;
 
@@ -28,7 +28,7 @@ public:
 	process* next;
 
 	process();
-	process(int pid, int at, int rt);
+	process(int pid, int at, int rt, Queue<pair<int, int>> q);
 
 
 
