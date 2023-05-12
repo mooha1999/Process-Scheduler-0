@@ -2,6 +2,7 @@
 class Processor
 {
 public:
+	//hello from sameh
 	int FT = 0;
 	bool BUSY = false;
 	process RUN;
@@ -10,9 +11,7 @@ public:
 	virtual void push(process p);
 	~Processor();
 
-
 private:
-
 };
 
 Processor::Processor()
@@ -25,4 +24,3 @@ void Processor::SchaduelAlgo() {}
 Processor::~Processor()
 {
 }
-
