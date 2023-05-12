@@ -7,16 +7,18 @@ process::process() { //default constructor // initialization
 	RT = 1; //response time 
 	TT = 1; //termination time 
 	EX = 0; //execution time starting from zero 
+	}
+process::process(int pid, int at, int rt, int ct, int tt, int n, int ex) {
+	PID = pid;
+	AT = at;
+	RT = ct;
+	TT = tt;
 	int TRT = TT - AT; //turnaround duration
 	int WT = TRT - CT; //waiting time 
-}
-process::process(int ct, int n, int tt)
-{
-	CT = ct;
 	N = n;
-	TT = tt;
-}
+	EX = ex;
 
+}
 
 int process::getPID() {
 	return PID;
@@ -72,3 +74,4 @@ void process::incEX() {
 
 //void process :: setstate(); //fn that set the process state according to variables
 //void process :: getstate(); //still needs implementation 
+
