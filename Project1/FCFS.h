@@ -59,5 +59,10 @@ public:
 
     }
 
+    virtual void fork(process* kid, int t) {
+        kid->getAT() = t;
+
+    
+    }
 
 };

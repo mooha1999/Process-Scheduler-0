@@ -1,5 +1,4 @@
 #pragma once
-#pragma
 
 #include <iostream>
 #include "Queue.h"
@@ -14,13 +13,11 @@ private:
 	int RT; //response time 
 	int CT; //CPU time
 	int TT; //termination time 
-	int TRT;//turnaround duration
-	int WT; //waiting time 
-	int N; //number of times the process requests the io
+	//int TRT;//turnaround duration
+	//int WT; //waiting time 
+	//int N; //number of times the process requests the io
 	int EX;
 	Queue<pair<int, int>> Q;
-	int ior;
-	int iod;
 
 public:
 	//the process is a node in the queue
@@ -28,9 +25,8 @@ public:
 	process* next;
 	//this is the child created by FCFS in fork a child
 	process* kid;
-	process();
 	process(int pid, int at, int rt, Queue<pair<int, int>> q);
-
+	process();
 
 
 	int getPID();
@@ -49,9 +45,9 @@ public:
 	void setRT(int rt);
 	void setCT(int ct);
 	void setTT(int tt);
-	void setTRT(int tt, int at);
-	void setWT(int tt, int at, int ct);
-	void addpair(int r, int d);
+	//void setTRT(int tt, int at);
+	//void setWT(int tt, int at, int ct);
+	//void addpair(int r, int d);
 
 
 
