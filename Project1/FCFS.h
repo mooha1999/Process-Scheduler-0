@@ -38,11 +38,11 @@ public:
     Queue<int> GetIDFCFS()
     {
         Queue<process*>temp = *Rdy;   //*Rdy to return the value of Rdy (copy)
-        Queue<int>Id;
-        while (temp.)
+        Queue<int>IDFCFS;
+        while (temp.IsEmpty())
         {
             int x = temp.Pop()->getPID();  //return id 
-            Id.Push(x); //push the id in the queue
+            IDFCFS.Push(x); //push the id in the queue
         }
 
 
