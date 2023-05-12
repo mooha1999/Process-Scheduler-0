@@ -23,6 +23,8 @@ public:
         }
         else
         {
+            BUSY = true; //busy when running 
+            TBT++; //total busy time
             if (RUN->getEX() == RUN->getCT()) //Ex-time=CPU-time  
             {
                 Finish = RUN;

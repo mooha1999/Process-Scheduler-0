@@ -55,7 +55,7 @@ public:
 	//void setstate(); //fn that set the process state according to variables
 	//void getstate();
 
-    void fork(int t, int id);
+	process* fork(int t, int id);
 	void incEX();
 
 };
