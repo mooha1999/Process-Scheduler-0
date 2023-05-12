@@ -31,5 +31,6 @@ public:
 
 	T Peek() { return Head->getItem(); }
 
+	bool IsEmpty() { return size == 0; }
 	//virtual void Add(T item) { Push(item); }
 };
