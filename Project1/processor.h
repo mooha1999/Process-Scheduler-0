@@ -1,11 +1,17 @@
-#include "process.h";
+#include "process.h"
+#include <string>
+#include <iostream>
+#pragma once
+using namespace std;
+
 class Processor
 {
+
 public:
-	//hello from sameh
 	int FT = 0;
+
 	bool BUSY = false;
-	process RUN;
+	process* RUN;
 	Processor();
 	virtual void SchaduelAlgo();
 	virtual void push(process p);
