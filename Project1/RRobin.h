@@ -26,12 +26,16 @@ public:
         }
         else
         {
+            BUSY = true; //busy when running 
+            TBT++; //total busy time
+
             if (RUN->getEX() == RUN->getCT()) //Ex-time=CPU-time  
             {
                 Finish = RUN;
                 RUN = nullptr;
+
             }
-            //case 1  if the execution time is equal to time slicev
+            //case 1  if the execution time is equal to time slice
             if (RUN->getEX() % time_slice == 0) // reminder ( 
             {
                 RUN->incEX(); // hna 34an mayd5ol4 be nafs el ex-time (resulting infinte loop)
