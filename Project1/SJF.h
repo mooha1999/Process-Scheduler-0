@@ -2,7 +2,6 @@
 #include"process.h"
 #include"PriortyQueue.h"
 
-
 class SJF :public Processor
 {
  public:
@@ -10,17 +9,14 @@ class SJF :public Processor
     PriortyQueue<process*>* Rdy;
     process* Finish;
 
-    int GetSCT()
-    {
-
-    }
+   
+    
     virtual void push(process* p)
     {
         Rdy->Push(p,p->getCT()); // take the process and the cpu time 
     }
     virtual void schedulago()
     {
-
         if (!RUN)
         {
             RUN = Rdy->Pop();   //return the value of the firt process in rdy list
@@ -64,16 +60,5 @@ class SJF :public Processor
         return SumWT;
 
     }
-
-
-
-
-
-
-
-
-
-
-
 
 };
