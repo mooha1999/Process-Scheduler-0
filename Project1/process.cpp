@@ -46,7 +46,9 @@ int process::getTRT() {
 int process::getWT() {
 	return WT;
 }
-
+void process::getEX() {
+	return EX;
+}
 void process::setPID(int id) {
 	PID = id;
 }
@@ -69,9 +71,6 @@ void process::setWT(int tt, int at, int ct) {
 	WT = tt - ct;
 }
 
-void process::getEX(int ex) {
-	EX = ex;
-}
 void process::incEX(int ex) {
 	EX = ex++;
 }
