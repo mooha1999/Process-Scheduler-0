@@ -55,7 +55,7 @@ public:
         return Ids;
 
     }
-    int GetWT()
+   virtual int GetWT()
     {
         Queue<process*>temp = *Rdy;
         int SumWT=0;

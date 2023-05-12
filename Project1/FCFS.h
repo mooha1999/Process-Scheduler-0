@@ -47,7 +47,18 @@ public:
 
 
     }
+    virtual int GetWT()
+    {
+        Queue<process*>temp = *Rdy;
+        int SumWT = 0;
+        while (!temp.IsEmpty())
+        {
+            int x = temp.Pop()->getWT();  //return waiting time 
+            SumWT = SumWT + x;
+        }
+        return SumWT;
 
+    }
 
 
 };
