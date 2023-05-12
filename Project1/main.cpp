@@ -106,7 +106,7 @@ int main()
 		s5 >> N;
 
 		
-		processes.push_back(p);
+		
 	};
 
 	

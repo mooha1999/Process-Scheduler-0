@@ -1,5 +1,5 @@
 
-#include "processor.h"
+/*#include "processor.h"
 #include <queue>
 
 struct CompareCPUTime {
@@ -17,3 +17,4 @@ public:
     void push(process p);
     void SchaduelAlgo();
 };
+*/

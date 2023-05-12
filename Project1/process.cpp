@@ -73,7 +73,8 @@ void process::addpair(int r, int d)
 
 
 
-void process::incEX() {
+void process::incEX() 
+{
 	EX++;
 }
 

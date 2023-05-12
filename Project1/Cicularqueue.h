@@ -1,21 +1,21 @@
-#pragma once
+/*#pragma once
 #include "processor.h"
 #include"process.h"
 class Circularqueue
 {
-public:
+  public:
     process* front;
     process* rear;
    
 
  // for queue of RR
 
-  Circularqeueu()
-	{
+ Circularqueue()
+  {
 		front = NULL;
 		rear = front;
         
-	}
+  }
 	bool Isempty()
 	{
 		if (front == NULL)
@@ -25,20 +25,17 @@ public:
 		return false;
 
 	}
-    void front(process*firstp)
-    {
-        firstp=front->data;
-    }
-	void rear(process* last)
+	void front(process* firstp)
 	{
-		last = rear->data;
+		firstp = front;
 	}
-	void push(process * p) //push the value but it is queue 
+
+	void push(process  p) //push the value but it is queue 
 	{
 
 		process* newnode = new process;
-		newnode->data = p;
-		process* temp = front;
+		newnode->data == p;
+		process* temp =front;
 		if (Isempty())
 		{
 			front = rear= temp;
@@ -60,7 +57,7 @@ public:
 
 	}
   void  pop()
-	{
+   {
 		process* temp=front;
 		
 		if (Isempty())
@@ -80,7 +77,7 @@ public:
 
 	int Peek()
 	{ 
-		return front->next;
+		return front->data;
 	}
     
 	int countQ()
@@ -91,8 +88,9 @@ public:
 		{
 			count++;
 			temp = temp->next;
-			return count;
+			
 		}
+		return count;
 	}
 
 	void delnode(int value)
@@ -136,3 +134,4 @@ public:
 
 
 };
+*/
