@@ -12,7 +12,10 @@
 
 using namespace std;
 class Scheduler {
-	Queue<process> NEWprocesses;
+	Queue<process*> NEW;
+	Queue<process*> BLK;
+	Queue<process*> TRM;
+	Queue<pair<int, int>> sigKills;
 	FCFS* fcfss;
 	SJF* sjfs;
 	RRobin* rrobins;
@@ -29,11 +32,20 @@ class Scheduler {
 			inputFile >> at >> pid >> ct >> n;
 			string line;
 			getline(inputFile, line);
+			Queue<pair<int, int>> ios;
 			while (n--) {
 				getline(inputFile, line, ',');
 				line = line.substr(1);
 				stringstream ss(line);
+				int first, second;
+				ss >> first >> second;
+				ios.Push(make_pair(first, second));
 			}
+			NEW.Push(new process(pid, at, ct, ios));
+		}
+		int a, b;
+		while (inputFile >> a >> b) {
+			sigKills.Push(make_pair(a, b));
 		}
 	}
 	void defineProcessors(fstream& inputFile) {
@@ -44,5 +56,13 @@ class Scheduler {
 		rrobins = new RRobin[c];
 		int time_slice;
 		inputFile >> time_slice;
+	}
+	void simulate() {
+		int timestep = 0;
+		while (!NEW.IsEmpty() || !BLK.IsEmpty() || !TRM.IsEmpty() || !sigKills.IsEmpty()) {
+			while (!NEW.IsEmpty() && NEW.Peek()->getAT() == timestep) {
+			}
+			timestep++;
+		}
 	}
 };

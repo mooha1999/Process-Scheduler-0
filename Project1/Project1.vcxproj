@@ -144,14 +144,18 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="process.cpp" />
     <ClCompile Include="RR.cpp" />
+    <ClCompile Include="RRobin.cpp" />
     <ClCompile Include="SJF.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Cicularqueue.h" />
     <ClInclude Include="FCFS.h" />
     <ClInclude Include="LinkedList.h" />
+    <ClInclude Include="node.h" />
     <ClInclude Include="PriortyQueue.h" />
     <ClInclude Include="process.h" />
     <ClInclude Include="processor.h" />
+    <ClInclude Include="qqueue.h" />
     <ClInclude Include="Queue.h" />
     <ClInclude Include="QueueNode.h" />
     <ClInclude Include="RRobin.h" />
