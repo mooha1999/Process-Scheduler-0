@@ -8,4 +8,5 @@ public:
     void enqueue(int data);
     int dequeue();
     void migrate(process x, int MaxW);
+    //nouran was here 
 };
