@@ -29,9 +29,11 @@ public:
 
        if (RUN->getEX()== time_slice)
        {
-           rdy.rear(RUN);
+           Rdy.rear(RUN);
        }
-       else if (RUN->getCT() != time_slice|| RUN->getCT() < time_slice)
+
+       // case 2
+       else if (RUN->getEX() != time_slice|| RUN->getEX() < time_slice)
        {
            RUN->incEX();
 
