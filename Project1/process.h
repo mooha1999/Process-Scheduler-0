@@ -17,6 +17,8 @@ private:
 	int WT = TRT - CT; //waiting time 
 	int N; //number of times the process requests the io
 	int EX = 0;
+	int ior;
+	int iod;
 public:
 	//the process is a node in the queue
 	int data;
