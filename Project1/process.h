@@ -43,8 +43,10 @@ public:
 	void setTT(int tt);
 	void setTRT(int tt, int at);
 	void setWT(int tt, int at, int ct);
- 	void incEX(int ex);
+ 	
 
 	void setstate(); //fn that set the process state according to variables
 	void getstate();
+
+	void incEX();
 };
