@@ -3,7 +3,6 @@
 #include "QueueNode.h"
 template<typename T>
 
-
 class PriortyQueue
 {
 	Node<T>* front;
@@ -17,15 +16,24 @@ class PriortyQueue
 
 	void Push(T data,T Prio)
 	{
-		Node<T>* temp = new Node<T>(data);
-		if (size == 0)
-			Head = Tail = temp;
+		Node<T>* temp = new Node<T>(data ,Prio);
+		Node<T>* curr=nullptr;
+		Node<T>* prev=nullptr;
+		if (front == nullptr || prio >= front->prio)
+		{
+			temp->next = front;
+			front = temp;
+		}
 		else {
 			Tail->setNext(temp);
 			Tail = temp;
 		}
 		size++;
 	}
+
+	
+
+	
 
 	T Pop() {
 		T item = Head->getItem();

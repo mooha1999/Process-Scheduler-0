@@ -43,10 +43,10 @@ public:
         }
 
     }
-    Queue<int> GetID()
+    Queue<int> GetIDRR()
     {
-        Queue<process*>temp = *Rdy;   //*Rdy to return the value of Rdy (copy)
-        Queue<int>Ids;
+        Queue<process*>temp = *Rdy;   //*Rdy to return the value of Rdy (copy the rdy queue )
+        Queue<int>Ids; //Id of each process 
         while (!temp.IsEmpty())
         {
             int x = temp.Pop()->getPID();  //return id 
@@ -55,6 +55,19 @@ public:
         return Ids;
 
     }
+    int GetWT()
+    {
+        Queue<process*>temp = *Rdy;
+        int SumWT=0;
+        while (!temp.IsEmpty())
+        {
+            int x = temp.Pop()->getWT();  //return waiting time 
+            SumWT = SumWT + x;
+        }
+        return SumWT;
+
+    }
+
 
 
 
