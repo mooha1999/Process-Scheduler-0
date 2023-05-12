@@ -4,23 +4,29 @@
 #pragma once
 class Processor
 {
+  public:
 
-public:
-	int FT = 0;
-	bool BUSY = false;
+
+	int BT = 0;
+	bool BUSY ;
+
 	process* RUN;
 
 	virtual void schedulago()=0;
 	virtual void push(process*p)=0;
 	virtual Queue<int> GetID()=0;
 	virtual int GetWT()=0;
+   
+	//virtual int GetBT(bool BUSY) = 0; //calculate busy time 
+
 	virtual int GetBT(bool BUSY) = 0; //calculate busy time 
 
 
 
 
 
-private:
+
+
 };
 
 
