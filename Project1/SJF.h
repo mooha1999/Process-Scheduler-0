@@ -29,6 +29,7 @@ class SJF :public Processor
 
             if (RUN->getEX() == RUN->getCT())
             {
+                AR = AR + RUN->getTRT();
                 Finish = RUN;
                 RUN = nullptr;
             }

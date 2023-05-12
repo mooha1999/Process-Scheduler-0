@@ -34,6 +34,7 @@ public:
 >>>>>>> b0362be4cbf0ebed416d312ee586785e360e4eae
             if (RUN->getEX() == RUN->getCT()) //Ex-time=CPU-time  
             {
+                AR = AR + RUN->getTRT();
                 Finish = RUN;
                 RUN = nullptr;
 
