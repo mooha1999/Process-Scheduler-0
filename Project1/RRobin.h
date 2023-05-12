@@ -10,7 +10,10 @@ public:
     Queue<process*>* Rdy; // pointer Queue
     process* Finish; // this process to put the finished process
     int time_slice;
-
+    RRobin(int TS)
+    {
+        TS = time_slice;
+    }
     virtual void push(process* p)
     {
         Rdy->Push(p);
