@@ -50,9 +50,8 @@ public:
 	void setTT(int tt);
 	void setTRT(int tt, int at);
 	void setWT(int tt, int at, int ct);
-	void setpair(Queue<pair<int, int>> Q);
+	void addpair(int r, int d);
 
-	void add();
 
 
 
@@ -60,5 +59,5 @@ public:
 	//void getstate();
 
 	void incEX();
-	void add();
+
 };
