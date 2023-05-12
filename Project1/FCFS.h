@@ -19,9 +19,15 @@ public:
         if (!RUN)
         {
             RUN = Rdy->Pop();   //return the value of the firt process in rdy list
+           
+    
         }
         else
         {
+            BUSY = true; //busy when running 
+            BT++;
+
+
             if (RUN->getEX() == RUN->getCT())
             {
                 Finish = RUN;
@@ -58,15 +64,16 @@ public:
         return SumWT;
 
     }
-
-    virtual void fork(process* kid, int t, int id) {
-        kid->setAT(t);
-        kid->setPID(id);
-        int oldct = RUN->getCT();
-        int exe = RUN->getEX();
-        int newct = oldct - exe;
-        kid->setCT(newct);
-  
+    
+    virtual int GetBT(bool BUSY, int BT)
+    {
+        while (BUSY != false) {
+            BT++;
+        }
+           return BT;
+    
     }
+
+ 
 
 };

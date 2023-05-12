@@ -78,3 +78,13 @@ void process::incEX()
 //void process :: setstate(); //fn that set the process state according to variables
 //void process :: getstate(); //still needs implementation 
 
+
+void process::fork(int t, int id) {
+	int oldct = getCT();
+	int exe = getEX();
+	int newct = oldct - exe;
+	kid = new process(id, t, newct, Queue<pair<int, int>>()); 
+
+	
+
+}
