@@ -105,7 +105,7 @@ int main()
 		s5 >> CT;
 		s5 >> N;
 
-		process p(PID, AT, CT, N);
+		
 		processes.push_back(p);
 	};
 
