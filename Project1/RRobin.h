@@ -8,16 +8,36 @@ class RRobin
 {
 public:
 
-    LinkedList Rdy;
+    Cirularqueue Rdy;
+    process* RUN;
     int time_slice;
     int Num_of_jobs;
-    void settimeSlice(int TS); //timeslice 
+    
     void Add_process(process *data); //add data in the linkedlist of the Rdy list
-    void  schedulealgo();
+    void  schedulalgo();
+
+   void schedulago()
+   {
+
+    if (Rdy.Isempty())
+    {
+      return;
+    }
+    else
+   {
+
+    RUN=rdy.front(RUN);
+
+    //case 1
+    if(times)
+
+   }
+
+   }
 
 
 
 
  
-    void round_robin(int time_slice);
+   
 };

@@ -14,7 +14,7 @@ public:
 	{
 		front = NULL;
 		rear = front;
-
+        
 	}
 	bool Isempty()
 	{
@@ -25,6 +25,10 @@ public:
 		return false;
 
 	}
+    void front(process*firstp)
+    {
+        firstp=front->data;
+    }
 	void push(process p) //push the value but it is queue 
 	{
 
@@ -51,6 +55,7 @@ public:
 
 
 	}
+    
 	int countQ()
 	{
 		int count = 0;
