@@ -1,9 +1,7 @@
 //written by nouran wisam 
 #include "process.h"
 
-process::process() { //default constructor // initialization
-	
-	}
+
 process::process(int pid, int at, int ct, Queue<pair<int, int>> q) {
 	PID = pid;
 	AT = at;
@@ -12,10 +10,10 @@ process::process(int pid, int at, int ct, Queue<pair<int, int>> q) {
 	EX = 0; //execution time starting from zero 
 	process* kid = nullptr;
 	RT = 0; //response time
-	TT = 0;
-	TRT = TT - AT; //turnaround duration
-	WT = TRT - CT; //waiting time 
-	N = 1; //number of times the process requests the io
+	TT = 0; //termination time 
+	//TRT = TT - AT; //turnaround duration
+	//WT = TRT - CT; //waiting time 
+	//N = 1; //number of times the process requests the io
 }
 
 int process::getPID() {
@@ -34,17 +32,17 @@ int process::getCT() {
 	return CT;
 }
 int process::getTRT() {
-	return TRT;
+	return (TT - AT);
 }
 int process::getWT() {
-	return WT;
+	return ((TT-AT)-CT);
 }
 int process::getEX() {
 	return EX;
 }
 Queue<pair<int, int>> process::getpair()
 {
-	return q;
+	return Q;
 }
 void process::setPID(int id) {
 	PID = id;
@@ -61,22 +59,12 @@ void process::setCT(int ct) {
 void process::setTT(int tt) {
 	TT = tt;
 }
-void process::setTRT(int tt, int at) {
-	TRT = tt - at;
-}
-void process::setWT(int tt, int at, int ct) {
-	WT = tt - ct;
-}
-
-void process::addpair(int r, int d)
-{
-	ior = r;
-	iod = d;
-	enqueue.make_pair<ior, iod>;
-
-
-}
-
+//void process::setTRT(int tt, int at) {
+	//return (tt - at);
+//}
+//void process::setWT(int tt, int at, int ct) {
+	//WT = tt - ct;
+//}
 
 
 void process::incEX() 
