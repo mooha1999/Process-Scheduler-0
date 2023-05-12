@@ -2,22 +2,14 @@
 #include "process.h"
 
 process::process() { //default constructor // initialization
-	PID = 1;
-	AT = 1; //arrival time 
-	RT = 1; //response time 
-	TT = 1; //termination time 
 	EX = 0; //execution time starting from zero 
 	}
-process::process(int pid, int at, int rt, int ct, int tt, int n, int ex) {
+process::process(int pid, int at, int ct) {
 	PID = pid;
 	AT = at;
-	RT = ct;
-	TT = tt;
+	CT = ct;
 	int TRT = TT - AT; //turnaround duration
 	int WT = TRT - CT; //waiting time 
-	N = n;
-	EX = ex;
-
 }
 
 int process::getPID() {
@@ -74,6 +66,9 @@ void process::addpair(int r, int d)
 {
 	ior = r;
 	iod = d;
+	enqueue.make_pair<ior, iod>;
+
+
 }
 
 

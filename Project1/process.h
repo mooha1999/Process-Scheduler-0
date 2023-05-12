@@ -28,7 +28,7 @@ public:
 	process* next;
 
 	process();
-	process(int pid, int at, int rt, int ct, int tt, int n, int ex);
+	process(int pid, int at, int rt);
 
 
 
