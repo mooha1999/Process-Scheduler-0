@@ -3,29 +3,27 @@
 #include"process.h"
 #include"Queue.h"
 //fffff
-class RRobin : public processor
+class RRobin : public Processor
 {
 public:
 
-    Queue<process*> Rdy;
-    process* RUN;
-    process* Finish;
+    Queue<process*>* Rdy; // pointer Queue
+    process* Finish; // this process to put the finished process
     int time_slice;
-    int Num_of_jobs;
-    void push(process*p )
-    {
-        Rdy.Push(p);
-    }
-    void schedulago()
-    {
 
-        if (!RUN)
+    virtual void push(process* p)
+    {
+        Rdy->Push(p);
+    }
+    virtual void schedulago()
+    {
+        if (!RUN) // if the RUN process is not empty 
         {
-            RUN = Rdy.Pop();   //return the value of the firt process in rdy list
+            RUN = Rdy->Pop();   //return the value of the firt process in rdy list
         }
-        else  
-        {  
-            if (RUN->getEX()==RUN->getCT()) 
+        else
+        {
+            if (RUN->getEX() == RUN->getCT()) //Ex-time=CPU-time  
             {
                 Finish = RUN;
                 RUN = nullptr;
@@ -34,8 +32,8 @@ public:
             if (RUN->getEX() % time_slice == 0) // reminder ( 
             {
                 RUN->incEX(); // hna 34an mayd5ol4 be nafs el ex-time (resulting infinte loop)
-                Rdy.Push(RUN);
-                RUN = nullptr; 
+                Rdy->Push(RUN);
+                RUN = nullptr;
             }
             // case 2
             else
@@ -44,10 +42,17 @@ public:
             }
         }
 
-        
-
-
-
+    }
+    Queue<int> GetID()
+    {
+        Queue<process*>temp = *Rdy;   //*Rdy to return the value of Rdy (copy)
+        Queue<int>Ids;
+        while (!temp.IsEmpty())
+        {
+            int x = temp.Pop()->getPID();  //return id 
+            Ids.Push(x); //push the id in the queue
+        }
+        return Ids;
 
     }
 

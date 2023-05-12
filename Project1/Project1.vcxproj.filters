@@ -59,8 +59,8 @@
     <ClInclude Include="Queue.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="RRobin.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="PriortyQueue.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

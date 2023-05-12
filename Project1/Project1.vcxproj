@@ -149,6 +149,7 @@
   <ItemGroup>
     <ClInclude Include="FCFS.h" />
     <ClInclude Include="LinkedList.h" />
+    <ClInclude Include="PriortyQueue.h" />
     <ClInclude Include="process.h" />
     <ClInclude Include="processor.h" />
     <ClInclude Include="Queue.h" />
