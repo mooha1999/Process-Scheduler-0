@@ -4,11 +4,13 @@
 using namespace std;
 
 
-LinkedList::LinkedList() {
+LinkedList::LinkedList() 
+{
     head = NULL;
 }
 
-void LinkedList::insertprocess(int val) {
+void LinkedList::insertprocess(int val) 
+{
     process* new_node = new process();
     new_node->data = val;
     new_node->next = NULL;
