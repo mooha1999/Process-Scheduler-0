@@ -5,7 +5,7 @@ template<typename T>
 class PriortyQueue
 {
 	Node<T>* front;
-
+	Node<T>* rear;
   public:
 
 	PriortyQueue()
@@ -15,34 +15,32 @@ class PriortyQueue
 
 	void Push(T data,T Prio)
 	{
-		Node<T>* temp = new Node<T>(data,Prio);
-		Node<T>* curr=nullptr;
-		Node<T>* prev=nullptr;
-
+		Node<T>* temp = front;
+		Node<T>* newnode = new Node<T>(data, Prio);
 		if (front==nullptr  || prio < front->prio)
 		{
-			temp->next = front;
-			front = temp;
+			newnode->getNext() = front;
+			front = newnode;
 			
 		}
 		else
 		{
-			curr = front;
 
-			while (curr <= curr->priority && prio<= curr->prio)
+			while (temp->getNext()->prio<=prio && temp->getNext()!=nullptr)
 			{
-				pre = curr;
-				curr = curr->getNext();
+				temp = temp->getNext();
+				newnode->getNext() = temp->getNext();
+				temp->getNext() = newnode;
 			}
 
 		}
 	}
 
-	T Pop()
+	T Pop() 
 	{
 		T item = front->getItem();
 		front = front->getNext();
-		
+		size--;
 		return item;
 	}
 
@@ -51,9 +49,9 @@ class PriortyQueue
 		return front->getItem();
 	}
 
-	bool IsEmpty()
+	bool IsEmpty() 
 	{ 
-		return 
+		return size == 0; 
 	}
 };
 
