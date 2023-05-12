@@ -2,16 +2,20 @@
 #include "process.h"
 
 process::process() { //default constructor // initialization
-	EX = 0; //execution time starting from zero 
+	
 	}
 process::process(int pid, int at, int ct, Queue<pair<int, int>> q) {
 	PID = pid;
 	AT = at;
 	CT = ct;
-	int TRT = TT - AT; //turnaround duration
-	int WT = TRT - CT; //waiting time 
 	Q = q;
-	
+	EX = 0; //execution time starting from zero 
+	process* kid = nullptr;
+	RT = 0; //response time
+	TT = 0;
+	TRT = TT - AT; //turnaround duration
+	WT = TRT - CT; //waiting time 
+	N = 1; //number of times the process requests the io
 }
 
 int process::getPID() {
