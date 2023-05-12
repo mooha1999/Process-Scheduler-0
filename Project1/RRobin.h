@@ -33,7 +33,7 @@ public:
        }
 
        // case 2
-       else if (RUN->getEX() != time_slice|| RUN->getEX() < time_slice)
+       else  (RUN->getEX() != time_slice|| RUN->getEX() < time_slice)
        {
            RUN->incEX();
 
