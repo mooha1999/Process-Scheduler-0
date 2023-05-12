@@ -16,7 +16,7 @@ class SJF :public Processor
     }
     virtual void push(process* p)
     {
-        Rdy->Push(p,p->getCT());
+        Rdy->Push(p,p->getCT()); // take the process and the cpu time 
     }
     virtual void schedulago()
     {
@@ -43,7 +43,7 @@ class SJF :public Processor
 
     Queue<int> GetID()
     {
-        Queue<process*>temp = *Rdy;
+        PriortyQueue<process*>temp = *Rdy;
         Queue<int>ID;
         while (temp.IsEmpty())
         {
@@ -54,7 +54,7 @@ class SJF :public Processor
     }
     virtual int GetWT()
     {
-        Queue<process*>temp = *Rdy;
+        PriortyQueue<process*>temp = *Rdy;
         int SumWT = 0;
         while (!temp.IsEmpty())
         {
