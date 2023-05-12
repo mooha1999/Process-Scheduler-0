@@ -13,10 +13,10 @@ private:
 	int AT; //arrival time 
 	int RT; //response time 
 	int CT; //CPU time
-	int TT; //termination time 
-	int TRT = TT - AT; //turnaround duration
-	int WT = TRT - CT; //waiting time 
-	int N; //number of times the process requests the io
+	//int TT; //termination time 
+	//int TRT = TT - AT; //turnaround duration
+	//int WT = TRT - CT; //waiting time 
+	//int N; //number of times the process requests the io
 	int EX = 0;
 	Queue<pair<int, int>> q;
 	int ior;
