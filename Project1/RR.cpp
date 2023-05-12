@@ -5,28 +5,25 @@
 //fffff
 class RRobin : public Processor
 {
-public:
+ public:
 
-    Queue<process*> *Rdy; // pointer Queue 
-    process* Finish;
-    int time_slice;
+    Queue<process*> *Rdy; // pointer Queue
+    process* Finish; // this process to put the finished process
+    int time_slice;  
     
     virtual void push(process* p)
     {
-
         Rdy->Push(p);   
     }
     virtual void schedulago()
     {
-       
-
-        if (!RUN)
+        if (!RUN) // if the RUN process is not empty 
         {
             RUN = Rdy->Pop();   //return the value of the firt process in rdy list
         }
-        else
+        else 
         {
-            if (RUN->getEX() == RUN->getCT())
+            if (RUN->getEX() == RUN->getCT()) //Ex-time=CPU-time  
             {
                 Finish = RUN;
                 RUN = nullptr;
@@ -49,13 +46,13 @@ public:
     Queue<int> GetID()
     {
         Queue<process*>temp = *Rdy;   //*Rdy to return the value of Rdy (copy)
-        Queue<int>Id;
-        while (temp.)
+        Queue<int>Ids;
+        while (!temp.IsEmpty())
         {
             int x = temp.Pop()->getPID();  //return id 
-            Id.Push(x); //push the id in the queue
+            Ids.Push(x); //push the id in the queue
         }
-
+        return Ids;
 
     }
 

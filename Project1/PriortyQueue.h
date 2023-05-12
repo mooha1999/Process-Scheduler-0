@@ -1,20 +1,23 @@
 #pragma once
+
 #include "QueueNode.h"
 template<typename T>
-class Queue
+
+
+class PriortyQueue
 {
-	// any operation O(1) 
-	Node<T>* Head, * Tail;
-	int size;
-public:
-	Queue() 
+	Node<T>* front;
+	int size
+  public:
+	PriortyQueue()
 	{
-		Head = Tail = nullptr;
+		front= nullptr;
 		size = 0;
 	}
 
-	void Push(T val) {
-		Node<T>* temp = new Node<T>(val);
+	void Push(T data,T Prio)
+	{
+		Node<T>* temp = new Node<T>(data);
 		if (size == 0)
 			Head = Tail = temp;
 		else {
@@ -36,3 +39,4 @@ public:
 	bool IsEmpty() { return size == 0; }
 	//virtual void Add(T item) { Push(item); }
 };
+
