@@ -10,7 +10,10 @@ public:
     Queue<process*>* Rdy; // pointer Queue
     process* Finish; // this process to put the finished process
     int time_slice;
-
+    RRobin(int TS)
+    {
+        TS = time_slice;
+    }
     virtual void push(process* p)
     {
         Rdy->Push(p);
@@ -25,12 +28,17 @@ public:
         {
             BUSY = true; //busy when running 
             TBT++; //total busy time
+<<<<<<< HEAD
+=======
+
+>>>>>>> b0362be4cbf0ebed416d312ee586785e360e4eae
             if (RUN->getEX() == RUN->getCT()) //Ex-time=CPU-time  
             {
                 Finish = RUN;
                 RUN = nullptr;
+
             }
-            //case 1  if the execution time is equal to time slicev
+            //case 1  if the execution time is equal to time slice
             if (RUN->getEX() % time_slice == 0) // reminder ( 
             {
                 RUN->incEX(); // hna 34an mayd5ol4 be nafs el ex-time (resulting infinte loop)
