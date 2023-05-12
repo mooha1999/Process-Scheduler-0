@@ -60,9 +60,14 @@ public:
 
     }
 
-    virtual void fork(process* kid, int t) {
-        kid->getAT() = t;
-
+    virtual void fork(process* kid, int t, int id) {
+        kid->setAT(t);
+        kid->setPID(id);
+        int oldct = kid->getCT();
+        int exe = kid->getEX();
+        int newct = oldct - exe;
+        kid->setCT(newct);
+        
     
     }
 
