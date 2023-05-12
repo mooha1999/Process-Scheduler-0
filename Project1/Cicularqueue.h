@@ -29,7 +29,11 @@ public:
     {
         firstp=front->data;
     }
-	void push(process p) //push the value but it is queue 
+	void rear(process* last)
+	{
+		last = rear->data;
+	}
+	void push(process * p) //push the value but it is queue 
 	{
 
 		process* newnode = new process;
@@ -54,6 +58,29 @@ public:
 
 
 
+	}
+  void  pop()
+	{
+		process* temp=front;
+		
+		if (Isempty())
+		{
+			return;
+
+		}
+		else
+		{
+			front = front->next;
+
+		}
+		delete temp;
+
+	}
+
+
+	int Peek()
+	{ 
+		return front->next;
 	}
     
 	int countQ()
