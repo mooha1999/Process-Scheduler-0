@@ -7,6 +7,7 @@ class Processor
 
 public:
 	int TBT = 0; //total busy time of processes
+	int AR; //total turn around time of all processes
 	bool BUSY;
 	process* RUN;
 
