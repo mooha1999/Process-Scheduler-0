@@ -1,17 +1,38 @@
-#include "SJF.h"
+#include "processor.h"
+#include"process.h"
+#include"PriortyQueue.h"
 
-/*void SJF::SchaduelAlgo() {
-}
-
-void SJF::push(process* p)
+class SJF :public Processor
 {
-	FT += p.getCT();
-	if (!this->BUSY)
-	{
-		this->RUN == p;
-		this->BUSY = true;
-		return;
-	}
+public:
 
-	RDY.push(p);
-}*/
+    PriortyQueue<process*>* Rdy;
+    process* Finish;
+
+    virtual void push(process* p)
+    {
+        
+    }
+    virtual void schedulago()
+    {
+
+
+
+    }
+
+    Queue<int> GetID()
+    {
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+};

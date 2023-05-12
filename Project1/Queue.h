@@ -16,8 +16,12 @@ public:
 	void Push(T val) {
 		Node<T>* temp = new Node<T>(val);
 		if (size == 0)
+		{
 			Head = Tail = temp;
-		else {
+		}
+			
+		else 
+		{
 			Tail->setNext(temp);
 			Tail = temp;
 		}
