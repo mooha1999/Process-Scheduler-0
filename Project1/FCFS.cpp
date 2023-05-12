@@ -6,5 +6,5 @@
 class FCFS : public processor
 {
 private:
-	queue<process*> rdy;
+	qqueue<process*> rdy;
 };
