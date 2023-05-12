@@ -14,10 +14,10 @@ private:
 	int RT; //response time 
 	int CT; //CPU time
 	int TT; //termination time 
-	int TRT = TT - AT; //turnaround duration
-	int WT = TRT - CT; //waiting time 
+	int TRT;//turnaround duration
+	int WT; //waiting time 
 	int N; //number of times the process requests the io
-	int EX = 0;
+	int EX;
 	Queue<pair<int, int>> Q;
 	int ior;
 	int iod;
@@ -26,7 +26,8 @@ public:
 	//the process is a node in the queue
 	int data;
 	process* next;
-
+	//this is the child created by FCFS in fork a child
+	process* kid;
 	process();
 	process(int pid, int at, int rt, Queue<pair<int, int>> q);
 

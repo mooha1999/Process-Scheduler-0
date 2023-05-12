@@ -35,19 +35,30 @@ public:
         }
 
     }
-    Queue<int> GetIDFCFS()
+    Queue<int> GetID()
     {
         Queue<process*>temp = *Rdy;   //*Rdy to return the value of Rdy (copy)
-        Queue<int>IDFCFS;
+        Queue<int>ID;
         while (temp.IsEmpty())
         {
             int x = temp.Pop()->getPID();  //return id 
-            IDFCFS.Push(x); //push the id in the queue
+            ID.Push(x); //push the id in the queue
         }
 
 
     }
+    virtual int GetWT()
+    {
+        Queue<process*>temp = *Rdy;
+        int SumWT = 0;
+        while (!temp.IsEmpty())
+        {
+            int x = temp.Pop()->getWT();  //return waiting time 
+            SumWT = SumWT + x;
+        }
+        return SumWT;
 
+    }
 
 
 };
