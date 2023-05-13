@@ -84,3 +84,9 @@ Process* Process::fork(int t, int id) {
 
 	return kid;
 }
+
+
+Process ::~Process(){
+	delete next; // deallocate memory for the pointed int
+}
+
