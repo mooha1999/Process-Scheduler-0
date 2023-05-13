@@ -76,10 +76,21 @@ public:
             cout << "processor 1 [FCFS]: " << "number of processes" << "RDY: " << ids << "\n";
 
         }
+        for (Processor* i : SJF) {
 
-       
-        cout << "processor 2 [SJF ]: " << "number of processes" << "RDY: " <<  << "\n";
-        cout << "processor 1 [RR  ]: " << "number of processes" << "RDY: " <<  << "\n";
+
+
+        }
+        for (Processor* i : RR) {
+
+
+
+        }
+        cout << "Current Timestep:" << "  " << timestep;
+        cout << "------------    RDY Processes -----------" << "\n";
+        cout << "processor 1 [FCFS]: " << "number of processes" << "RDY: " << FCFS << "\n";
+        cout << "processor 2 [SJF ]: " << "number of processes" << "RDY: " << SJF.Pop() << "\n";
+        cout << "processor 1 [RR  ]: " << "number of processes" << "RDY: " << RR.Pop() << "\n";
         cout << "-------------   BLK Processes ----------" << "\n";
         cout << "number of processes from blk" << "BLK: " << "IDs of processes in blk";
         cout << "-------------   RUN Processes ----------" << "\n";
