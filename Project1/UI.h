@@ -14,9 +14,8 @@ using namespace std;
 
 class UserInterface {
 public:
-    FCFS fcfs;
-    SJF sjf;
-    RRobin rr;
+ 
+    Queue <Processor*> ID;
 
     void displayMainMenu() {
         cout << "Process Scheduler Program \n";
@@ -33,15 +32,10 @@ public:
         cin >> choice;
         return choice;
     }
-    void UserInerface()
-    {
-
-
-
-   // void displayOutput(Queue<int> output) { //displays a queue of intergers
-     //   for (int i : output) {
-          //  cout << output.Pop() << "  ";
-    //}
+        // void displayOutput(Queue<int> output) { //displays a queue of intergers
+          //   for (int i : output) {
+               //  cout << output.Pop() << "  ";
+         //}
 
         void Userchoice() // to get user what mood does the user need 
         {
@@ -66,8 +60,7 @@ public:
             }
 
         }
-
-
+   
 
         void displayErrorMessage(string message)
         {
@@ -75,11 +68,17 @@ public:
         }
 
     void interfacemode() {
-        cout << "Current Timestep:" << "  " << Scheduler.timestep;
+        //cout << "Current Timestep:" << "  " << Scheduler.timestep;
         cout << "------------    RDY Processes -----------" << "\n";
-        cout << "processor 1 [FCFS]: " << "number of processes" << "RDY: " << FCFS.GetID() << "\n";
-        cout << "processor 2 [SJF ]: " << "number of processes" << "RDY: " << SJF.GetID() << "\n";
-        cout << "processor 1 [RR  ]: " << "number of processes" << "RDY: " << RRobin.GetID() << "\n";
+
+
+       // cout << "processor 1 [FCFS]: " << "number of processes" << "RDY: " <<      << "\n";
+       //cout << "processor 2 [SJF ]: " << "number of processes" << "RDY: " <<      << "\n";
+       //cout << "processor 1 [RR  ]: " << "number of processes" << "RDY: " <<      << "\n";
+
+
+
+
         cout << "-------------   BLK Processes ----------" << "\n";
 
 
