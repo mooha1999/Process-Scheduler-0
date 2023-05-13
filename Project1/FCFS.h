@@ -34,6 +34,7 @@ public:
 				AR = AR + RUN->getTRT();
 				Finish = RUN;
 				RUN = nullptr;
+				BUSY = false;
 			}
 			else
 			{
@@ -65,27 +66,28 @@ public:
 	}
 
 	Process* kill(int id) {
-		//for rdy processes
-		int y = Rdy->Pop()->getPID();  //return id from ready queue
-		for (auto i : *Rdy) {
-			if (y = id) {
-				Process* killPD = Rdy->Pop();
-				//removing the process
-				Rdy->Remove(killPD);
-				return killPD;
-			}
-		}
-
 		//for running processes
 		int z = RUN->getPID();  //return id of running process
-		if (z = id) {
+		if (z == id) {
 			Process* killPR = RUN;
-			RUN->~Process();
+			RUN = nullptr;
+			BUSY = false;
 			return killPR;
 		}
-		else {
-			return nullptr;
+		//for rdy processes 
+		for (Process* i : *Rdy) {
+			int y = i->getPID();  //return id from ready queue
+			if (y == id) {
+				Process* killPD = i;
+				//removing the process
+				Rdy->Remove(i);
+				return killPD;
+			}
+			}
+
+		return nullptr;
+
 		}
-	}
+
  
 };
