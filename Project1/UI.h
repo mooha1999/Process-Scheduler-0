@@ -30,11 +30,10 @@ public:
         return choice;
     }
 
-    void displayOutput(Queue<int> output) { //displays a queue of intergers
-        for (int i : output) {
-            cout << output.Pop() << "  ";
-        }
-    }
+   // void displayOutput(Queue<int> output) { //displays a queue of intergers
+     //   for (int i : output) {
+          //  cout << output.Pop() << "  ";
+    //}
 
         void Userchoice() // to get user what mood does the user need 
         {
@@ -88,18 +87,5 @@ public:
         }
     }
 
-    void writeOutputFile(string filename, Queue<string> output) {
-        ofstream file(filename);
-        if (file.is_open()) {
-            for (string line : output) {
-                file << line << "\n";
-            }
-            file.close();
-            displaySuccessMessage("Output is ready");
-        }
-        else {
-            throw runtime_error("Unable to open file");
-        }
-    }
 };
 
