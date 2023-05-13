@@ -10,7 +10,10 @@ public:
 	virtual void push(Process* p)
 	{
 		Rdy->Push(p);
+
+	
 	}
+		
 	virtual void schedulago()
 	{
 		if (!RUN)
@@ -19,8 +22,10 @@ public:
 		}
 		else
 		{
+			
 			BUSY = true; //busy when running
 			TBT++; //total busy time
+
 
 			if (RUN->getEX() == RUN->getCT())
 			{
@@ -55,5 +60,16 @@ public:
 			SumWT = SumWT + x;
 		}
 		return SumWT;
+	}
+
+	 Process* kill(int id) {
+		int x = Rdy->Pop()->getPID();  //return id from ready queue
+		for (auto i : *Rdy) {
+			if (x=id) {
+				Process* killP = Rdy->Pop();
+				//removing the process
+				return killP;
+			}
+		}
 	}
 };
