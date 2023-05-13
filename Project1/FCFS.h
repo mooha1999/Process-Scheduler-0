@@ -17,7 +17,13 @@ public:
 	}
 		
 	virtual void schedulago()
+
 	{
+		//if execution time = 
+		RUN->getpair().Peek().first == RUN->getEX();
+		//remove the pair from comparison
+		RUN->getpair().Pop();
+
 		if (!RUN)
 		{
 			RUN = Rdy->Pop();   //return the value of the firt process in rdy list
@@ -88,6 +94,7 @@ public:
 		return nullptr;
 
 		}
+
 
  
 };
