@@ -69,6 +69,7 @@ public:
 		{
 			int x = temp.Pop()->getPID();  //return id
 			Ids.Push(x); //push the id in the queue
+
 		}
 		return Ids;
 	}

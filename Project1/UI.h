@@ -29,6 +29,10 @@ public:
         cin >> choice;
         return choice;
     }
+    void UserInerface()
+    {
+        
+
 
    // void displayOutput(Queue<int> output) { //displays a queue of intergers
      //   for (int i : output) {
