@@ -63,12 +63,12 @@ public:
 	}
 
 	 Process* kill(int id) {
-		int x = Rdy->Pop()->getPID();  //return id from ready queue
+		int y = Rdy->Pop()->getPID();  //return id from ready queue
 		for (auto i : *Rdy) {
-			if (x=id) {
+			if (y=id) {
 				Process* killP = Rdy->Pop();
 				//removing the process
-				Rdy->Pop();
+				Rdy->Pop(); //pop the value
 				return killP;
 			}
 		}
