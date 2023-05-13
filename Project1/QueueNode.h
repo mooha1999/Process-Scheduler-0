@@ -4,7 +4,6 @@ class Node
 {
 private:
 	T item;
-	T prio;//priority 
 	Node<T>* next;
 public:
 
@@ -18,18 +17,10 @@ public:
 		item = newItem;
 		next = nullptr;
 	}
-	Node(T priority)
-	{
-		prio = priority;
-	}
 
 	void setItem(T newItem)
 	{
 		item = newItem;
-	}
-	void setPrio(T Newprio)
-	{
-		prio = Newprio;
 	}
 
 	void setNext(Node<T>* nextNodePtr)
@@ -41,10 +32,7 @@ public:
 	{
 		return item;
 	}
-	T getPrio() const
-	{
-		return prio;
-	}
+
 	Node<T>* getNext() const
 	{
 		return next;

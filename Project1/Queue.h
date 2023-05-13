@@ -3,11 +3,32 @@
 template<typename T>
 class Queue
 {
-	// any operation O(1) 
+	// any operation O(1)
 	Node<T>* Head, * Tail;
 	int size;
+	class Iterator {
+	private:
+		Node<T>* currentNode;
+	public:
+		Iterator(Node<T>* node) : currentNode(node) {}
+
+		Iterator& operator++() {
+			if (currentNode) {
+				currentNode = currentNode->getNext();
+			}
+			return *this;
+		}
+
+		bool operator!=(const Iterator& other) const {
+			return currentNode != other.currentNode;
+		}
+
+		T operator*() const {
+			return currentNode->getItem();
+		}
+	};
 public:
-	Queue() 
+	Queue()
 	{
 		Head = Tail = nullptr;
 		size = 0;
@@ -19,8 +40,8 @@ public:
 		{
 			Head = Tail = temp;
 		}
-			
-		else 
+
+		else
 		{
 			Tail->setNext(temp);
 			Tail = temp;
@@ -38,5 +59,12 @@ public:
 	T Peek() { return Head->getItem(); }
 
 	bool IsEmpty() { return size == 0; }
-	//virtual void Add(T item) { Push(item); }
+
+	Iterator begin() const {
+		return Iterator(Head);
+	}
+
+	Iterator end() const {
+		return Iterator(nullptr);
+	}
 };

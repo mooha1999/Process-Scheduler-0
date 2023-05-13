@@ -1,42 +1,39 @@
 #pragma once
-#include "QueueNode.h"
+#include "PriorityNode.h"
 template<typename T>
 
 class PriortyQueue
 {
-	Node<T>* front;
-	Node<T>* rear;
-  public:
+	PriorityNode<T, int>* front;
+	PriorityNode<T, int>* rear;
+public:
 
 	PriortyQueue()
 	{
-		front= nullptr;
+		front = nullptr;
 	}
 
-	void Push(T data,int Prio)
+	void Push(T data, int Prio)
 	{
-		Node<T>* temp = front;
-		Node<T>* newnode = new Node<T>(data, Prio);
-		if (front==nullptr  || prio < front->prio)
+		PriorityNode<T, int>* temp = front;
+		PriorityNode<T, int>* newnode = new PriorityNode<T, int>(data, Prio);
+		if (front == nullptr || prio < front->prio)
 		{
 			newnode->getNext() = front;
 			front = newnode;
-			
 		}
 		else
 		{
-
-			while (temp->getNext()->prio<=prio && temp->getNext()!=nullptr)
+			while (temp->getNext()->prio <= prio && temp->getNext() != nullptr)
 			{
 				temp = temp->getNext();
 				newnode->getNext() = temp->getNext();
 				temp->getNext() = newnode;
 			}
-
 		}
 	}
 
-	T Pop() 
+	T Pop()
 	{
 		T item = front->getItem();
 		front = front->getNext();
@@ -44,14 +41,13 @@ class PriortyQueue
 		return item;
 	}
 
-	T Peek() 
-	{ 
+	T Peek()
+	{
 		return front->getItem();
 	}
 
-	bool IsEmpty() 
-	{ 
-		return size == 0; 
+	bool IsEmpty()
+	{
+		return size == 0;
 	}
 };
-
