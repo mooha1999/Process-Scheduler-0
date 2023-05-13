@@ -72,6 +72,16 @@ public:
         
         
         }
+        for (Processor* i : SJF) {
+
+
+
+        }
+        for (Processor* i : RR) {
+
+
+
+        }
         cout << "Current Timestep:" << "  " << timestep;
         cout << "------------    RDY Processes -----------" << "\n";
         cout << "processor 1 [FCFS]: " << "number of processes" << "RDY: " << FCFS.FCFS->GetID();
