@@ -1,7 +1,7 @@
 //written by nouran wisam
 #include "process.h"
 
-Process::Process(int pid, int at, int ct, Queue<Pair<int, int>*> q) {
+Process::Process(int pid, int at, int ct, Queue<Pair<int, int>> q) {
 	PID = pid;
 	AT = at;
 	CT = ct;
@@ -49,7 +49,7 @@ int Process::getWT() {
 int Process::getEX() {
 	return EX;
 }
-Queue<Pair<int, int>*> Process::getpair()
+Queue<Pair<int, int>> Process::getpair()
 {
 	return Q;
 }
@@ -95,7 +95,7 @@ Process* Process::fork(int t, int id) {
 	int oldct = getCT();
 	int exe = getEX();
 	int newct = oldct - exe;
-	kid = new Process(id, t, newct, Queue<Pair<int, int>*>());
+	kid = new Process(id, t, newct, Queue<Pair<int, int>>());
 
 	return kid;
 }

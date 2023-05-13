@@ -24,7 +24,9 @@ public:
 		{
 			RUN = Rdy->Pop();   //return the value of the firt process in rdy list
 			//if execution time = 
-			if (RUN->getpair().Peek().first == RUN->getEX()) {
+			int a = RUN->getpair().Peek().first;
+			int b = RUN->getEX();
+			if (a==b) {
 				//remove the pair from comparison
 				RUN->getpair().Pop();
 			}
