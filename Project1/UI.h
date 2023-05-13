@@ -69,15 +69,10 @@ public:
 
 
 
-        void displayErrorMessage(string message) {
+        void displayErrorMessage(string message)
+        {
             cout << "Error: " << message << "\n";
         }
-
-        void displaySuccessMessage(string msg) {
-            cout << "Done: " << msg << "\n";
-        }
-
-   
 
     void interfacemode() {
         cout << "Current Timestep:" << "  " << Scheduler.timestep;
