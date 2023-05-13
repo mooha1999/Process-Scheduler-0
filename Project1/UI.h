@@ -23,9 +23,8 @@ public:
         cout << "4. Exit the program.\n";
     }
 
-    int getUserInput()
-    {
-        int choice;
+    int getUserInput() {
+        int choice; //user choice from main menu 
         cout << "Enter your choice: ";
         cin >> choice;
         return choice;
@@ -50,30 +49,18 @@ public:
             else if (Uchoice == 3)
             {
 
-            }
-            else
-            {
-
-
-            }
-        }
-    }
-    
-    void displayResults()//need some editing here ) 
-    {
-        for (auto result : results) 
-        {
+    void displayResults(//need some editing here ) {
+        for (auto result : results) {
             cout << result << "\n";
         }
     }
 
-   void displayErrorMessage(string message)
-   {
+   void displayErrorMessage(string message) {
         cout << "Error: " << message << "\n";
     }
 
-    void displaySuccessMessage(string message) {
-       cout << "Done: " << message << "\n";
+    void displaySuccessMessage(string msg) {
+       cout << "Done: " << msg << "\n";
     }
 
     Queue<string> readInputFile(string filename) {
