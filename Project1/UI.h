@@ -23,49 +23,42 @@ public:
         cout << "4. Exit the program.\n";
     }
 
-<<<<<<< HEAD
-    //int getUserInput() {
-      //  int choice; //user choice from main menu 
-        //cout << "Enter your choice: ";
-        //cin >> choice;
-        //return choice;
-    //}
-
-    void displayOutput(Queue<int> output) { //displays a queue of intergers
-        for (int i: output) {
-            cout << output.Pop() << "  ";
-=======
     int getUserInput() {
         int choice; //user choice from main menu 
         cout << "Enter your choice: ";
         cin >> choice;
         return choice;
     }
-    void Userchoice() // to get user what mood does the user need 
-    {
-        int Uchoice = getUserInput();
-        if (Uchoice < 1 || Uchoice >4) // if he choose any number which is not between 1 and 4
-        {
-            cout << " Not a Valid Choice ";
->>>>>>> 191609f4e9a698deff55a7d4e58622b7dca9badd
-        }
-        else
-        {
-            if (Uchoice == 1)
-            {
 
-            }
-            else if (Uchoice == 2)
-            {
-
-            }
-            else if (Uchoice == 3)
-            {
-            }
+    void displayOutput(Queue<int> output) { //displays a queue of intergers
+        for (int i : output) {
+            cout << output.Pop() << "  ";
         }
-    
     }
-       
+
+        void Userchoice() // to get user what mood does the user need 
+        {
+            int Uchoice = getUserInput();
+            if (Uchoice < 1 || Uchoice >4) // if he choose any number which is not between 1 and 4
+            {
+                cout << " Not a Valid Choice ";
+            }
+            else
+            {
+                if (Uchoice == 1)
+                {
+
+                }
+                else if (Uchoice == 2)
+                {
+
+                }
+                else if (Uchoice == 3)
+                {
+                }
+            }
+
+        }
 
 
 
