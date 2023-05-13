@@ -58,7 +58,7 @@ public:
 
 	T Peek() { return Head->getItem(); }
 
-	T Remove(T val) {
+	bool Remove(T val) {
 		Node<T>* temp = Head;
 		Node<T>* ret = nullptr;
 		if (temp->getItem() == val)
@@ -73,7 +73,7 @@ public:
 				}
 			}
 		}
-		return ret;
+		return (ret);
 	}
 
 	bool IsEmpty() { return size == 0; }
