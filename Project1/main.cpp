@@ -31,8 +31,15 @@ void probBLK() {
 
 int main()
 {
-	Scheduler* scheduler = new Scheduler();
+	/*Scheduler* scheduler = new Scheduler();
 	scheduler->readFile();
-
+	scheduler->simulate();*/
+	Queue<int> q;
+	q.Push(1);
+	q.Push(2);
+	q.Push(3);
+	q.Remove(2);
+	for (int i : q)
+		cout << i << ' ';
 	return 0;
 }

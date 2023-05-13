@@ -36,7 +36,7 @@ public:
 	int getTRT();
 	int getWT();
 	int getEX();
-	Queue<Pair<int, int>*> getpair();
+	Queue<Pair<int, int>*> getPairs();
 
 	void setPID(int id);
 	void setAT(int at);
