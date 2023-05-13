@@ -49,11 +49,9 @@ public:
             else if (Uchoice == 3)
             {
 
-    void displayResults(//need some editing here ) {
-        for (auto result : results) {
-            cout << result << "\n";
-        }
+    
     }
+
 
    void displayErrorMessage(string message) {
         cout << "Error: " << message << "\n";
