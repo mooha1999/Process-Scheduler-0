@@ -15,8 +15,8 @@ Process::Process(int pid, int at, int ct, Queue<Pair<int, int>*> q) {
 	//N = 1; //number of times the process requests the io
 }
 
-//Process::Process() {
-//}
+Process::Process() {
+}
 
 int Process::getIOT()
 {

@@ -37,10 +37,7 @@ public:
 		{
 			BUSY = true; //busy when running
 			TBT++; //total busy time
-			/*<<<<<<< HEAD
-				====== =
 
-				>>>>>> > b0362be4cbf0ebed416d312ee586785e360e4eae*/
 			if (RUN->getEX() == RUN->getCT()) //Ex-time=CPU-time
 			{
 				AR = AR + RUN->getTRT();
