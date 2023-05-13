@@ -23,6 +23,7 @@
     <ClInclude Include="SJF.h" />
     <ClInclude Include="UI.h" />
     <ClInclude Include="PriorityNode.h" />
+    <ClInclude Include="Pair.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="input.txt" />

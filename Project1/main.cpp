@@ -5,6 +5,7 @@
 #include <string>
 #include <sstream>
 #include "Queue.h"
+#include "Pair.h"
 #pragma
 #pragma once
 
@@ -29,12 +30,12 @@ void probBLK() {
 
 int main()
 {
-	Queue<int> queue;
-	queue.Push(1);
-	queue.Push(2);
-	queue.Push(3);
-	for (int i : queue) {
-		cout << i << ' ';
+	Queue<Pair<>*> queue;
+	queue.Push(new Pair<>(1, 2));
+	queue.Push(new Pair<>(3, 4));
+	queue.Push(new Pair<>(5, 6));
+	for (auto i : queue) {
+		cout << i->first << ' ' << i->second << endl;
 	}
 	//fstream FileName;
 	//FileName.open("input.txt", ios::in);
