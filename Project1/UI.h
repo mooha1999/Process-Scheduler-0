@@ -67,17 +67,19 @@ public:
 
     void interfacemode(int timestep, Queue<Processor*> Fcfs, Queue<Processor*>Sjf, Queue<Processor*>Rr) 
     {
-        Queue<int> ID;
-        for (Processor* i : Fcfs) 
-        {
-            Fcfs.GetID();
-
-        }
         cout << "Current Timestep:" << "  " << timestep;
         cout << "------------    RDY Processes -----------" << "\n";
-        cout << "processor 1 [FCFS]: " << "number of processes" << "RDY: " << FCFS << "\n";
-        cout << "processor 2 [SJF ]: " << "number of processes" << "RDY: " << SJF.Pop() << "\n";
-        cout << "processor 1 [RR  ]: " << "number of processes" << "RDY: " << RR.Pop() << "\n";
+        Queue<int> ids;
+        for (Processor* i : Fcfs) 
+        {
+            ids = i->GetID();
+            cout << "processor 1 [FCFS]: " << "number of processes" << "RDY: " << ids << "\n";
+
+        }
+
+       
+        cout << "processor 2 [SJF ]: " << "number of processes" << "RDY: " <<  << "\n";
+        cout << "processor 1 [RR  ]: " << "number of processes" << "RDY: " <<  << "\n";
         cout << "-------------   BLK Processes ----------" << "\n";
         cout << "number of processes from blk" << "BLK: " << "IDs of processes in blk";
         cout << "-------------   RUN Processes ----------" << "\n";
