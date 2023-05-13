@@ -27,7 +27,8 @@ public:
 			//execution time and pair comparison
 			int a = RUN->getPairs().Peek()->first;
 			int b = RUN->getEX();
-			if (a == b) {
+			if (a == b) 
+			{
 				//remove the pair from comparison
 				RUN->getPairs().Pop();
 			}
@@ -36,10 +37,7 @@ public:
 		{
 			BUSY = true; //busy when running
 			TBT++; //total busy time
-			/*<<<<<<< HEAD
-				====== =
 
-				>>>>>> > b0362be4cbf0ebed416d312ee586785e360e4eae*/
 			if (RUN->getEX() == RUN->getCT()) //Ex-time=CPU-time
 			{
 				AR = AR + RUN->getTRT();

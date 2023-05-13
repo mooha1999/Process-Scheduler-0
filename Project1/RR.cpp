@@ -8,7 +8,7 @@ class RRobin : public Processor
 public:
 
 	Queue<Process*>* Rdy; // pointer Queue
-	Process* Finish; // this process to put the finished process
+	//Process* Finish; // this process to put the finished process
 	int time_slice;
 	RRobin(int TS)
 	{
@@ -23,15 +23,31 @@ public:
 		if (!RUN) // if the RUN process is not empty
 		{
 			RUN = Rdy->Pop();   //return the value of the firt process in rdy list
+
+			//execution time and pair comparison
+			int a = RUN->getPairs().Peek()->first;
+			int b = RUN->getEX();
+			if (a == b)
+			{
+				//remove the pair from comparison
+				RUN->getPairs().Pop();
+			}
+
+
 		}
 		else
 		{
+			BUSY = true; //busy when running
+			TBT++; //total busy time
+		
+
 			if (RUN->getEX() == RUN->getCT()) //Ex-time=CPU-time
 			{
+				AR = AR + RUN->getTRT();
 				Finish = RUN;
 				RUN = nullptr;
 			}
-			//case 1  if the execution time is equal to time slicev
+			//case 1  if the execution time is equal to time slice
 			if (RUN->getEX() % time_slice == 0) // reminder (
 			{
 				RUN->incEX(); // hna 34an mayd5ol4 be nafs el ex-time (resulting infinte loop)
