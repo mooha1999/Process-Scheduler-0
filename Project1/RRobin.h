@@ -27,7 +27,8 @@ public:
 			//execution time and pair comparison
 			int a = RUN->getpair().Peek().first;
 			int b = RUN->getEX();
-			if (a == b) {
+			if (a == b) 
+			{
 				//remove the pair from comparison
 				RUN->getpair().Pop();
 			}
