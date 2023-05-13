@@ -47,7 +47,7 @@ int Process::getWT() {
 int Process::getEX() {
 	return EX;
 }
-Queue<Pair<int, int>*> Process::getpair()
+Queue<Pair<int, int>*> Process::getPairs()
 {
 	return Q;
 }

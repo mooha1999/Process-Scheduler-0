@@ -147,6 +147,7 @@
     <ClCompile Include="SJF.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BlockedProcesses.h" />
     <ClInclude Include="Cicularqueue.h" />
     <ClInclude Include="FCFS.h" />
     <ClInclude Include="LinkedList.h" />
