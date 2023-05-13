@@ -35,11 +35,10 @@ public:
 
 
 
-        // void displayOutput(Queue<int> output) { //displays a queue of intergers
-          //   for (int i : output) {
-               //  cout << output.Pop() << "  ";
-         //}
-    }
+   // void displayOutput(Queue<int> output) { //displays a queue of intergers
+     //   for (int i : output) {
+          //  cout << output.Pop() << "  ";
+    //}
 
         void Userchoice() // to get user what mood does the user need 
         {
@@ -66,15 +65,28 @@ public:
         }
 
 
+<<<<<<< HEAD
     
 
     void interfacemode(int timestep, Queue<int>IDFCFS, Queue<int>IDSJF, Queue<int>IDRR) {
         cout << "Current Timestep:" << "  " << timestep;
+=======
+
+        void displayErrorMessage(string message)
+        {
+            cout << "Error: " << message << "\n";
+        }
+
+    void interfacemode() {
+        cout << "Current Timestep:" << "  " << Scheduler.timestep;
+>>>>>>> 969ab5cc5e6bff94db058e485a02c3d583f92747
         cout << "------------    RDY Processes -----------" << "\n";
-        cout << "processor 1 [FCFS]: " << "number of processes" << "RDY: " <<IDFCFS.Pop() << "\n"; //loop for 
-        cout << "processor 2 [SJF ]: " << "number of processes" << "RDY: " << IDSJF.Pop() << "\n";
-        cout << "processor 1 [RR  ]: " << "number of processes" << "RDY: " << IDRR.Pop() << "\n";
+        cout << "processor 1 [FCFS]: " << "number of processes" << "RDY: " << FCFS.GetID() << "\n";
+        cout << "processor 2 [SJF ]: " << "number of processes" << "RDY: " << SJF.GetID() << "\n";
+        cout << "processor 1 [RR  ]: " << "number of processes" << "RDY: " << RRobin.GetID() << "\n";
         cout << "-------------   BLK Processes ----------" << "\n";
+
+
         cout << "number of processes from blk" << "BLK: " << "IDs of processes in blk";
         cout << "-------------   RUN Processes ----------" << "\n";
         cout << "number of processes in run" << "RUN: " << ""; //for loop for run display
