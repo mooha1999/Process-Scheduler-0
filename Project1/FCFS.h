@@ -7,7 +7,7 @@ class FCFS : public Processor {
 public:
 
 	Queue<Process*>* Rdy; // pointer Queue
-	Process* Finish;
+	
 
 	virtual void push(Process* p)
 	{

@@ -15,7 +15,14 @@ Process::Process(int pid, int at, int ct, Queue<Pair<int, int>*> q) {
 	//N = 1; //number of times the process requests the io
 }
 
-Process::Process() {
+//Process::Process() {
+//}
+
+
+
+int Process::getIOT()
+{
+	return IOT;
 }
 
 int Process::getPID() {
@@ -58,6 +65,9 @@ void Process::setRT(int rt) {
 void Process::setCT(int ct) {
 	CT = ct;
 }
+void Process::setIOT(int iot){
+	IOT = iot;
+}
 void Process::setTT(int tt) {
 	TT = tt;
 }
@@ -73,6 +83,11 @@ void Process::incEX()
 	EX++;
 }
 
+void Process::incIOT()
+{
+	IOT++;
+}
+
 //void process :: setstate(); //fn that set the process state according to variables
 //void process :: getstate(); //still needs implementation
 
@@ -83,6 +98,10 @@ Process* Process::fork(int t, int id) {
 	kid = new Process(id, t, newct, Queue<Pair<int, int>*>());
 
 	return kid;
+}
+
+void Process::incIOT()
+{
 }
 
 

@@ -7,7 +7,6 @@ class SJF :public Processor
 public:
 
 	PriortyQueue<Process*>* Rdy;
-	Process* Finish;
 
 	virtual void push(Process* p)
 	{

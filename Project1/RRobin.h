@@ -8,7 +8,7 @@ class RRobin : public Processor
 public:
 
 	Queue<Process*>* Rdy; // pointer Queue
-	Process* Finish; // this process to put the finished process
+
 	int time_slice;
 	RRobin(int TS)
 	{
