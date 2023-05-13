@@ -30,15 +30,7 @@ public:
         cin >> choice;
         return choice;
     }
-    void UserInerface()
-    {
-
-
-
-   // void displayOutput(Queue<int> output) { //displays a queue of intergers
-     //   for (int i : output) {
-          //  cout << output.Pop() << "  ";
-    //}
+  
 
         void Userchoice() // to get user what mood does the user need 
         {
@@ -69,7 +61,8 @@ public:
    //queue of processors, queue for each processor, fcfs queue, sjf queue, rr queue
         // loop on queue and display the RDY list and call getid function for every queue, //
 
-    void interfacemode() {
+    void interfacemode(Queue<Processor*>fsfs,)
+    {
         cout << "Current Timestep:" << "  " << Scheduler.timestep;
         cout << "------------    RDY Processes -----------" << "\n";
         cout << "processor 1 [FCFS]: " << "number of processes" << "RDY: " << FCFS << "\n";
