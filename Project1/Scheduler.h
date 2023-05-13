@@ -9,20 +9,21 @@
 #include "SJF.h"
 #include "RRobin.h"
 #include "processor.h"
+#include "BlockedProcesses.h"
 
 using namespace std;
 class Scheduler {
 public:
 	Queue<Process*> NEW;
-	Queue<Process*> BLK;
-	Queue<Process*> TRM;
+	Blocked* BLK;
+	PriortyQueue<Process*> TRM;
 	Queue<Pair<int, int>*> sigKills;
 	Queue<Processor*> Processors;
 	Queue<FCFS*> fcfss;
 	Queue<SJF*> sjfs;
 	Queue<RRobin*> rrobins;
 	int rtf, maxW, stl, forkProbability;
-
+	int lastID;
 	void readFile() {
 		fstream inputFile("input.txt", ios::in);
 		defineProcessors(inputFile);
@@ -81,21 +82,34 @@ public:
 			// Add the pair to the vector
 
 			NEW.Push(new Process(pid, at, ct, ios));
+			lastID = pid; //To generate unique ids for the forked processes
 		}
 	}
 	void simulate() {
 		int timestep = 0;
-		while (!NEW.IsEmpty() || !BLK.IsEmpty() || !TRM.IsEmpty() || !sigKills.IsEmpty()) {
+		while (!NEW.IsEmpty() || !BLK->IsEmpty() || !TRM.IsEmpty() || !sigKills.IsEmpty()) {
 			while (!NEW.IsEmpty() && NEW.Peek()->getAT() == timestep) {
-				getLeastWaitingProcessor(Processors)->push(NEW.Pop());
+				getLeastWaitingProcessor()->push(NEW.Pop());
 			}
-			while (true)
-			{
+			if (BLK->getFinishedProcess()) {
+				getLeastWaitingProcessor()->push(BLK->getFinishedProcess());
 			}
+			while (!sigKills.IsEmpty() && sigKills.Peek()->first == timestep) {
+				Process* killedProcess = getKilledProcess(sigKills.Pop()->first);
+				if (killedProcess)
+					TRM.Push(killedProcess, killedProcess->getTT());
+			}
+			for (Processor* p : fcfss) {
+				if (p->RUN && shouldFork()) {
+					Process* forkedProcess = p->RUN->fork(timestep, ++lastID);
+					getLeastWaitingFCFSProcessor()->push(forkedProcess);
+				}
+			}
+
 			timestep++;
 		}
 	}
-	Processor* getLeastWaitingProcessor(Queue<Processor*> Processors) {
+	Processor* getLeastWaitingProcessor() {
 		Processor* temp = nullptr;
 		int wt = INT_MAX;
 		for (auto i : Processors) {
@@ -105,5 +119,32 @@ public:
 			}
 		}
 		return temp;
+	}
+	Processor* getLeastWaitingFCFSProcessor() {
+		Processor* temp = nullptr;
+		int wt = INT_MAX;
+		for (auto i : fcfss) {
+			if (i->GetWT() < wt) {
+				wt = i->GetWT();
+				temp = i;
+			}
+		}
+		return temp;
+	}
+	Process* getKilledProcess(int id) {
+		Process* killedProcess = nullptr;
+		for (auto i : fcfss) {
+			killedProcess = i->kill(id);
+		}
+		return killedProcess;
+	}
+	Process* forkedProcess() {
+		for (auto p : fcfss) {
+			if (p->RUN && shouldFork()) {
+			}
+		}
+	}
+	bool shouldFork() {
+		return rand() % 100 < forkProbability;
 	}
 };

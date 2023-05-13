@@ -75,5 +75,20 @@ public:
 
    
 
+    void interfacemode() {
+        cout << "Current Timestep:" << "  " << Scheduler.timestep;
+        cout << "------------    RDY Processes -----------" << "\n";
+        cout << "processor 1 [FCFS]: " << "number of processes" << "RDY: " << FCFS.GetID() << "\n";
+        cout << "processor 2 [SJF ]: " << "number of processes" << "RDY: " << SJF.GetID() << "\n";
+        cout << "processor 1 [RR  ]: " << "number of processes" << "RDY: " << RRobin.GetID() << "\n";
+        cout << "-------------   BLK Processes ----------" << "\n";
+        cout << "number of processes from blk" << "BLK: " << "IDs of processes in blk";
+        cout << "-------------   RUN Processes ----------" << "\n";
+        cout << "number of processes in run" << "RUN: " << ""; //for loop for run display
+        cout << "------------    TRM Processes ----------" << "\n";
+        cout << "number of processes in run" << "RUN: " << ""; //for loop for trm display
+        cout << "PRESS ANY KEY TO MOVE TO NEXT STEP !";
+    
+    }
 };
 
