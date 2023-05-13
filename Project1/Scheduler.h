@@ -88,17 +88,21 @@ public:
 	void simulate() {
 		int timestep = 0;
 		while (!NEW.IsEmpty() || !BLK->IsEmpty() || !TRM.IsEmpty() || !sigKills.IsEmpty()) {
+			//from NEW to RDY
 			while (!NEW.IsEmpty() && NEW.Peek()->getAT() == timestep) {
 				getLeastWaitingProcessor()->push(NEW.Pop());
 			}
+			//from BLK to RDY
 			if (BLK->getFinishedProcess()) {
 				getLeastWaitingProcessor()->push(BLK->getFinishedProcess());
 			}
+			//killing signals
 			while (!sigKills.IsEmpty() && sigKills.Peek()->first == timestep) {
 				Process* killedProcess = getKilledProcess(sigKills.Pop()->first);
 				if (killedProcess)
 					TRM.Push(killedProcess, killedProcess->getTT());
 			}
+			//forking process
 			for (Processor* p : fcfss) {
 				if (p->RUN && shouldFork()) {
 					Process* forkedProcess = p->RUN->fork(timestep, ++lastID);
