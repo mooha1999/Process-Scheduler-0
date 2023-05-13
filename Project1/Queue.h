@@ -58,6 +58,24 @@ public:
 
 	T Peek() { return Head->getItem(); }
 
+	T Remove(T val) {
+		Node<T>* temp = Head;
+		Node<T>* ret = nullptr;
+		if (temp->getItem() == val)
+			return Pop();
+		else {
+			while (temp->getNext()) {
+				if (temp->getNext()->getItem() == val) {
+					ret = temp->getNext();
+					temp->setNext(ret->getNext());
+					size--;
+					break;
+				}
+			}
+		}
+		return ret;
+	}
+
 	bool IsEmpty() { return size == 0; }
 
 	Iterator begin() const {
