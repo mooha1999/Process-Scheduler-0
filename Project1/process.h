@@ -16,8 +16,8 @@ private:
 	//int WT; //waiting time
 	//int N; //number of times the process requests the io
 	int EX;
-	Queue<Pair<int, int>> Q;
-	int IOT; //io time //setter getter incremental 
+	Queue<Pair<int, int>*> Q;
+	int IOT; //io time //setter getter incremental
 
 public:
 	//the process is a node in the queue
@@ -25,9 +25,7 @@ public:
 	Process* next;
 	//this is the child created by FCFS in fork a child
 	Process* kid;
-	Process(int pid, int at, int rt, Queue<Pair<int, int>> q);
-
-
+	Process(int pid, int at, int rt, Queue<Pair<int, int>*> q);
 
 	int getIOT();
 	int getPID();
@@ -38,7 +36,7 @@ public:
 	int getTRT();
 	int getWT();
 	int getEX();
-	Queue<Pair<int, int>> getpair();
+	Queue<Pair<int, int>*> getpair();
 
 	void setPID(int id);
 	void setAT(int at);
