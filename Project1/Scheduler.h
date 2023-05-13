@@ -16,7 +16,7 @@ public:
 	Queue<Process*> NEW;
 	Queue<Process*> BLK;
 	Queue<Process*> TRM;
-	Queue<pair<int, int>> sigKills;
+	Queue<Pair<int, int>*> sigKills;
 	Queue<Processor*> Processors;
 	Queue<FCFS*> fcfss;
 	Queue<SJF*> sjfs;
@@ -30,7 +30,7 @@ public:
 		addToNew(inputFile);
 		int a, b;
 		while (inputFile >> a >> b) {
-			sigKills.Push(make_pair(a, b));
+			sigKills.Push(new Pair<>(a, b));
 		}
 	}
 	void defineProcessors(fstream& inputFile) {
@@ -60,17 +60,26 @@ public:
 		while (m--) {
 			int at, pid, ct, n;
 			inputFile >> at >> pid >> ct >> n;
-			string line;
-			getline(inputFile, line);
-			Queue<pair<int, int>> ios;
-			while (n--) {
-				getline(inputFile, line, ',');
-				line = line.substr(1);
-				stringstream ss(line);
-				int first, second;
-				ss >> first >> second;
-				ios.Push(make_pair(first, second));
+			Queue<Pair<int, int>*> ios;
+			string pairString;
+			inputFile >> pairString;
+			// Remove the parentheses from the string
+			pairString.erase(remove(pairString.begin(), pairString.end(), '('), pairString.end());
+			pairString.erase(remove(pairString.begin(), pairString.end(), ')'), pairString.end());
+			// Split the string into two integers
+			stringstream ss(pairString);
+			string numString;
+			Queue<int>nums;
+			while (getline(ss, numString, ',')) {
+				nums.Push(stoi(numString));
 			}
+			while (!nums.IsEmpty()) {
+				int f = nums.Pop();
+				int s = nums.Pop();
+				ios.Push(new Pair<>(f, s));
+			}
+			// Add the pair to the vector
+
 			NEW.Push(new Process(pid, at, ct, ios));
 		}
 	}

@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include "Queue.h"
+#include "Pair.h"
 using namespace std;
 
 class Process {
@@ -15,7 +16,7 @@ private:
 	//int WT; //waiting time
 	//int N; //number of times the process requests the io
 	int EX;
-	Queue<pair<int, int>> Q;
+	Queue<Pair<int, int>*> Q;
 
 public:
 	//the process is a node in the queue
@@ -23,7 +24,7 @@ public:
 	Process* next;
 	//this is the child created by FCFS in fork a child
 	Process* kid;
-	Process(int pid, int at, int rt, Queue<pair<int, int>> q);
+	Process(int pid, int at, int rt, Queue<Pair<int, int>*> q);
 	Process();
 
 	int getPID();
@@ -34,7 +35,7 @@ public:
 	int getTRT();
 	int getWT();
 	int getEX();
-	Queue<pair<int, int>> getpair();
+	Queue<Pair<int, int>*> getpair();
 
 	void setPID(int id);
 	void setAT(int at);
