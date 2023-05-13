@@ -87,9 +87,23 @@ public:
 		int timestep = 0;
 		while (!NEW.IsEmpty() || !BLK.IsEmpty() || !TRM.IsEmpty() || !sigKills.IsEmpty()) {
 			while (!NEW.IsEmpty() && NEW.Peek()->getAT() == timestep) {
+				getLeastWaitingProcessor(Processors)->push(NEW.Pop());
+			}
+			while (true)
+			{
 			}
 			timestep++;
 		}
 	}
-	//Processor
+	Processor* getLeastWaitingProcessor(Queue<Processor*> Processors) {
+		Processor* temp = nullptr;
+		int wt = INT_MAX;
+		for (auto i : Processors) {
+			if (i->GetWT() < wt) {
+				wt = i->GetWT();
+				temp = i;
+			}
+		}
+		return temp;
+	}
 };
