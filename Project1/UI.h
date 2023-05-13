@@ -73,24 +73,24 @@ public:
         for (Processor* i : Fcfs) 
         {
             ids = i->GetID();
-            cout << "processor 1 [FCFS]: " << "number of processes" << "RDY: " << ids << "\n";
+            
+            cout << "processor 1 [FCFS]: " << "number of processes" << "RDY: " << << "\n";
 
         }
-        for (Processor* i : SJF) {
-
-
-
-        }
-        for (Processor* i : RR) {
-
-
+        for (Processor* i : Sjf) 
+        {
+            ids = i->GetID();
+            cout << "processor 2 [SJF ]: " << "number of processes" << "RDY: " <<  << "\n";
 
         }
-        cout << "Current Timestep:" << "  " << timestep;
-        cout << "------------    RDY Processes -----------" << "\n";
-        cout << "processor 1 [FCFS]: " << "number of processes" << "RDY: " << FCFS << "\n";
-        cout << "processor 2 [SJF ]: " << "number of processes" << "RDY: " << SJF.Pop() << "\n";
-        cout << "processor 1 [RR  ]: " << "number of processes" << "RDY: " << RR.Pop() << "\n";
+        for (Processor* i : Rr) 
+        {
+            ids = i->GetID();
+            cout << "processor 3 [RR  ]: " << "number of processes" << "RDY: " <<  << "\n";
+
+        }
+       
+        
         cout << "-------------   BLK Processes ----------" << "\n";
         cout << "number of processes from blk" << "BLK: " << "IDs of processes in blk";
         cout << "-------------   RUN Processes ----------" << "\n";
