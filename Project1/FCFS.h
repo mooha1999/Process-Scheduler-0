@@ -17,13 +17,11 @@ public:
 		if (!RUN)
 		{
 			RUN = Rdy->Pop();   //return the value of the firt process in rdy list
-<<<<<<< HEAD
+
 			//if execution time = 
-			int a = RUN->getpair().Peek()->first;
-=======
+			int a = RUN->getPairs().Peek()->first;
 			//if execution time =
 			int a = RUN->getPairs().Peek()->first;
->>>>>>> 7ec44f0a2766c0d82bd543fe6fb2fe0f0401efd1
 			int b = RUN->getEX();
 			if (a == b) {
 				//remove the pair from comparison
