@@ -31,9 +31,9 @@ public:
     }
     void UserInerface()
     {
-        
 
 
+    }
    // void displayOutput(Queue<int> output) { //displays a queue of intergers
      //   for (int i : output) {
           //  cout << output.Pop() << "  ";
@@ -73,23 +73,7 @@ public:
        cout << "Done: " << msg << "\n";
     }
 
-    Queue<string> readInputFile(string filename) {
-        Queue<string> input;
-        ifstream file(filename);
-        if (file.is_open()) {
-            string line;
-            while (getline(file, line)) 
-            {
-                input.Push(line);
-            }
-            file.close();
-            return input;
-        }
-        else {
-            //if file didn't open, show error message 
-            throw runtime_error("Unable to open file");
-        }
-    }
+   
 
 };
 
