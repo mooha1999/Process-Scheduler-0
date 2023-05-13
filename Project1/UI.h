@@ -14,9 +14,6 @@ using namespace std;
 
 class UserInterface {
 public:
-    FCFS fcfs;
-    SJF sjf;
-    RRobin rr;
 
     void displayMainMenu() {
         cout << "Process Scheduler Program \n";
@@ -69,32 +66,6 @@ public:
         }
 
 
-
-        void displayErrorMessage(string message) {
-            cout << "Error: " << message << "\n";
-        }
-
-        void displaySuccessMessage(string msg) {
-            cout << "Done: " << msg << "\n";
-        }
-
-        Queue<string> readInputFile(string filename) {
-            Queue<string> input;
-            ifstream file(filename);
-            if (file.is_open()) {
-                string line;
-                while (getline(file, line))
-                {
-                    input.Push(line);
-                }
-                file.close();
-                return input;
-            }
-            else {
-                //if file didn't open, show error message 
-                throw runtime_error("Unable to open file");
-            }
-        }
     
 
     void interfacemode(int timestep, Queue<int>IDFCFS, Queue<int>IDSJF, Queue<int>IDRR) {
@@ -111,6 +82,6 @@ public:
         cout << "number of processes in run" << "RUN: " << ""; //for loop for trm display
         cout << "PRESS ANY KEY TO MOVE TO NEXT STEP !";
     
-    }
+    } //latest update from nouran
 };
 
