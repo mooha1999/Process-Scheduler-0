@@ -61,7 +61,7 @@ public:
         }
 
     
-
+        //hi from nouran
    //queue of processors, queue for each processor, fcfs queue, sjf queue, rr queue
         // loop on queue and display the RDY list and call getid function for every queue, //
 
