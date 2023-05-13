@@ -3,40 +3,39 @@
 #include <iostream>
 using namespace std;
 
-
-LinkedList::LinkedList() 
+LinkedList::LinkedList()
 {
-    head = NULL;
+	head = NULL;
 }
 
-void LinkedList::insertprocess(int val) 
+void LinkedList::insertprocess(int val)
 {
-    process* new_node = new process();
-    new_node->data = val;
-    new_node->next = NULL;
-    if (head == NULL) {
-        head = new_node;
-    }
-    else {
-        process* temp = head;
-        while (temp->next != NULL) {
-            temp = temp->next;
-        }
-        temp->next = new_node;
-    }
+	Process* new_node = new Process();
+	new_node->data = val;
+	new_node->next = NULL;
+	if (head == NULL) {
+		head = new_node;
+	}
+	else {
+		Process* temp = head;
+		while (temp->next != NULL) {
+			temp = temp->next;
+		}
+		temp->next = new_node;
+	}
 }
 
 void LinkedList::displayList() {
-    process* temp = head;
-    while (temp != NULL) {
-        cout << temp->data << " ";
-        temp = temp->next;
-    }
+	Process* temp = head;
+	while (temp != NULL) {
+		cout << temp->data << " ";
+		temp = temp->next;
+	}
 }
 
-void LinkedList::movenode(process** destination, process** source) {
-    process* newNode = *source;
-    *source = newNode->next;
-    newNode->next = *destination;
-    *destination = newNode;
+void LinkedList::movenode(Process** destination, Process** source) {
+	Process* newNode = *source;
+	*source = newNode->next;
+	newNode->next = *destination;
+	*destination = newNode;
 }

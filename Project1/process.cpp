@@ -1,65 +1,64 @@
-//written by nouran wisam 
+//written by nouran wisam
 #include "process.h"
 
-
-process::process(int pid, int at, int ct, Queue<pair<int, int>> q) {
+Process::Process(int pid, int at, int ct, Queue<pair<int, int>> q) {
 	PID = pid;
 	AT = at;
 	CT = ct;
 	Q = q;
-	EX = 0; //execution time starting from zero 
-	process* kid = nullptr;
+	EX = 0; //execution time starting from zero
+	Process* kid = nullptr;
 	RT = 0; //response time
-	TT = 0; //termination time 
+	TT = 0; //termination time
 	//TRT = TT - AT; //turnaround duration
-	//WT = TRT - CT; //waiting time 
+	//WT = TRT - CT; //waiting time
 	//N = 1; //number of times the process requests the io
 }
 
-process::process() {
+Process::Process() {
 }
 
-int process::getPID() {
+int Process::getPID() {
 	return PID;
 }
-int process::getAT() {
+int Process::getAT() {
 	return AT;
 }
-int process::getRT() {
+int Process::getRT() {
 	return RT;
 }
-int process::getTT() {
+int Process::getTT() {
 	return TT;
 }
-int process::getCT() {
+int Process::getCT() {
 	return CT;
 }
-int process::getTRT() {
+int Process::getTRT() {
 	return (TT - AT);
 }
-int process::getWT() {
-	return ((TT-AT)-CT);
+int Process::getWT() {
+	return ((TT - AT) - CT);
 }
-int process::getEX() {
+int Process::getEX() {
 	return EX;
 }
-Queue<pair<int, int>> process::getpair()
+Queue<pair<int, int>> Process::getpair()
 {
 	return Q;
 }
-void process::setPID(int id) {
+void Process::setPID(int id) {
 	PID = id;
 }
-void process::setAT(int at) {
+void Process::setAT(int at) {
 	AT = at;
 }
-void process::setRT(int rt) {
+void Process::setRT(int rt) {
 	RT = rt;
 }
-void process::setCT(int ct) {
+void Process::setCT(int ct) {
 	CT = ct;
 }
-void process::setTT(int tt) {
+void Process::setTT(int tt) {
 	TT = tt;
 }
 //void process::setTRT(int tt, int at) {
@@ -69,22 +68,19 @@ void process::setTT(int tt) {
 	//WT = tt - ct;
 //}
 
-
-void process::incEX() 
+void Process::incEX()
 {
 	EX++;
 }
 
 //void process :: setstate(); //fn that set the process state according to variables
-//void process :: getstate(); //still needs implementation 
+//void process :: getstate(); //still needs implementation
 
-
-process*process ::fork(int t, int id){
+Process* Process::fork(int t, int id) {
 	int oldct = getCT();
 	int exe = getEX();
 	int newct = oldct - exe;
-	kid = new process(id, t, newct, Queue<pair<int, int>>()); 
+	kid = new Process(id, t, newct, Queue<pair<int, int>>());
 
 	return kid;
-	
 }

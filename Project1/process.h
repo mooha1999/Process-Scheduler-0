@@ -4,17 +4,15 @@
 #include "Queue.h"
 using namespace std;
 
-
-class process {
-
+class Process {
 private:
-	int PID; //unique identifier 
-	int AT; //arrival time 
-	int RT; //response time 
+	int PID; //unique identifier
+	int AT; //arrival time
+	int RT; //response time
 	int CT; //CPU time
-	int TT; //termination time 
+	int TT; //termination time
 	//int TRT;//turnaround duration
-	//int WT; //waiting time 
+	//int WT; //waiting time
 	//int N; //number of times the process requests the io
 	int EX;
 	Queue<pair<int, int>> Q;
@@ -22,12 +20,11 @@ private:
 public:
 	//the process is a node in the queue
 	int data;
-	process* next;
+	Process* next;
 	//this is the child created by FCFS in fork a child
-	process* kid;
-	process(int pid, int at, int rt, Queue<pair<int, int>> q);
-	process();
-
+	Process* kid;
+	Process(int pid, int at, int rt, Queue<pair<int, int>> q);
+	Process();
 
 	int getPID();
 	int getAT();
@@ -36,9 +33,8 @@ public:
 	int getCT();
 	int getTRT();
 	int getWT();
-    int getEX();
+	int getEX();
 	Queue<pair<int, int>> getpair();
-
 
 	void setPID(int id);
 	void setAT(int at);
@@ -49,13 +45,9 @@ public:
 	//void setWT(int tt, int at, int ct);
 	//void addpair(int r, int d);
 
-
-
-
 	//void setstate(); //fn that set the process state according to variables
 	//void getstate();
 
-	process* fork(int t, int id);
+	Process* fork(int t, int id);
 	void incEX();
-
 };

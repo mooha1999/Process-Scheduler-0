@@ -12,9 +12,9 @@
 
 using namespace std;
 class Scheduler {
-	Queue<process*> NEW;
-	Queue<process*> BLK;
-	Queue<process*> TRM;
+	Queue<Process*> NEW;
+	Queue<Process*> BLK;
+	Queue<Process*> TRM;
 	Queue<pair<int, int>> sigKills;
 	FCFS* fcfss;
 	SJF* sjfs;
@@ -26,7 +26,7 @@ class Scheduler {
 		inputFile >> rtf >> maxW >> stl >> forkProbability;
 		int m;
 		inputFile >> m;
-		process* tempProcess = nullptr;
+		Process* tempProcess = nullptr;
 		while (m--) {
 			int at, pid, ct, n;
 			inputFile >> at >> pid >> ct >> n;
@@ -41,7 +41,7 @@ class Scheduler {
 				ss >> first >> second;
 				ios.Push(make_pair(first, second));
 			}
-			NEW.Push(new process(pid, at, ct, ios));
+			NEW.Push(new Process(pid, at, ct, ios));
 		}
 		int a, b;
 		while (inputFile >> a >> b) {

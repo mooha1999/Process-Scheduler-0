@@ -141,7 +141,7 @@
   <ItemGroup>
     <ClCompile Include="LinkedList.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="process.cpp" />
+    <ClCompile Include="Process.cpp" />
     <ClCompile Include="RR.cpp" />
     <ClCompile Include="RRobin.cpp" />
     <ClCompile Include="SJF.cpp" />
@@ -154,8 +154,8 @@
     <ClInclude Include="Pair.h" />
     <ClInclude Include="PriorityNode.h" />
     <ClInclude Include="PriortyQueue.h" />
-    <ClInclude Include="process.h" />
-    <ClInclude Include="processor.h" />
+    <ClInclude Include="Process.h" />
+    <ClInclude Include="Processor.h" />
     <ClInclude Include="Queue.h" />
     <ClInclude Include="QueueNode.h" />
     <ClInclude Include="RRobin.h" />
