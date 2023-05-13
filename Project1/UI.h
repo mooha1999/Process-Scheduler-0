@@ -63,12 +63,12 @@ public:
     
 
    //queue of processors, queue for each processor, fcfs queue, sjf queue, rr queue
-        // loop on queue and display the RDY list and call getid function for every queue, 
+        // loop on queue and display the RDY list and call getid function for every queue, //
 
     void interfacemode(int timestep, Queue<Processor*> FCFS, Queue<Processor*>SJF, Queue<Processor*>RR) {
         cout << "Current Timestep:" << "  " << timestep;
         cout << "------------    RDY Processes -----------" << "\n";
-        cout << "processor 1 [FCFS]: " << "number of processes" << "RDY: " << FCFS << "\n";
+        cout << "processor 1 [FCFS]: " << "number of processes" << "RDY: " << FCFS.FCFS->GetID();
         cout << "processor 2 [SJF ]: " << "number of processes" << "RDY: " << SJF.Pop() << "\n";
         cout << "processor 1 [RR  ]: " << "number of processes" << "RDY: " << RR.Pop() << "\n";
         cout << "-------------   BLK Processes ----------" << "\n";
