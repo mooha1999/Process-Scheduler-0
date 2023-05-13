@@ -23,18 +23,20 @@ public:
         cout << "4. Exit the program.\n";
     }
 
-    int getUserInput() {
-        int choice; //user choice from main menu 
-        cout << "Enter your choice: ";
-        cin >> choice;
-        return choice;
-    }
+    //int getUserInput() {
+      //  int choice; //user choice from main menu 
+        //cout << "Enter your choice: ";
+        //cin >> choice;
+        //return choice;
+    //}
 
-    void displayResults(Queue<string> results) { //need some editing here
-        for (auto result : results) {
-            cout << result << "\n";
+    void displayOutput(Queue<int> output) { //displays a queue of intergers
+        for (int i: output) {
+            cout << output.Pop() << "  ";
         }
     }
+       
+
 
    void displayErrorMessage(string msg) {
         cout << "Error: " << msg<< "\n";
