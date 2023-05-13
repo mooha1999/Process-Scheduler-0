@@ -1,42 +1,39 @@
 #include "process.h"
 #include "Processor.h"
 
-
-
 class FCFS : public Processor {
 public:
 
 	Queue<Process*>* Rdy; // pointer Queue
-	
 
 	virtual void push(Process* p)
 	{
 		Rdy->Push(p);
-
-	
 	}
-		
+
 	virtual void schedulago()
 
 	{
-
 		if (!RUN)
 		{
 			RUN = Rdy->Pop();   //return the value of the firt process in rdy list
+<<<<<<< HEAD
 			//if execution time = 
 			int a = RUN->getpair().Peek()->first;
+=======
+			//if execution time =
+			int a = RUN->getPairs().Peek()->first;
+>>>>>>> 7ec44f0a2766c0d82bd543fe6fb2fe0f0401efd1
 			int b = RUN->getEX();
-			if (a==b) {
+			if (a == b) {
 				//remove the pair from comparison
-				RUN->getpair().Pop();
+				RUN->getPairs().Pop();
 			}
 		}
 		else
 		{
-			
 			BUSY = true; //busy when running
 			TBT++; //total busy time
-
 
 			if (RUN->getEX() == RUN->getCT())
 			{
@@ -83,7 +80,7 @@ public:
 			BUSY = false;
 			return killPR;
 		}
-		//for rdy processes 
+		//for rdy processes
 		for (Process* i : *Rdy) {
 			int y = i->getPID();  //return id from ready queue
 			if (y == id) {
@@ -92,12 +89,8 @@ public:
 				Rdy->Remove(i);
 				return killPD;
 			}
-			}
-
-		return nullptr;
-
 		}
 
-
- 
+		return nullptr;
+	}
 };
