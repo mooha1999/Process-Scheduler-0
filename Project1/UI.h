@@ -66,17 +66,15 @@ public:
 
 
 
-        void displayErrorMessage(string message)
-        {
-            cout << "Error: " << message << "\n";
-        }
+   //queue of processors, queue for each processor, fcfs queue, sjf queue, rr queue
+        // loop on queue and display the RDY list and call getid function for every queue, //
 
     void interfacemode() {
         cout << "Current Timestep:" << "  " << Scheduler.timestep;
         cout << "------------    RDY Processes -----------" << "\n";
-        cout << "processor 1 [FCFS]: " << "number of processes" << "RDY: " << FCFS.GetID() << "\n";
-        cout << "processor 2 [SJF ]: " << "number of processes" << "RDY: " << SJF.GetID() << "\n";
-        cout << "processor 1 [RR  ]: " << "number of processes" << "RDY: " << RRobin.GetID() << "\n";
+        cout << "processor 1 [FCFS]: " << "number of processes" << "RDY: " << FCFS << "\n";
+        cout << "processor 2 [SJF ]: " << "number of processes" << "RDY: " << SJF.Pop() << "\n";
+        cout << "processor 1 [RR  ]: " << "number of processes" << "RDY: " << RR.Pop() << "\n";
         cout << "-------------   BLK Processes ----------" << "\n";
         cout << "number of processes from blk" << "BLK: " << "IDs of processes in blk";
         cout << "-------------   RUN Processes ----------" << "\n";
