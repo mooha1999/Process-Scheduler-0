@@ -30,7 +30,11 @@ public:
         cin >> choice;
         return choice;
     }
-  
+    void UserInerface()
+    {
+
+    }
+
 
         void Userchoice() // to get user what mood does the user need 
         {
@@ -56,22 +60,23 @@ public:
 
         }
 
-
-
+    
+        //hi from nouran
    //queue of processors, queue for each processor, fcfs queue, sjf queue, rr queue
         // loop on queue and display the RDY list and call getid function for every queue, //
 
-    void interfacemode(int time_step,Queue<Processor*>Fsfs, Queue<Processor*>Sjf, Queue<Processor*>RR)
-    {
-        cout << "Current Timestep:" << "  " << time_step;
-        cout << "------------    RDY Processes -----------" << "\n";
+    void interfacemode(int timestep, Queue<Processor*> FCFS, Queue<Processor*>SJF, Queue<Processor*>RR) {
 
-         
+        for (Processor* i : FCFS) {
 
         
-        cout << "processor 1 [FCFS]: " << "number of processes" << "RDY: " <<  << "\n";
-        cout << "processor 2 [SJF ]: " << "number of processes" << "RDY: " <<  << "\n";
-        cout << "processor 1 [RR  ]: " << "number of processes" << "RDY: " <<  << "\n";
+        
+        }
+        cout << "Current Timestep:" << "  " << timestep;
+        cout << "------------    RDY Processes -----------" << "\n";
+        cout << "processor 1 [FCFS]: " << "number of processes" << "RDY: " << FCFS << "\n";
+        cout << "processor 2 [SJF ]: " << "number of processes" << "RDY: " << SJF.Pop() << "\n";
+        cout << "processor 1 [RR  ]: " << "number of processes" << "RDY: " << RR.Pop() << "\n";
         cout << "-------------   BLK Processes ----------" << "\n";
         cout << "number of processes from blk" << "BLK: " << "IDs of processes in blk";
         cout << "-------------   RUN Processes ----------" << "\n";
