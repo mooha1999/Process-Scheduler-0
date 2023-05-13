@@ -14,11 +14,10 @@ using namespace std;
 
 class UserInterface {
 public:
+    FCFS fcfs;
+    SJF sjf;
+    RRobin rr;
 
-    Queue<FCFS*> FCFS;
-    Queue<SJF*> SJF;
-    Queue<RRobin*> RR;
-    Queue<int> ID;
     void displayMainMenu() {
         cout << "Process Scheduler Program \n";
         cout << "Please choose from the interface modes: \n";
@@ -38,7 +37,7 @@ public:
     {
 
 
-    }
+
    // void displayOutput(Queue<int> output) { //displays a queue of intergers
      //   for (int i : output) {
           //  cout << output.Pop() << "  ";
@@ -70,26 +69,38 @@ public:
 
 
 
-   void displayErrorMessage(string message) {
-        cout << "Error: " << message << "\n";
-    }
+        void displayErrorMessage(string message) {
+            cout << "Error: " << message << "\n";
+        }
 
-    void displaySuccessMessage(string msg) {
-       cout << "Done: " << msg << "\n";
-    }
+        void displaySuccessMessage(string msg) {
+            cout << "Done: " << msg << "\n";
+        }
 
-   
+    Queue<string> readInputFile(string filename) {
+        Queue<string> input;
+        ifstream file(filename);
+        if (file.is_open()) {
+            string line;
+            while (getline(file, line)) 
+            {
+                input.Push(line);
+            }
+            file.close();
+            return input;
+        }
+        else {
+            //if file didn't open, show error message 
+            throw runtime_error("Unable to open file");
+        }
+    }
 
     void interfacemode() {
-       // cout << "Current Timestep:" << "  " << Scheduler.timestep;
+        cout << "Current Timestep:" << "  " << Scheduler.timestep;
         cout << "------------    RDY Processes -----------" << "\n";
-        
-
-        cout << "processor 1 [FCFS]: " << "number of processes" << "RDY: " <<        << "\n";
-        cout << "processor 2 [SJF ]: " << "number of processes" << "RDY: " <<        << "\n";
-        cout << "processor 1 [RR  ]: " << "number of processes" << "RDY: " <<        << "\n";
-
-
+        cout << "processor 1 [FCFS]: " << "number of processes" << "RDY: " << FCFS.GetID() << "\n";
+        cout << "processor 2 [SJF ]: " << "number of processes" << "RDY: " << SJF.GetID() << "\n";
+        cout << "processor 1 [RR  ]: " << "number of processes" << "RDY: " << RRobin.GetID() << "\n";
         cout << "-------------   BLK Processes ----------" << "\n";
 
 
