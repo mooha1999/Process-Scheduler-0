@@ -75,8 +75,9 @@ public:
 		}
 		int z = RUN->getPID();  //return id of running process
 			if (z = id) {
+				Process* killP = RUN;
 				RUN->~Process();
-				return RUN;
+				return killP;
 			}
 		}
 
