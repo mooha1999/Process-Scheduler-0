@@ -63,6 +63,7 @@ public:
 	}
 
 	 Process* kill(int id) {
+		 //for rdy processes
 		int y = Rdy->Pop()->getPID();  //return id from ready queue
 		for (auto i : *Rdy) {
 			if (y=id) {
@@ -72,5 +73,13 @@ public:
 				return killP;
 			}
 		}
-	}
+		int z = RUN->getPID();  //return id of running process
+			if (z = id) {
+				Process* killP = *&RUN; //still editing this 
+				//removing the process
+				Rdy->Pop(); //pop the value
+				return killP;
+			}
+		}
+
 };
