@@ -23,20 +23,52 @@ public:
         cout << "4. Exit the program.\n";
     }
 
-    int getUserInput() {
+    int getUserInput()
+    {
         int choice;
         cout << "Enter your choice: ";
         cin >> choice;
         return choice;
     }
+    void Userchoice() // to get user what mood does the user need 
+    {
+        int Uchoice = getUserInput();
+        if (Uchoice < 1 || Uchoice >4) // if he choose any number which is not between 1 and 4
+        {
+            cout << " Not a Valid Choice ";
+        }
+        else
+        {
+            if (Uchoice == 1)
+            {
 
-    void displayResults(//need some editing here ) {
-        for (auto result : results) {
+            }
+            else if (Uchoice == 2)
+            {
+
+            }
+            else if (Uchoice == 3)
+            {
+
+            }
+            else
+            {
+
+
+            }
+        }
+    }
+    
+    void displayResults()//need some editing here ) 
+    {
+        for (auto result : results) 
+        {
             cout << result << "\n";
         }
     }
 
-   void displayErrorMessage(string message) {
+   void displayErrorMessage(string message)
+   {
         cout << "Error: " << message << "\n";
     }
 
@@ -49,7 +81,8 @@ public:
         ifstream file(filename);
         if (file.is_open()) {
             string line;
-            while (getline(file, line)) {
+            while (getline(file, line)) 
+            {
                 input.Push(line);
             }
             file.close();
