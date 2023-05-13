@@ -23,6 +23,7 @@
     <ClInclude Include="UI.h" />
     <ClInclude Include="PriorityNode.h" />
     <ClInclude Include="Pair.h" />
+    <ClInclude Include="BlockedProcesses.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="input.txt" />
