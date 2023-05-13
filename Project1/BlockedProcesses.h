@@ -1,6 +1,6 @@
 #pragma once
 #include "FCFS.h"
-class Blocked : public FCFS
+class Blocked
 {
 	Queue<Process*> blockedProcesses;
 	Process* running;

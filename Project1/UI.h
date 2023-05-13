@@ -29,30 +29,37 @@ public:
         cin >> choice;
         return choice;
     }
-    void Userchoice() // to get user what mood does the user need 
-    {
-        int Uchoice = getUserInput();
-        if (Uchoice < 1 || Uchoice >4) // if he choose any number which is not between 1 and 4
-        {
-            cout << " Not a Valid Choice ";
+
+    void displayOutput(Queue<int> output) { //displays a queue of intergers
+        for (int i : output) {
+            cout << output.Pop() << "  ";
         }
-        else
-        {
-            if (Uchoice == 1)
-            {
-
-            }
-            else if (Uchoice == 2)
-            {
-
-            }
-            else if (Uchoice == 3)
-            {
-
-            }
-        }
-    
     }
+
+        void Userchoice() // to get user what mood does the user need 
+        {
+            int Uchoice = getUserInput();
+            if (Uchoice < 1 || Uchoice >4) // if he choose any number which is not between 1 and 4
+            {
+                cout << " Not a Valid Choice ";
+            }
+            else
+            {
+                if (Uchoice == 1)
+                {
+
+                }
+                else if (Uchoice == 2)
+                {
+
+                }
+                else if (Uchoice == 3)
+                {
+                }
+            }
+
+        }
+
 
 
    void displayErrorMessage(string message) {
