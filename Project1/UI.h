@@ -55,9 +55,7 @@ public:
 		}
 	}
 
-	//hi from nouran
-//queue of processors, queue for each processor, fcfs queue, sjf queue, rr queue
-	 // loop on queue and display the RDY list and call getid function for every queue, //
+
 
 	void interfacemode(int timestep, Queue<Processor*> Fcfs, Queue<Processor*>Sjf, Queue<Processor*>Rr)
 	{
@@ -69,19 +67,33 @@ public:
 			ids = i->GetID();
 			cout << "processor 1 [FCFS]: " << "number of processes" << "RDY: ";
 			for (int j : ids) {
-				cout << j << ' ';
+				cout << j << ' , ';
 			}
 			cout << '\n';
 		}
-		for (Processor* i : SJF) {
+		for (Processor* i : Sjf)
+		{
+			ids = i->GetID();
+			cout << "processor 2 [SJF ]: " << "number of processes" << "RDY: ";
+			for (int j:ids)
+			{
+				cout << j << ' , ';
+			}
+			cout << '\n';
 		}
-		for (Processor* i : RR) {
+		for (Processor* i : Rr)
+		{
+			ids = i->GetID();
+			cout << "processor 3 [RR  ]: " << "number of processes" << "RDY: " << RR.Pop() << "\n";
+			for (int j : ids)
+			{
+				cout << j << ' , ';
+			}
+			cout << '\n';
 		}
-		cout << "Current Timestep:" << "  " << timestep;
-		cout << "------------    RDY Processes -----------" << "\n";
-		cout << "processor 1 [FCFS]: " << "number of processes" << "RDY: " << FCFS << "\n";
-		cout << "processor 2 [SJF ]: " << "number of processes" << "RDY: " << SJF.Pop() << "\n";
-		cout << "processor 1 [RR  ]: " << "number of processes" << "RDY: " << RR.Pop() << "\n";
+		
+		
+		
 		cout << "-------------   BLK Processes ----------" << "\n";
 		cout << "number of processes from blk" << "BLK: " << "IDs of processes in blk";
 		cout << "-------------   RUN Processes ----------" << "\n";
