@@ -1,5 +1,5 @@
 #pragma once
-#include "Node.h"
+#include "QueueNode.h"
 template<typename T, typename P>
 class PriorityNode : public Node<T>
 {

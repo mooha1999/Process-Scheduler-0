@@ -6,6 +6,7 @@
 #include <sstream>
 #include "Queue.h"
 #include "Pair.h"
+#include "Scheduler.h"
 #pragma
 #pragma once
 
@@ -30,13 +31,8 @@ void probBLK() {
 
 int main()
 {
-	Queue<Pair<>*> queue;
-	queue.Push(new Pair<>(1, 2));
-	queue.Push(new Pair<>(3, 4));
-	queue.Push(new Pair<>(5, 6));
-	for (auto i : queue) {
-		cout << i->first << ' ' << i->second << endl;
-	}
+	Scheduler* scheduler = new Scheduler();
+	scheduler->readFile();
 
 	return 0;
 }

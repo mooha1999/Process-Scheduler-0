@@ -6,31 +6,34 @@ class PriortyQueue
 {
 	PriorityNode<T, int>* front;
 	PriorityNode<T, int>* rear;
+	int size;
 public:
 
 	PriortyQueue()
 	{
 		front = nullptr;
+		size = 0;
 	}
 
-	void Push(T data, int Prio)
+	void Push(T data, int prio)
 	{
 		PriorityNode<T, int>* temp = front;
-		PriorityNode<T, int>* newnode = new PriorityNode<T, int>(data, Prio);
-		if (front == nullptr || prio < front->prio)
+		PriorityNode<T, int>* newnode = new PriorityNode<T, int>(data, prio);
+		if (front == nullptr || prio < front->getPriority())
 		{
-			newnode->getNext() = front;
+			newnode->setNext(front);
 			front = newnode;
 		}
 		else
 		{
-			while (temp->getNext()->prio <= prio && temp->getNext() != nullptr)
+			while (temp->getNext() != nullptr && temp->getNext()->getPriority() <= prio)
 			{
 				temp = temp->getNext();
-				newnode->getNext() = temp->getNext();
-				temp->getNext() = newnode;
+				newnode->setNext(temp->getNext());
+				temp->setNext(newnode);
 			}
 		}
+		size++;
 	}
 
 	T Pop()

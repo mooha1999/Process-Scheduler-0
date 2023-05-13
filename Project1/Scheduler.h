@@ -12,18 +12,48 @@
 
 using namespace std;
 class Scheduler {
+public:
 	Queue<Process*> NEW;
 	Queue<Process*> BLK;
 	Queue<Process*> TRM;
 	Queue<pair<int, int>> sigKills;
-	FCFS* fcfss;
-	SJF* sjfs;
-	RRobin* rrobins;
+	Queue<Processor*> Processors;
+	Queue<FCFS*> fcfss;
+	Queue<SJF*> sjfs;
+	Queue<RRobin*> rrobins;
 	int rtf, maxW, stl, forkProbability;
+
 	void readFile() {
 		fstream inputFile("input.txt", ios::in);
 		defineProcessors(inputFile);
 		inputFile >> rtf >> maxW >> stl >> forkProbability;
+		addToNew(inputFile);
+		int a, b;
+		while (inputFile >> a >> b) {
+			sigKills.Push(make_pair(a, b));
+		}
+	}
+	void defineProcessors(fstream& inputFile) {
+		int a, b, c, time_slice;
+		inputFile >> a >> b >> c;
+		while (a--) {
+			FCFS* temp = new FCFS();
+			fcfss.Push(temp);
+			Processors.Push(temp);
+		}
+		while (b--) {
+			SJF* temp = new SJF();
+			sjfs.Push(temp);
+			Processors.Push(temp);
+		}
+		inputFile >> time_slice;
+		while (c--) {
+			RRobin* temp = new RRobin(time_slice);
+			rrobins.Push(temp);
+			Processors.Push(temp);
+		}
+	}
+	void addToNew(fstream& inputFile) {
 		int m;
 		inputFile >> m;
 		Process* tempProcess = nullptr;
@@ -43,19 +73,6 @@ class Scheduler {
 			}
 			NEW.Push(new Process(pid, at, ct, ios));
 		}
-		int a, b;
-		while (inputFile >> a >> b) {
-			sigKills.Push(make_pair(a, b));
-		}
-	}
-	void defineProcessors(fstream& inputFile) {
-		int a, b, c;
-		inputFile >> a >> b >> c;
-		fcfss = new FCFS[a];
-		sjfs = new SJF[b];
-		rrobins = new RRobin[c];
-		int time_slice;
-		inputFile >> time_slice;
 	}
 	void simulate() {
 		int timestep = 0;
@@ -65,4 +82,5 @@ class Scheduler {
 			timestep++;
 		}
 	}
+	//Processor
 };

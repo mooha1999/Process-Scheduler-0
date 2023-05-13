@@ -12,7 +12,6 @@
     <ClInclude Include="Cicularqueue.h" />
     <ClInclude Include="FCFS.h" />
     <ClInclude Include="LinkedList.h" />
-    <ClInclude Include="node.h" />
     <ClInclude Include="PriortyQueue.h" />
     <ClInclude Include="Process.h" />
     <ClInclude Include="Processor.h" />

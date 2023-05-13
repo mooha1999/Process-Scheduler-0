@@ -43,6 +43,7 @@ public:
 			int x = temp.Pop()->getPID();  //return id
 			ID.Push(x); //push the id in the queue
 		}
+		return ID;
 	}
 	virtual int GetWT()
 	{

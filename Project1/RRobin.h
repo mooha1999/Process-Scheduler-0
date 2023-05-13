@@ -28,16 +28,16 @@ public:
 		{
 			BUSY = true; //busy when running
 			TBT++; //total busy time
-			<<<<<<< HEAD
+			/*<<<<<<< HEAD
 				====== =
 
-				>>>>>> > b0362be4cbf0ebed416d312ee586785e360e4eae
-				if (RUN->getEX() == RUN->getCT()) //Ex-time=CPU-time
-				{
-					AR = AR + RUN->getTRT();
-					Finish = RUN;
-					RUN = nullptr;
-				}
+				>>>>>> > b0362be4cbf0ebed416d312ee586785e360e4eae*/
+			if (RUN->getEX() == RUN->getCT()) //Ex-time=CPU-time
+			{
+				AR = AR + RUN->getTRT();
+				Finish = RUN;
+				RUN = nullptr;
+			}
 			//case 1  if the execution time is equal to time slice
 			if (RUN->getEX() % time_slice == 0) // reminder (
 			{

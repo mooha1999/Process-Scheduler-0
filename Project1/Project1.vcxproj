@@ -150,7 +150,6 @@
     <ClInclude Include="Cicularqueue.h" />
     <ClInclude Include="FCFS.h" />
     <ClInclude Include="LinkedList.h" />
-    <ClInclude Include="node.h" />
     <ClInclude Include="Pair.h" />
     <ClInclude Include="PriorityNode.h" />
     <ClInclude Include="PriortyQueue.h" />

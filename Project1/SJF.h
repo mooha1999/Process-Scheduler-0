@@ -46,6 +46,7 @@ public:
 			int x = temp.Pop()->getPID();  //return id
 			ID.Push(x);
 		}
+		return ID;
 	}
 	virtual int GetWT()
 	{
