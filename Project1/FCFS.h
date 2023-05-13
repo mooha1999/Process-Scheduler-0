@@ -1,6 +1,8 @@
 #include "process.h"
 #include "Processor.h"
 
+
+
 class FCFS : public Processor {
 public:
 
@@ -62,23 +64,28 @@ public:
 		return SumWT;
 	}
 
-	 Process* kill(int id) {
-		 //for rdy processes
+	Process* kill(int id) {
+		//for rdy processes
 		int y = Rdy->Pop()->getPID();  //return id from ready queue
 		for (auto i : *Rdy) {
-			if (y=id) {
-				Process* killP = Rdy->Pop();
+			if (y = id) {
+				Process* killPD = Rdy->Pop();
 				//removing the process
-				Rdy->Remove(killP);
-				return killP;
-			}
-		}
-		int z = RUN->getPID();  //return id of running process
-			if (z = id) {
-				Process* killP = RUN;
-				RUN->~Process();
-				return killP;
+				Rdy->Remove(killPD);
+				return killPD;
 			}
 		}
 
+		//for running processes
+		int z = RUN->getPID();  //return id of running process
+		if (z = id) {
+			Process* killPR = RUN;
+			RUN->~Process();
+			return killPR;
+		}
+		else {
+			return nullptr;
+		}
+	}
+ 
 };
