@@ -68,6 +68,7 @@ public:
 			if (x=id) {
 				Process* killP = Rdy->Pop();
 				//removing the process
+				Rdy->Pop();
 				return killP;
 			}
 		}
