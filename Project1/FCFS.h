@@ -69,13 +69,13 @@ public:
 			if (y=id) {
 				Process* killP = Rdy->Pop();
 				//removing the process
-				Rdy->Pop(); //pop the value
+				Rdy->Remove(killP);
 				return killP;
 			}
 		}
 		int z = RUN->getPID();  //return id of running process
 			if (z = id) {
-				Rdy->Pop(); //pop the value
+				RUN->~process();
 				return RUN;
 			}
 		}
