@@ -75,7 +75,8 @@ public:
 		}
 		int z = RUN->getPID();  //return id of running process
 			if (z = id) {
-				Process* killP = *&RUN; //still editing this 
+				//assign a pointer to RUN 
+				Process* killP = RUN; 
 				//removing the process
 				Rdy->Pop(); //pop the value
 				return killP;
