@@ -14,8 +14,6 @@ using namespace std;
 
 class UserInterface {
 public:
- 
-    Queue <Processor*> ID;
 
     void displayMainMenu() {
         cout << "Process Scheduler Program \n";
@@ -32,10 +30,15 @@ public:
         cin >> choice;
         return choice;
     }
-        // void displayOutput(Queue<int> output) { //displays a queue of intergers
-          //   for (int i : output) {
-               //  cout << output.Pop() << "  ";
-         //}
+    void UserInerface()
+    {
+
+
+
+   // void displayOutput(Queue<int> output) { //displays a queue of intergers
+     //   for (int i : output) {
+          //  cout << output.Pop() << "  ";
+    //}
 
         void Userchoice() // to get user what mood does the user need 
         {
@@ -60,7 +63,8 @@ public:
             }
 
         }
-   
+
+
 
         void displayErrorMessage(string message)
         {
@@ -68,20 +72,12 @@ public:
         }
 
     void interfacemode() {
-        //cout << "Current Timestep:" << "  " << Scheduler.timestep;
+        cout << "Current Timestep:" << "  " << Scheduler.timestep;
         cout << "------------    RDY Processes -----------" << "\n";
-
-
-       // cout << "processor 1 [FCFS]: " << "number of processes" << "RDY: " <<      << "\n";
-       //cout << "processor 2 [SJF ]: " << "number of processes" << "RDY: " <<      << "\n";
-       //cout << "processor 1 [RR  ]: " << "number of processes" << "RDY: " <<      << "\n";
-
-
-
-
+        cout << "processor 1 [FCFS]: " << "number of processes" << "RDY: " << FCFS.GetID() << "\n";
+        cout << "processor 2 [SJF ]: " << "number of processes" << "RDY: " << SJF.GetID() << "\n";
+        cout << "processor 1 [RR  ]: " << "number of processes" << "RDY: " << RRobin.GetID() << "\n";
         cout << "-------------   BLK Processes ----------" << "\n";
-
-
         cout << "number of processes from blk" << "BLK: " << "IDs of processes in blk";
         cout << "-------------   RUN Processes ----------" << "\n";
         cout << "number of processes in run" << "RUN: " << ""; //for loop for run display
@@ -89,6 +85,6 @@ public:
         cout << "number of processes in run" << "RUN: " << ""; //for loop for trm display
         cout << "PRESS ANY KEY TO MOVE TO NEXT STEP !";
     
-    }
+    } //latest update from nouran
 };
 
