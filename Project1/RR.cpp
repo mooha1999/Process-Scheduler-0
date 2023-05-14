@@ -73,6 +73,17 @@ public:
 		}
 		return Ids;
 	}
+	int Getcount() // to get number od ids 
+	{
+		Queue<int>ids;
+		int counter = 0;
+		ids = GetID(); //return ids 
+		for (int i : ids)
+		{
+			counter++;
+		}
+		return counter;
+	}
 	
 	virtual int GetWT()
 	{

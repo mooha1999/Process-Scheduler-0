@@ -62,12 +62,16 @@ public:
 		cout << "Current Timestep:" << "  " << timestep;
 		cout << "------------    RDY Processes -----------" << "\n";
 		Queue<int> ids;
+		int counter = 0;
 		for (Processor* i : Fcfs)
 		{
 			ids = i->GetID();
 			cout << "processor 1 [FCFS]: " << "number of processes" << "RDY: ";
-			for (int j : ids) {
+			for (int j : ids)
+			{
+				
 				cout << j << ' , ';
+				
 			}
 			cout << '\n';
 		}
@@ -84,20 +88,25 @@ public:
 		for (Processor* i : Rr)
 		{
 			ids = i->GetID();
-			cout << "processor 3 [RR  ]: " << "number of processes" << "RDY: " << RR.Pop() << "\n";
+			int count = i->Getcount();
+			cout << "processor 3 [RR  ]: " << "number of processes" << "RDY: ";
+			cout << count;
 			for (int j : ids)
 			{
 				cout << j << ' , ';
 			}
-			cout << '\n';
+			cout <<' '<< counter << '\n';
 		}
-		
-		
 		
 		cout << "-------------   BLK Processes ----------" << "\n";
 		cout << "number of processes from blk" << "BLK: " << "IDs of processes in blk";
+
+
 		cout << "-------------   RUN Processes ----------" << "\n";
+
 		cout << "number of processes in run" << "RUN: " << ""; //for loop for run display
+
+
 		cout << "------------    TRM Processes ----------" << "\n";
 		cout << "number of processes in run" << "RUN: " << ""; //for loop for trm display
 		cout << "PRESS ANY KEY TO MOVE TO NEXT STEP !";

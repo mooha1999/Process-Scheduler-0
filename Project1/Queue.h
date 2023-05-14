@@ -12,18 +12,22 @@ class Queue
 	public:
 		Iterator(Node<T>* node) : currentNode(node) {}
 
-		Iterator& operator++() {
-			if (currentNode) {
+		Iterator& operator++()
+		{
+			if (currentNode)
+			{
 				currentNode = currentNode->getNext();
 			}
 			return *this;
 		}
 
-		bool operator!=(const Iterator& other) const {
+		bool operator!=(const Iterator& other) const 
+		{
 			return currentNode != other.currentNode;
 		}
 
-		T operator*() const {
+		T operator*() const
+		{
 			return currentNode->getItem();
 		}
 	};
