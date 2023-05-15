@@ -15,6 +15,6 @@ public:
 	virtual void push(Process* p) = 0;
 	virtual Queue<int> GetID() = 0; 
 	virtual int Getcount()=0;
-	virtual int GetWT() = 0;
+	virtual int GetTWT() = 0;
 	//virtual int GetBT(bool BUSY) = 0; //calculate busy time
 };

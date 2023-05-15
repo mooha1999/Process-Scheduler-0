@@ -56,7 +56,7 @@ public:
 		}
 		return ID;
 	}
-	virtual int GetWT()
+	virtual int GetTWT()
 	{
 		PriortyQueue<Process*>temp = *Rdy;
 		int SumWT = 0;

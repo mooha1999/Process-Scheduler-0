@@ -85,7 +85,7 @@ public:
 		return counter;
 	}
 	
-	virtual int GetWT()
+	virtual int GetTWT()
 	{
 		Queue<Process*>temp = *Rdy;
 		int SumWT = 0;
