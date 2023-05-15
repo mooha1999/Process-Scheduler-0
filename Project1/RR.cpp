@@ -32,14 +32,11 @@ public:
 				//remove the pair from comparison
 				RUN->getPairs().Pop();
 			}
-
-
 		}
 		else
 		{
 			BUSY = true; //busy when running
 			TBT++; //total busy time
-		
 
 			if (RUN->getEX() == RUN->getCT()) //Ex-time=CPU-time
 			{
@@ -69,22 +66,21 @@ public:
 		{
 			int x = temp.Pop()->getPID();  //return id
 			Ids.Push(x); //push the id in the queue
-
 		}
 		return Ids;
 	}
-	int Getcount() // to get number od ids 
+	int GetCount() // to get number od ids
 	{
 		Queue<int>ids;
 		int counter = 0;
-		ids = GetID(); //return ids 
+		ids = GetID(); //return ids
 		for (int i : ids)
 		{
 			counter++;
 		}
 		return counter;
 	}
-	
+
 	virtual int GetWT()
 	{
 		Queue<Process*>temp = *Rdy;

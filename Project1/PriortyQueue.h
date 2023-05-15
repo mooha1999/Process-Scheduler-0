@@ -53,4 +53,5 @@ public:
 	{
 		return size == 0;
 	}
+	int Count() { return size; }
 };

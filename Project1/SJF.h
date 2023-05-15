@@ -67,4 +67,7 @@ public:
 		}
 		return SumWT;
 	}
+	int GetCount() {
+		return Rdy->Count();
+	}
 };

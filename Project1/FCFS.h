@@ -18,7 +18,7 @@ public:
 		{
 			RUN = Rdy->Pop();   //return the value of the firt process in rdy list
 
-			//if execution time = 
+			//if execution time =
 			int a = RUN->getPairs().Peek()->first;
 			int b = RUN->getEX();
 			if (a == b) {
@@ -88,5 +88,8 @@ public:
 		}
 
 		return nullptr;
+	}
+	int GetCount() {
+		return Rdy->Count();
 	}
 };

@@ -90,5 +90,5 @@ public:
 		return Iterator(nullptr);
 	}
 
-	int Count() { return size };
+	int Count() { return size; };
 };
