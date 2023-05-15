@@ -27,7 +27,7 @@ public:
 			//execution time and pair comparison
 			int a = RUN->getPairs().Peek()->first;
 			int b = RUN->getEX();
-			if (a == b) 
+			if (a == b)
 			{
 				//remove the pair from comparison
 				RUN->getPairs().Pop();
@@ -79,5 +79,8 @@ public:
 			SumWT = SumWT + x;
 		}
 		return SumWT;
+	}
+	int GetCount() {
+		return Rdy->Count();
 	}
 };
