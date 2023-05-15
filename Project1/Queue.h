@@ -21,7 +21,7 @@ class Queue
 			return *this;
 		}
 
-		bool operator!=(const Iterator& other) const 
+		bool operator!=(const Iterator& other) const
 		{
 			return currentNode != other.currentNode;
 		}
@@ -89,4 +89,6 @@ public:
 	Iterator end() const {
 		return Iterator(nullptr);
 	}
+
+	int Count() { return size };
 };
