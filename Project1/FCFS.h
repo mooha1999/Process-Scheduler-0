@@ -95,20 +95,11 @@ public:
 	{
 		return Rdy->Count();
 	}
-	virtual int Getcountblk()// to calculated the total number of blk in FcFS
-	{
-		return countBlk;
-	}
+
 	virtual int Getidrun() //return the id of the running process 
 	{
 		int r = RUN->getPID();
 		return r;
-	}
-
-	virtual int Getidblk() //return the id of the blocked process 
-	{
-		int b = Blk->getPID();
-		return b;
 	}
 
 };

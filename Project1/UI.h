@@ -20,6 +20,7 @@ using namespace std;
 class UserInterface {
 public:
 	int choice; //user choice from main menu
+	Blocked* BLK;
 	void displayMainMenu() 
 	{
 		cout << "Process Scheduler Program \n";
@@ -137,9 +138,7 @@ public:
 
 		//-----------------------------------------------------------------------------------------
 		cout << "-------------   BLK Processes ----------" << "\n";
-		cout << "number of processes from blk" << "BLK: " << "IDs of processes in blk";
-
-		
+		cout << BLK->BlockedIDsCount() << "BLK: " << BLK->BlockedIDs();
 
 		//----------------------------------------------------------------------------------------
 	

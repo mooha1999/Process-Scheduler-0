@@ -10,7 +10,6 @@ public:
 	Queue<Process*>* Rdy; // pointer Queue
 	//Process* Finish; // this process to put the finished process
 	int time_slice;
-	int countBlk=0;
 	RRobin(int TS)
 	{
 		TS = time_slice;
@@ -50,7 +49,6 @@ public:
 		    {
 					Blk = RUN;
 					RUN = nullptr;
-					countBlk++;
 			}
 			else
 			{
@@ -59,10 +57,7 @@ public:
 		
 		}
 	}
-	virtual int Getcountblk() // to calculated the total number of blk in RR 
-	{
-		return countBlk;
-	}
+
 	Queue<int> GetID()
 	{
 		Queue<Process*>temp = *Rdy;   //*Rdy to return the value of Rdy (copy the rdy queue )
@@ -92,12 +87,6 @@ public:
 	}
 	int GetCount() {
 		return Rdy->Count();
-	}
-
-	virtual int Getidblk() //return the id of the blocked process 
-	{
-		int b = Blk->getPID();
-		return b;
 	}
 
 };
