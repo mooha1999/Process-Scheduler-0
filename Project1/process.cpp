@@ -22,7 +22,6 @@ Process::Process(int pid, int at, int ct, Queue<Pair<int, int>*> q) {
 	data = 0;
 	Process* next = new Process; 
 	//this is the child created by FCFS in fork a child
-	Process* kid = new Process; 
 	RT = 0;
 	IOT = 0;
 }

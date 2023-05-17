@@ -1,5 +1,6 @@
 #include "process.h"
 #include "Processor.h"
+#pragma once
 
 class FCFS : public Processor 
 {
@@ -98,6 +99,12 @@ public:
 	{
 		int r = RUN->getPID();
 		return r;
+	}
+
+	virtual int Getidblk() //return the id of the blocked process 
+	{
+		int b = Blk->getPID();
+		return b;
 	}
 
 	
