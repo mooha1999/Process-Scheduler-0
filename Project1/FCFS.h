@@ -44,59 +44,60 @@ public:
 				RUN->incEX();
 			}
 		}
-		virtual Queue<int> GetID()
+	}
+	virtual Queue<int> GetID()
+	{
+		Queue<Process*>temp = *Rdy;   //*Rdy to return the value of Rdy (copy)
+		Queue<int>ID;
+		while (temp.IsEmpty())
 		{
-			Queue<Process*>temp = *Rdy;   //*Rdy to return the value of Rdy (copy)
-			Queue<int>ID;
-			while (temp.IsEmpty())
-			{
-				int x = temp.Pop()->getPID();  //return id
-				ID.Push(x); //push the id in the queue
-			}
-			return ID;
+			int x = temp.Pop()->getPID();  //return id
+			ID.Push(x); //push the id in the queue
 		}
-		virtual int GetTWT()
+		return ID;
+	}
+	virtual int GetTWT()
+	{
+		Queue<Process*>temp = *Rdy;
+		int SumWT = 0;
+		while (!temp.IsEmpty())
 		{
-			Queue<Process*>temp = *Rdy;
-			int SumWT = 0;
-			while (!temp.IsEmpty())
-			{
-				int x = temp.Pop()->getWT();  //return waiting time
-				SumWT = SumWT + x;
+			int x = temp.Pop()->getWT();  //return waiting time
+			SumWT = SumWT + x;
+		}
+		return SumWT;
+	}
+
+	Process* kill(int id) {
+		//for running processes
+		int z = RUN->getPID();  //return id of running process
+		if (z == id) {
+			Process* killPR = RUN;
+			RUN = nullptr;
+			BUSY = false;
+			return killPR;
+		}
+		//for rdy processes
+		for (Process* i : *Rdy) {
+			int y = i->getPID();  //return id from ready queue
+			if (y == id) {
+				Process* killPD = i;
+				//removing the process
+				Rdy->Remove(i);
+				return killPD;
 			}
-			return SumWT;
 		}
 
-		Process* kill(int id) {
-			//for running processes
-			int z = RUN->getPID();  //return id of running process
-			if (z == id) {
-				Process* killPR = RUN;
-				RUN = nullptr;
-				BUSY = false;
-				return killPR;
-			}
-			//for rdy processes
-			for (Process* i : *Rdy) {
-				int y = i->getPID();  //return id from ready queue
-				if (y == id) {
-					Process* killPD = i;
-					//removing the process
-					Rdy->Remove(i);
-					return killPD;
-				}
-			}
+		return nullptr;
+	}
+	virtual int GetCount()
+	{
+		return Rdy->Count();
+	}
 
-			return nullptr;
-		}
-		virtual int GetCount()
-		{
-			return Rdy->Count();
-		}
-
-		virtual int Getidrun() //return the id of the running process
-		{
-			int r = RUN->getPID();
-			return r;
-		}
-	};
+	virtual int Getidrun() //return the id of the running process
+	{
+		int r = RUN->getPID();
+		return r;
+	}
+};

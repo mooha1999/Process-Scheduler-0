@@ -12,7 +12,7 @@ public:
 	int time_slice;
 	RRobin(int TS)
 	{
-		TS = time_slice;
+		time_slice = TS;
 	}
 	virtual void push(Process* p)
 	{
@@ -55,35 +55,35 @@ public:
 				RUN->incEX();
 			}
 		}
-
-		Queue<int> GetID()
+	}
+	Queue<int> GetID()
+	{
+		Queue<Process*>temp = *Rdy;   //*Rdy to return the value of Rdy (copy the rdy queue )
+		Queue<int>Ids; //Id of each process
+		while (!temp.IsEmpty())
 		{
-			Queue<Process*>temp = *Rdy;   //*Rdy to return the value of Rdy (copy the rdy queue )
-			Queue<int>Ids; //Id of each process
-			while (!temp.IsEmpty())
-			{
-				int x = temp.Pop()->getPID();  //return id
-				Ids.Push(x); //push the id in the queue
-			}
-			return Ids;
+			int x = temp.Pop()->getPID();  //return id
+			Ids.Push(x); //push the id in the queue
 		}
-		virtual int GetTWT()
+		return Ids;
+	}
+	virtual int GetTWT()
+	{
+		Queue<Process*>temp = *Rdy;
+		int SumWT = 0;
+		while (!temp.IsEmpty())
 		{
-			Queue<Process*>temp = *Rdy;
-			int SumWT = 0;
-			while (!temp.IsEmpty())
-			{
-				int x = temp.Pop()->getWT();  //return waiting time
-				SumWT = SumWT + x;
-			}
-			return SumWT;
+			int x = temp.Pop()->getWT();  //return waiting time
+			SumWT = SumWT + x;
 		}
-		virtual int Getidrun() //return the id of the running process
-		{
-			int r = RUN->getPID();
-			return r;
-		}
-		int GetCount() {
-			return Rdy->Count();
-		}
-	};
+		return SumWT;
+	}
+	virtual int Getidrun() //return the id of the running process
+	{
+		int r = RUN->getPID();
+		return r;
+	}
+	int GetCount() {
+		return Rdy->Count();
+	}
+};
