@@ -18,6 +18,7 @@ private:
 	int EX;
 	Queue<Pair<int, int>*> Q;
 	int IOT; //io time //setter getter incremental
+	int TIOD; //Total IO Duration
 
 public:
 	//the process is a node in the queue
@@ -36,6 +37,7 @@ public:
 	int getTRT();
 	int getWT();
 	int getEX();
+	int getTIOD();
 	Queue<Pair<int, int>*> getPairs();
 
 	void setPID(int id);
