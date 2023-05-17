@@ -202,7 +202,7 @@ public:
 		//----------------------------------------------------------------------------------------
 	
 		cout << "-------------   RUN Processes ----------" << "\n";
-		int TNumP = CountFcfs + countRR + countSjf;
+		int TNumP = CountFcfs + countRR + countSjf; //total number of processors
 		cout << TNumP <<"number of processes in run" << "RUN: "; //for loop for run display
 	
 		//the three processors have the same counter 
