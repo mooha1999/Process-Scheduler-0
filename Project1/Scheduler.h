@@ -112,7 +112,7 @@ class Scheduler {
 				Process* forkedProcess = p->RUN->fork(timestep, ++lastID);
 				getLeastWaitingFCFSProcessor()->push(forkedProcess);
 				totalProcessesNum++;
-				forkedProcess++;
+				totalForked++;
 			}
 		}
 	}
@@ -202,6 +202,15 @@ class Scheduler {
 		}
 		out << "\nAvg utilization = " << (totalUtil / Processors.Count()) * 100;
 	}
+	bool isAllEmpty() {
+		for (auto p : Processors) {
+			if (p->RUN)
+				return false;
+			if (p->GetCount() > 0)
+				return false;
+		}
+		return true;
+	}
 public:
 	void readFile() {
 		fstream inputFile("input.txt", ios::in);
@@ -217,7 +226,7 @@ public:
 		int timestep = 0;
 		ui.displayMainMenu();
 		ui.getUserInput();
-		while (!NEW.IsEmpty() || !BLK->IsEmpty() || !sigKills.IsEmpty()) {
+		while (!NEW.IsEmpty() || !BLK->IsEmpty() || !sigKills.IsEmpty() || !isAllEmpty()) {
 			//from NEW to RDY, a while loop because there might be more than one process arriving at the same time
 			while (!NEW.IsEmpty() && NEW.Peek()->getAT() == timestep) {
 				getLeastWaitingProcessor()->push(NEW.Pop());
