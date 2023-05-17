@@ -10,6 +10,7 @@ public:
 	Queue<Process*>* Rdy; // pointer Queue
 	//Process* Finish; // this process to put the finished process
 	int time_slice;
+	int countBlk=0;
 	RRobin(int TS)
 	{
 		TS = time_slice;
@@ -49,6 +50,7 @@ public:
 		    {
 					Blk = RUN;
 					RUN = nullptr;
+					countBlk++;
 			}
 			else
 			{
@@ -56,6 +58,10 @@ public:
 			}
 		
 		}
+	}
+	virtual int Getcountblk() // to calculated the total number of blk in RR 
+	{
+		return countBlk;
 	}
 	Queue<int> GetID()
 	{

@@ -7,6 +7,7 @@ class FCFS : public Processor
 public:
 
 	Queue<Process*>* Rdy; // pointer Queue
+	int countBlk = 0;
 
 	virtual void push(Process* p)
 	{
@@ -94,7 +95,10 @@ public:
 	{
 		return Rdy->Count();
 	}
-
+    virtual int Getcountblk()// to calculated the total number of blk in FcFS
+	{
+		return countBlk;
+	}
 	virtual int Getidrun() //return the id of the running process 
 	{
 		int r = RUN->getPID();
