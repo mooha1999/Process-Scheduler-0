@@ -4,7 +4,6 @@
 #include <sstream>
 
 #include "Queue.h"
-#include "process.h"
 #include "FCFS.h"
 #include "SJF.h"
 #include "RRobin.h"
@@ -187,6 +186,7 @@ public:
 	Process* forkedProcess() {
 		for (auto p : fcfss) {
 			if (p->RUN && shouldFork()) {
+				//p->RUN()
 			}
 		}
 	}
@@ -225,7 +225,10 @@ public:
 		out << sjfs.Count() << " SJF, ";
 		out << rrobins.Count() << " RR]\n";
 
+		out << "Processors Load\n";
+		int i = 1;
 		for (auto p : Processors) {
+			out << 'p' << i << '=' << p;
 		}
 	}
 };
