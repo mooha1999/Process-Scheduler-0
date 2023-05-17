@@ -27,9 +27,10 @@ class Scheduler {
 	void defineProcessors(fstream& inputFile) {
 		int a, b, c, time_slice;
 		inputFile >> a >> b >> c;
-		while (a--) {
-			FCFS* temp = new FCFS();
-			fcfss.Push(temp);
+		inputFile >> time_slice;
+		while (c--) {
+			RRobin* temp = new RRobin(time_slice);
+			rrobins.Push(temp);
 			Processors.Push(temp);
 		}
 		while (b--) {
@@ -37,10 +38,9 @@ class Scheduler {
 			sjfs.Push(temp);
 			Processors.Push(temp);
 		}
-		inputFile >> time_slice;
-		while (c--) {
-			RRobin* temp = new RRobin(time_slice);
-			rrobins.Push(temp);
+		while (a--) {
+			FCFS* temp = new FCFS();
+			fcfss.Push(temp);
 			Processors.Push(temp);
 		}
 	}
@@ -237,9 +237,9 @@ public:
 				getLeastWaitingProcessor()->push(BLK->GetFinishedProcess());
 			}
 			//killing signals
-			killSignal(timestep);
+			//killSignal(timestep);
 			//forking process
-			forkProcesses(timestep);
+			//forkProcesses(timestep);
 			//Schedule algorithms
 			scheduleAlgo(timestep);
 			//Increment IO time for blocked process
