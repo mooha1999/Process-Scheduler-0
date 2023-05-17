@@ -75,4 +75,10 @@ public:
 		return r;
 	}
 
+	virtual int Getidblk() //return the id of the blocked process 
+	{
+		int b = Blk->getPID();
+		return b;
+	}
+
 };

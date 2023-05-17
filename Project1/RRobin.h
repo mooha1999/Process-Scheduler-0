@@ -87,4 +87,11 @@ public:
 	int GetCount() {
 		return Rdy->Count();
 	}
+
+	virtual int Getidblk() //return the id of the blocked process 
+	{
+		int b = Blk->getPID();
+		return b;
+	}
+
 };
