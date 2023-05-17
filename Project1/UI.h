@@ -204,7 +204,7 @@ public:
 		abort();
 	}
 
-	void pausesleep() {
+	void pausesleep() { //depending on user choice, program either sleep or pause 
 		if (choice == 1) { //interactive mode waits for key
 				//pause until enter key is pressed 
 			system("pause");
