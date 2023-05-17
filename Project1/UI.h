@@ -19,7 +19,6 @@ using namespace std;
 class UserInterface {
 public:
 	int choice; //user choice from main menu
-
 	void displayMainMenu() 
 	{
 		cout << "Process Scheduler Program \n";
@@ -67,12 +66,17 @@ public:
 			{
 				silentmode();
 			}
+			else
+			{
+				exit();
+			}
 	}
-
-
 
 	void activemode( int timestep, Queue<Processor*> Fcfs, Queue<Processor*>Sjf, Queue<Processor*>Rr)
 	{
+		int CountFcfs=0;
+		int countSjf=0;
+		int countRR=0;
 		if (choice == 1)
 		{
 			cout << "You choose Interactive mode." << "\n";
@@ -107,6 +111,7 @@ public:
 			else if (choice == 2) { //step by step mode waits for 1 second and continues automatically
 				Sleep(1000);
 			}
+			CountFcfs++;
 			
 		}
 		if (choice == 1) 
@@ -137,6 +142,7 @@ public:
 			else if (choice == 2) { //step by step mode waits for 1 second and continues automatically
 				Sleep(1000);
 			}
+			countSjf++;
 		}
 
 		if (choice == 1) { //interactive mode waits for key
@@ -168,6 +174,7 @@ public:
 			else if (choice == 2) { //step by step mode waits for 1 second and continues automatically
 				Sleep(1000);
 			}
+			countRR;
 		}
 
 		if (choice == 1) { //interactive mode waits for key
@@ -193,14 +200,17 @@ public:
 
 
 		//----------------------------------------------------------------------------------------
-
+	
 		cout << "-------------   RUN Processes ----------" << "\n";
-		cout << "number of processes in run" << "RUN: "; //for loop for run display
+		int TNumP = CountFcfs + countRR + countSjf;
+		cout << TNumP <<"number of processes in run" << "RUN: "; //for loop for run display
+	
 		//the three processors have the same counter 
 		//printing for running processes for FCFS
 		int j = 1;
 		for (Processor* i : Fcfs)
 		{
+			cout << CountFcfs;
 			cout << i->Getidrun() << "(p" << j << ")"<<" , ";
 			j++;
 		}
