@@ -1,7 +1,5 @@
 #include "process.h"
 #include "Processor.h"
-#include <string.h>
-#include <string>
 
 class FCFS : public Processor 
 {
@@ -102,17 +100,5 @@ public:
 		return r;
 	}
 
-	virtual string GetIDs() //used in stepbystep mode: code 2 
-	{
-		string y;
-		Queue<Process*>temp = *Rdy;   //*Rdy to return the value of Rdy (copy)
-		while (temp.IsEmpty())
-		{
-			string x = to_string(temp.Pop()->getPID()); //convert each id to a string
-
-			 y = y + ", " + x;  //return id
-		}
-		return y;
-	}
-
+	
 };
