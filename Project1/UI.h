@@ -73,7 +73,14 @@ public:
 
 	void activemode( int timestep, Queue<Processor*> Fcfs, Queue<Processor*>Sjf, Queue<Processor*>Rr)
 	{
-		cout << "You choose Interactive mode." << "\n";
+		if (choice == 1)
+		{
+			cout << "You choose Interactive mode." << "\n";
+		}
+		else if (choice == 2) {
+			cout << "You choose Step-By-Step mode." << "\n";
+		}
+		
 		cout << "Current Timestep:" << "  " << timestep<<"\n";
 		cout << "------------    RDY Processes -----------" << "\n";
 		Queue<int> ids;
