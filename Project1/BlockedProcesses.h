@@ -62,5 +62,5 @@ public:
 		}
 		return ret;
 	}
-	int BlockedIDsCount() { return blockedProcesses.Count(); }
+	int BlockedIDsCount() { return blockedProcesses.Count() + running ? 1 : 0; }
 };
