@@ -68,6 +68,8 @@ public:
 		cout << "------------    RDY Processes -----------" << "\n";
 		Queue<int> ids;
 		int c = 1;
+		int TRP = 0; // total running process
+
 		for (FCFS* i : Fcfs)
 		{
 			ids = i->GetID();
@@ -80,6 +82,10 @@ public:
 				cout << j << ", ";
 			}
 			cout << "\n";
+			if (i->RUN)
+			{
+				TRP++; // hna hat2kid fe Running process wala la 
+			}
 		}
 
 		for (SJF* i : Sjf)
@@ -94,6 +100,10 @@ public:
 				cout << j << ", ";
 			}
 			cout << "\n";
+			if (i->RUN)
+			{
+				TRP++;
+			}
 		}
 
 		for (RRobin* i : Rr)
@@ -108,6 +118,10 @@ public:
 				cout << j << ", ";
 			}
 			cout << "\n";
+			if (i->RUN)
+			{
+				TRP++;
+			}
 		}
 
 		//-----------------------------------------------------------------------------------------
@@ -117,8 +131,8 @@ public:
 		//----------------------------------------------------------------------------------------
 
 		cout << "-------------   RUN Processes ----------" << "\n";
-		int TNumP = Fcfs.Count() + Sjf.Count() + Rr.Count(); //total number of processors
-		cout << TNumP << "RUN: "; //for loop for run display
+		
+		cout << TRP  << "RUN: "; //for loop for run display
 
 		//the three processors have the same counter
 		//printing for running processes for FCFS
@@ -149,7 +163,15 @@ public:
 		//------------------------------------------------------------------------------------------
 
 		cout << "------------    TRM Processes ----------" << "\n";
-		cout << "number of processes in run" << "RUN: " << ""; //for loop for trm display
+		cout << TRM.Count() << "TRM: " << ""; //for loop for trm display
+		
+		for (Process* i : TRM)
+		{
+		   cout<< i->getPID() <<" , ";
+
+		}
+		cout << "\n";
+
 		//priority queue of processes, .count for TRM processes
 		//print IDs using for loop
 		endline();

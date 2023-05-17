@@ -80,7 +80,7 @@ public:
 	}
 	virtual int Getidrun() //return the id of the running process
 	{
-		if (!RUN) //RUN==nullptr
+		if (!RUN) //RUN==nullptr  hna lazem a3mil check 34an hay3mil error
 		{
 			return -1;
 		}
