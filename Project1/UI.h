@@ -133,7 +133,6 @@ public:
 		int j = 1;
 		for (Processor* i : Fcfs)
 		{
-			cout << CountFcfs;
 			cout << i->Getidrun() << "(p" << j << ")"<<" , ";
 			j++;
 		}
@@ -162,10 +161,10 @@ public:
 
 		cout << "------------    TRM Processes ----------" << "\n";
 		cout << "number of processes in run" << "RUN: " << ""; //for loop for trm display
-		
-		void endline();
 		//priority queue of processes, .count for TRM processes 
 		//print IDs using for loop 
+		void endline();
+		
 
 	} 
 
@@ -193,7 +192,9 @@ public:
 		}
 	}
 
-	void endline() {
+	void endline() { //in either modes interactive or stepbystep, this line is printed 
+		//and the program waits for the user's key press 
+
 		cout << "PRESS ANY KEY TO MOVE TO NEXT STEP !";
 		system("pause");
 	}
