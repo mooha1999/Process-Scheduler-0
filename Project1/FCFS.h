@@ -1,5 +1,7 @@
 #include "process.h"
 #include "Processor.h"
+#include <string.h>
+#include <string>
 
 class FCFS : public Processor 
 {
@@ -34,7 +36,7 @@ public:
 
 			if (RUN->getEX() == RUN->getCT())
 			{
-				AR = AR + RUN->getTRT();
+				AR = AR + RUN->getTRT(); // total turn around time of all processes
 				Finish = RUN;
 				RUN = nullptr;
 				BUSY = false;
@@ -50,7 +52,7 @@ public:
 			}
 		}
 	}
-	Queue<int> GetID()
+	Queue<int> GetID() //used in interactive mode: code 1 
 	{
 		Queue<Process*>temp = *Rdy;   //*Rdy to return the value of Rdy (copy)
 		Queue<int>ID;
@@ -100,9 +102,22 @@ public:
 	}
 
 	virtual int getidrun() //return the id of the running process 
-    {
+	{
 		int r = RUN->getPID();
 		return r;
+	}
+
+	virtual string GetIDS() //used in stepbystep mode: code 2 
+	{
+		string y;
+		Queue<Process*>temp = *Rdy;   //*Rdy to return the value of Rdy (copy)
+		while (temp.IsEmpty())
+		{
+			string x = to_string(temp.Pop()->getPID()); //convert each id to a string
+
+			 y = y + ", " + x;  //return id
+		}
+		return y;
 	}
 
 };
