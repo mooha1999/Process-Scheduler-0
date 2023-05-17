@@ -12,7 +12,6 @@
 #include "UI.h"
 using namespace std;
 class Scheduler {
-public:
 	Queue<Process*> NEW;
 	Blocked* BLK;
 	PriortyQueue<Process*> TRM;
@@ -25,16 +24,6 @@ public:
 	int rtf, maxW, stl, forkProbability;
 	int lastID;
 	int totalProcessesNum = 0, totalKilled = 0, totalForked = 0;
-	void readFile() {
-		fstream inputFile("input.txt", ios::in);
-		defineProcessors(inputFile);
-		inputFile >> rtf >> maxW >> stl >> forkProbability;
-		addToNew(inputFile);
-		int a, b;
-		while (inputFile >> a >> b) {
-			sigKills.Push(new Pair<>(a, b));
-		}
-	}
 	void defineProcessors(fstream& inputFile) {
 		int a, b, c, time_slice;
 		inputFile >> a >> b >> c;
@@ -86,42 +75,12 @@ public:
 			lastID = pid; //To generate unique ids for the forked processes
 		}
 	}
-	void StartSimulation() {
-		int timestep = 0;
-		//ui.getmode()
-		while (!NEW.IsEmpty() || !BLK->IsEmpty() || !sigKills.IsEmpty()) {
-			//from NEW to RDY, a while loop because there might be more than one process arriving at the same time
-			while (!NEW.IsEmpty() && NEW.Peek()->getAT() == timestep) {
-				getLeastWaitingProcessor()->push(NEW.Pop());
-			}
-			//from BLK to RDY
-			if (BLK->GetFinishedProcess()) {
-				getLeastWaitingProcessor()->push(BLK->GetFinishedProcess());
-			}
-			//killing signals
-			killSignal(timestep);
-			//forking process
-			forkProcesses(timestep);
-			//Schedule algorithms
-			scheduleAlgo(timestep);
-			//Increment IO time for blocked process
-			BLK->ScheduleAlgo();
-			Process* finishedBlockedProcess = BLK->GetFinishedProcess();
-			if (finishedBlockedProcess) {
-				getLeastWaitingProcessor()->push(finishedBlockedProcess);
-			}
-			//ui.display(.....)
-			timestep++;
-		}
-		//ui.displayEnd()
-	}
 	void scheduleAlgo(int timestep)
 	{
 		for (Processor* p : Processors) {
 			p->schedulago(timestep);
 			Process* finishedProcess = p->Finish;
 			if (finishedProcess) {
-				finishedProcess->setTT(timestep);
 				TRM.Push(finishedProcess, finishedProcess->getTT() * -1);
 				p->Finish = nullptr;
 			}
@@ -228,7 +187,57 @@ public:
 		out << "Processors Load\n";
 		int i = 1;
 		for (auto p : Processors) {
-			out << 'p' << i << '=' << p;
+			out << 'p' << i++ << '=' << (p->GetBusyTime() / p->GetTRT()) * 100 + '\t';
 		}
+		out << "\nProcessors Utiliz\n";
+		i = 0;
+		int totalUtil = 0;
+		for (auto p : Processors) {
+			int util = (p->GetBusyTime() / timestep) * 100;
+			totalUtil += util;
+			out << 'p' << i++ << '=' << util + '\t';
+		}
+		out << "\nAvg utilization = " << (totalUtil / Processors.Count()) * 100;
+	}
+public:
+	void readFile() {
+		fstream inputFile("input.txt", ios::in);
+		defineProcessors(inputFile);
+		inputFile >> rtf >> maxW >> stl >> forkProbability;
+		addToNew(inputFile);
+		int a, b;
+		while (inputFile >> a >> b) {
+			sigKills.Push(new Pair<>(a, b));
+		}
+	}
+	void StartSimulation() {
+		int timestep = 0;
+		ui.displayMainMenu();
+		ui.getUserInput();
+		while (!NEW.IsEmpty() || !BLK->IsEmpty() || !sigKills.IsEmpty()) {
+			//from NEW to RDY, a while loop because there might be more than one process arriving at the same time
+			while (!NEW.IsEmpty() && NEW.Peek()->getAT() == timestep) {
+				getLeastWaitingProcessor()->push(NEW.Pop());
+			}
+			//from BLK to RDY
+			if (BLK->GetFinishedProcess()) {
+				getLeastWaitingProcessor()->push(BLK->GetFinishedProcess());
+			}
+			//killing signals
+			killSignal(timestep);
+			//forking process
+			forkProcesses(timestep);
+			//Schedule algorithms
+			scheduleAlgo(timestep);
+			//Increment IO time for blocked process
+			BLK->ScheduleAlgo();
+			Process* finishedBlockedProcess = BLK->GetFinishedProcess();
+			if (finishedBlockedProcess) {
+				getLeastWaitingProcessor()->push(finishedBlockedProcess);
+			}
+			//ui.display(.....)
+			timestep++;
+		}
+		//ui.displayEnd()
 	}
 };
