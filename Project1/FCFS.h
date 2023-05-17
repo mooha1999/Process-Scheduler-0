@@ -14,7 +14,7 @@ public:
 		Rdy->Push(p);
 	}
 
-	virtual void schedulago()
+	virtual void schedulago(int timestep)
 
 	{
 		if (!RUN)
@@ -30,6 +30,7 @@ public:
 
 			if (RUN->getEX() == RUN->getCT())
 			{
+				RUN->setTT(timestep);
 				AR = AR + RUN->getTRT(); // total turn around time of all processes
 				Finish = RUN;
 				RUN = nullptr;
@@ -101,5 +102,7 @@ public:
 		int r = RUN->getPID();
 		return r;
 	}
+
+
 
 };

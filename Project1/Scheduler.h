@@ -119,7 +119,7 @@ public:
 	void scheduleAlgo(int timestep)
 	{
 		for (Processor* p : Processors) {
-			p->schedulago();
+			p->schedulago(timestep);
 			Process* finishedProcess = p->Finish;
 			if (finishedProcess) {
 				finishedProcess->setTT(timestep);

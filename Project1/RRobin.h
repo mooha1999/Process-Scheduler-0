@@ -18,7 +18,7 @@ public:
 	{
 		Rdy->Push(p);
 	}
-	virtual void schedulago()
+	virtual void schedulago(int timestep)
 	{
 		if (!RUN) // if the RUN process is not empty
 		{
@@ -32,6 +32,7 @@ public:
 
 			if (RUN->getEX() == RUN->getCT()) //Ex-time=CPU-time
 			{
+				RUN->setTT(timestep);
 				AR = AR + RUN->getTRT();
 				Finish = RUN;
 				RUN = nullptr;

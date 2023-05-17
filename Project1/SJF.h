@@ -12,7 +12,7 @@ public:
 	{
 		Rdy->Push(p, p->getCT()); // take the process and the cpu time
 	}
-	virtual void schedulago()
+	virtual void schedulago(int timestep)
 	{
 		if (!RUN)
 		{
@@ -26,6 +26,7 @@ public:
 
 			if (RUN->getEX() == RUN->getCT())
 			{
+				RUN->setTT(timestep);
 				AR = AR + RUN->getTRT();
 				Finish = RUN;
 				RUN = nullptr;

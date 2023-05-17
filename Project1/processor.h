@@ -12,7 +12,7 @@ public:
 	Process* Finish; // this process to put the finished process
 	Process* Blk; // this for block , when requested io we get the first element in pairs to cmp with Ex-time
 
-	virtual void schedulago() = 0;
+	virtual void schedulago(int timestep) = 0;
 	virtual void push(Process* p) = 0;
 	virtual Queue<int> GetID() = 0;
 	virtual int GetCount() = 0;
