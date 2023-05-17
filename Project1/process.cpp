@@ -1,6 +1,6 @@
 #include "process.h"
 
-Process::Process(int pid, int at, int ct, Queue<Pair<int, int>*> q) {
+Process::Process(int pid, int at, int ct, Queue<Pair<int, int>*>* q) {
 	PID = pid;
 	AT = at;
 	CT = ct;
@@ -10,7 +10,7 @@ Process::Process(int pid, int at, int ct, Queue<Pair<int, int>*> q) {
 	RT = 0; //response time
 	TT = 0; //termination time
 	TIOD = 0;
-	for (auto i : q) {
+	for (auto i : *q) {
 		TIOD += i->second;
 	}
 	//TRT = TT - AT; //turnaround duration
@@ -114,7 +114,7 @@ Process* Process::fork(int t, int id) {
 	int oldct = getCT();
 	int exe = getEX();
 	int newct = oldct - exe;
-	kid = new Process(id, t, newct, Queue<Pair<int, int>*>());
+	kid = new Process(id, t, newct, new Queue<Pair<int, int>*>());
 
 	return kid;
 }

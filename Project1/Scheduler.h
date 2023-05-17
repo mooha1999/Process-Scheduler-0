@@ -51,7 +51,7 @@ class Scheduler {
 		while (m--) {
 			int at, pid, ct, n;
 			inputFile >> at >> pid >> ct >> n;
-			Queue<Pair<int, int>*> ios;
+			Queue<Pair<int, int>*>* ios = new Queue<Pair<>*>();
 			string pairString;
 			inputFile >> pairString;
 			// Remove the parentheses from the string
@@ -69,7 +69,7 @@ class Scheduler {
 				while (!nums.IsEmpty()) {
 					int f = nums.Pop();
 					int s = nums.Pop();
-					ios.Push(new Pair<>(f, s));
+					ios->Push(new Pair<>(f, s));
 				}
 			}
 			// Add the pair to the vector
