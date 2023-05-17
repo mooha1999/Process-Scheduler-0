@@ -7,7 +7,8 @@ class SJF :public Processor
 {
 public:
 
-	PriortyQueue<Process*>* Rdy;
+	PriortyQueue<Process*>* Rdy = new PriortyQueue<Process*>; // intializing pointer Queue
+
 	virtual void push(Process* p)
 	{
 		Rdy->Push(p, p->getCT()); // take the process and the cpu time
