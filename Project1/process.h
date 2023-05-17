@@ -56,5 +56,5 @@ public:
 	Process* fork(int t, int id);
 	void incEX();
 	void incIOT();
-	~Process(); //destructor
+	virtual ~Process(); //destructor
 };

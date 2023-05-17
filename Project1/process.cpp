@@ -115,4 +115,6 @@ Process* Process::fork(int t, int id) {
 Process ::~Process() {
 	delete next; // deallocate memory for the pointed process
 	delete kid;
+	kid = nullptr;
+	next = nullptr;
 }
