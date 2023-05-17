@@ -75,7 +75,7 @@ public:
 	}
 	int Count() { return size; }
 	Iterator begin() const {
-		return Iterator(Head);
+		return Iterator(front);
 	}
 
 	Iterator end() const {
