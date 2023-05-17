@@ -13,7 +13,7 @@ void RRobin::Add_process(process * data)  //insert the process in te rdy list
 }
 void RRobin::schedulealgo() //here i need to calculate num_of_jobs that will done
 {
-	
+
 
 }
 
@@ -71,7 +71,7 @@ void RRobin::schedulealgo() //here i need to calculate num_of_jobs that will don
 			return count;
 		}
 	}
-
+   
 	void RRobin::delnode(int value)
 	{
 		process* rear = front; //another pointer have the address of first
@@ -79,7 +79,7 @@ void RRobin::schedulealgo() //here i need to calculate num_of_jobs that will don
 		{
 			cout << "The Queue is empty\n" << endl;
 		}
-
+	
 		process* deleteptr = front;
 		if (front->data == value)
 		{

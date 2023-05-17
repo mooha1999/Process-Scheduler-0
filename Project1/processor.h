@@ -1,26 +1,20 @@
-#include "process.h";
+#include "Process.h"
+#include <string>
+#include <iostream>
+#pragma once
 class Processor
 {
 public:
-	//hello from sameh
-	int FT = 0;
-	bool BUSY = false;
-	process RUN;
-	Processor();
-	virtual void SchaduelAlgo();
-	virtual void push(process p);
-	~Processor();
+	int TBT = 0; //total busy time of processes
+	int AR; //total turn around time of all processes
+	bool BUSY;
+	Process* RUN; // this process to assign the runnin process
+	Process* Finish; // this process to put the finished process
 
-private:
+	virtual void schedulago() = 0;
+	virtual void push(Process* p) = 0;
+	virtual Queue<int> GetID() = 0;
+	virtual int GetCount() = 0;
+	virtual int GetWT() = 0;
+	//virtual int GetBT(bool BUSY) = 0; //calculate busy time
 };
-
-Processor::Processor()
-{
-}
-
-void Processor::push(process p) {}
-void Processor::SchaduelAlgo() {}
-
-Processor::~Processor()
-{
-}

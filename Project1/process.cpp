@@ -1,71 +1,104 @@
-//written by nouran wisam 
+//written by nouran wisam
 #include "process.h"
 
-process::process() { //default constructor // initialization
-	PID = 1;
-	AT = 1; //arrival time 
-	RT = 1; //response time 
-	TT = 1; //termination time 
-	int TRT = TT - AT; //turnaround duration
-	int WT = TRT - CT; //waiting time 
-}
-process::process(int id, int at, int ct, int n)
-{
-	PID = id;
+Process::Process(int pid, int at, int ct, Queue<Pair<int, int>*> q) {
+	PID = pid;
 	AT = at;
 	CT = ct;
-	N = n;
-}
-process::process(int id, int at, int rt, int ct, int tt) {
-	PID = id;
-	AT = at;
-	RT = rt;
-	CT = ct;
-	TT = tt;
+	Q = q;
+	EX = 0; //execution time starting from zero
+	Process* kid = nullptr;
+	RT = 0; //response time
+	TT = 0; //termination time
+	//TRT = TT - AT; //turnaround duration
+	//WT = TRT - CT; //waiting time
+	//N = 1; //number of times the process requests the io
 }
 
-int process::getPID() {
+Process::Process() {
+}
+
+int Process::getIOT()
+{
+	return IOT;
+}
+
+int Process::getPID() {
 	return PID;
 }
-int process::getAT() {
+int Process::getAT() {
 	return AT;
 }
-int process::getRT() {
+int Process::getRT() {
 	return RT;
 }
-int process::getTT() {
+int Process::getTT() {
 	return TT;
 }
-int process::getCT() {
+int Process::getCT() {
 	return CT;
 }
-int process::getTRT() {
-	return TRT;
+int Process::getTRT() {
+	return (TT - AT);
 }
-int process::getWT() {
-	return WT;
+int Process::getWT() {
+	return ((TT - AT) - CT);
 }
-void process::setPID(int id) {
+int Process::getEX() {
+	return EX;
+}
+Queue<Pair<int, int>*> Process::getPairs()
+{
+	return Q;
+}
+void Process::setPID(int id) {
 	PID = id;
 }
-void process::setAT(int at) {
+void Process::setAT(int at) {
 	AT = at;
 }
-void process::setRT(int rt) {
+void Process::setRT(int rt) {
 	RT = rt;
 }
-void process::setCT(int ct) {
+void Process::setCT(int ct) {
 	CT = ct;
 }
-void process::setTT(int tt) {
+void Process::setIOT(int iot) {
+	IOT = iot;
+}
+void Process::setTT(int tt) {
 	TT = tt;
 }
-void process::setTRT(int tt, int at) {
-	TRT = tt - at;
+//void process::setTRT(int tt, int at) {
+	//return (tt - at);
+//}
+//void process::setWT(int tt, int at, int ct) {
+	//WT = tt - ct;
+//}
+
+void Process::incEX()
+{
+	EX++;
 }
-void process::setWT(int tt, int at, int ct) {
-	WT = tt - ct;
+
+void Process::incIOT()
+{
+	IOT++;
 }
 
 //void process :: setstate(); //fn that set the process state according to variables
-//void process :: getstate(); //still needs implementation 
+//void process :: getstate(); //still needs implementation
+
+Process* Process::fork(int t, int id) {
+	int oldct = getCT();
+	int exe = getEX();
+	int newct = oldct - exe;
+	kid = new Process(id, t, newct, Queue<Pair<int, int>*>());
+
+	return kid;
+}
+
+Process ::~Process() {
+	delete next; // deallocate memory for the pointed process
+	delete kid;
+}

@@ -42,7 +42,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -139,19 +139,29 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="FCFS.cpp" />
     <ClCompile Include="LinkedList.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="process.cpp" />
+    <ClCompile Include="Process.cpp" />
     <ClCompile Include="RR.cpp" />
+    <ClCompile Include="RRobin.cpp" />
     <ClCompile Include="SJF.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BlockedProcesses.h" />
+    <ClInclude Include="Cicularqueue.h" />
     <ClInclude Include="FCFS.h" />
     <ClInclude Include="LinkedList.h" />
-    <ClInclude Include="process.h" />
-    <ClInclude Include="processor.h" />
+    <ClInclude Include="Pair.h" />
+    <ClInclude Include="PriorityNode.h" />
+    <ClInclude Include="PriortyQueue.h" />
+    <ClInclude Include="Process.h" />
+    <ClInclude Include="Processor.h" />
+    <ClInclude Include="Queue.h" />
+    <ClInclude Include="QueueNode.h" />
+    <ClInclude Include="RRobin.h" />
+    <ClInclude Include="Scheduler.h" />
     <ClInclude Include="SJF.h" />
+    <ClInclude Include="UI.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="input.txt" />

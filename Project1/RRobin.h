@@ -3,27 +3,25 @@
 #include <string>
 #include "LinkedList.h"
 #include"process.h"
-#include"processor.h"
-class RRobin 
+#include"Queue.h"
+//fffff
+class RRobin : public Processor
 {
 public:
-    process* front;
-    process* rear;
-    LinkedList Rdy;
-    int time_slice;
-    int Num_of_jobs;
-    void settimeSlice(int TS); //timeslice 
-    void Add_process(process *data); //add data in the linkedlist of the Rdy list
-    void  schedulealgo();
+	int time_slice;
 
+			//execution time and pair comparison
+			int a = RUN->getPairs().Peek()->first;
+			int b = RUN->getEX();
+			if (a == b)
+			{
+				//remove the pair from comparison
+				RUN->getPairs().Pop();
+			}
+		}
+		else
+		{
+			BUSY = true; //busy when running
+			TBT++; //total busy time
 
-
-
- // for queue of RR
-    RRobin();
-    bool Isempty();
-    void push(int val);
-    int countQ();
-    void delnode(int value);
-    void round_robin(int time_slice);
 };

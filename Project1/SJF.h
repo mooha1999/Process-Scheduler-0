@@ -1,19 +1,73 @@
-
 #include "processor.h"
-#include <queue>
+#include"process.h"
+#include"PriortyQueue.h"
 
-struct CompareCPUTime {
-    bool operator()(process p1, process p2)
-    {
-        // return "true" if "p2" is ordered
-        // before "p1", for example:
-        return p1.getCT() > p2.getCT();
-    }
-};
-class SJF : Processor
+class SJF :public Processor
 {
 public:
-    priority_queue<process, std::vector<process>, CompareCPUTime> RDY;
-    void push(process p);
-    void SchaduelAlgo();
+
+	PriortyQueue<Process*>* Rdy;
+
+	virtual void push(Process* p)
+	{
+		Rdy->Push(p, p->getCT()); // take the process and the cpu time
+	}
+	virtual void schedulago()
+	{
+		if (!RUN)
+		{
+			RUN = Rdy->Pop();   //return the value of the firt process in rdy list
+			//execution time and pair comparison
+
+			int a = RUN->getPairs().Peek()->first;
+
+			int b = RUN->getEX();
+			if (a == b) {
+				//remove the pair from comparison
+				RUN->getPairs().Pop();
+			}
+		}
+		else
+		{
+			BUSY = true; //busy when running
+			TBT++; //total busy time
+
+			if (RUN->getEX() == RUN->getCT())
+			{
+				AR = AR + RUN->getTRT();
+				Finish = RUN;
+				RUN = nullptr;
+			}
+			else
+			{
+				RUN->incEX();
+			}
+		}
+	}
+
+	Queue<int> GetID()
+	{
+		PriortyQueue<Process*>temp = *Rdy;
+		Queue<int>ID;
+		while (temp.IsEmpty())
+		{
+			int x = temp.Pop()->getPID();  //return id
+			ID.Push(x);
+		}
+		return ID;
+	}
+	virtual int GetTWT()
+	{
+		PriortyQueue<Process*>temp = *Rdy;
+		int SumWT = 0;
+		while (!temp.IsEmpty())
+		{
+			int x = temp.Pop()->getWT();  //return waiting time
+			SumWT = SumWT + x;
+		}
+		return SumWT;
+	}
+	int GetCount() {
+		return Rdy->Count();
+	}
 };
