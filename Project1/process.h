@@ -1,5 +1,4 @@
 #pragma once
-//written by nouran wisam 
 #include <iostream>
 #include "Queue.h"
 #include "Pair.h"

@@ -1,5 +1,4 @@
 #pragma once
-//written by nouran wisam and ganna salah
 #include <iostream>
 #include "Scheduler.h"
 #include "FCFS.h"

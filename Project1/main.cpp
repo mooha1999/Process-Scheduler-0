@@ -1,4 +1,3 @@
-//nouran wisam 
 #include <iostream>
 #include <fstream>
 #include "process.h"

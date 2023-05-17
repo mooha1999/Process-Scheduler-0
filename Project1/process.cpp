@@ -1,4 +1,4 @@
-//written by nouran wisam
+
 #include "process.h"
 
 Process::Process(int pid, int at, int ct, Queue<Pair<int, int>*> q) {

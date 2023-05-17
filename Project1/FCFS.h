@@ -1,4 +1,3 @@
-//written by nouran wisam 
 #include "process.h"
 #include "Processor.h"
 #pragma once
