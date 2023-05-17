@@ -1,7 +1,6 @@
 #include "processor.h"
 #include"process.h"
 #include"PriortyQueue.h"
-
 class SJF :public Processor
 {
 public:
@@ -38,6 +37,12 @@ public:
 				Finish = RUN;
 				RUN = nullptr;
 			}
+			if (RUN->getEX() == RUN->getPairs().Peek()->first)
+			{
+				Blk = RUN;
+				RUN = nullptr;
+			}
+		
 			else
 			{
 				RUN->incEX();

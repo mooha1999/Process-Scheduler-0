@@ -10,6 +10,7 @@ public:
 	bool BUSY;
 	Process* RUN; // this process to assign the runnin process
 	Process* Finish; // this process to put the finished process
+	Process* Blk; // this for block , when requested io we get the first element in pairs to cmp with Ex-time
 
 	virtual void schedulago() = 0;
 	virtual void push(Process* p) = 0;

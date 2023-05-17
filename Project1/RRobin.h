@@ -51,11 +51,17 @@ public:
 				Rdy->Push(RUN);
 				RUN = nullptr;
 			}
-			// case 2
+			// case 2 when the ex time is equal to the first element(time step)in pairs 
+			if (RUN->getEX() == RUN->getPairs().Peek()->first)
+			{
+				Blk = RUN;
+				RUN = nullptr;
+			}
 			else
 			{
 				RUN->incEX();
 			}
+		
 		}
 	}
 	Queue<int> GetID()
