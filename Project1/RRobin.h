@@ -20,27 +20,14 @@ public:
 	}
 	virtual void schedulago(int timestep)
 	{
-		if (!Rdy) //check if rdy queue isn't empty 
+		if (!Rdy->IsEmpty() && !RUN) //check if rdy queue isn't empty 
 		{
 
 			RUN = Rdy->Pop();   //return the value of the firt process in rdy list
 			RUN->setRT(timestep - (RUN->getAT()));
 		}
-		else
+		else if (RUN)
 		{
-			BUSY = true; //busy when running
-			TBT++; //total busy time
-
-			if (RUN->getEX() == RUN->getCT()) //Ex-time=CPU-time
-
-			if (!RUN) // if the RUN process is not empty
-
-			{
-				RUN = Rdy->Pop();   //return the value of the firt process in rdy list
-
-			}
-			else
-			{
 				BUSY = true; //busy when running
 				TBT++; //total busy time
 
@@ -71,7 +58,6 @@ public:
 				}
 
 			}
-		}
 	}
 
 	Queue<int> GetID()

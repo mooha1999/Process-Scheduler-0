@@ -13,6 +13,7 @@ public:
 	{
 		Rdy->Push(p, p->getCT()); // take the process and the cpu time
 	}
+
 	virtual void schedulago(int timestep)
 	{
 		if (!Rdy->IsEmpty() && !RUN) //check if rdy queue isn't empty 
@@ -21,17 +22,7 @@ public:
 			RUN->setRT(timestep - (RUN->getAT()));
 			//Response time is difference between current timestep and the arrival time to the processor
 		}
-		else
-		{
-			BUSY = true; //busy when running
-			TBT++; //total busy time
-
-			if (!RUN) // check if there is no running process 
-			{
-				RUN = Rdy->Pop();   //return the value of the firt process in rdy list
-			}
-
-			else
+			else if (RUN)
 			{
 				BUSY = true; //busy when running
 				TBT++; //total busy time
@@ -54,9 +45,8 @@ public:
 				}
 			}
 		}
-	}
 
-	virtual Queue<int> GetID()
+virtual Queue<int> GetID()
 	{
 		PriortyQueue<Process*>temp = *Rdy;
 		Queue<int>ID;
