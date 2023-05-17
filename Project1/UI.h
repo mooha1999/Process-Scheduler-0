@@ -180,8 +180,8 @@ public:
 
 		cout << "------------    TRM Processes ----------" << "\n";
 		cout << "number of processes in run" << "RUN: " << ""; //for loop for trm display
-		cout << "PRESS ANY KEY TO MOVE TO NEXT STEP !";
-
+		
+		void endline();
 		//priority queue of processes, .count for TRM processes 
 		//print IDs using for loop 
 
@@ -214,4 +214,10 @@ public:
 			Sleep(1000);
 		}
 	}
+
+	void endline() {
+		cout << "PRESS ANY KEY TO MOVE TO NEXT STEP !";
+		system("pause");
+	}
+
 };
