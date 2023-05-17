@@ -67,16 +67,17 @@ public:
 		cout << "Current Timestep:" << "  " << timestep << "\n";
 		cout << "------------    RDY Processes -----------" << "\n";
 		Queue<int> ids;
+		int c = 1;
 		for (FCFS* i : Fcfs)
 		{
 			ids = i->GetID();
-			cout << "processor " << i << " [FCFS]: ";
+			cout << "processor " << c++ << " [FCFS]: ";
 			int counter = ids.Count(); //return the num of ids in the queue
-			cout << counter << '  ';
+			cout << counter << " ";
 			cout << "RDY: ";
 			for (int j : ids)
 			{
-				cout << j << ' , ';
+				cout << j << ", ";
 			}
 			cout << "\n";
 		}
@@ -84,13 +85,13 @@ public:
 		for (SJF* i : Sjf)
 		{
 			ids = i->GetID();
-			cout << "processor " << i << "[SJF ]: ";
+			cout << "processor " << c++ << "[SJF ]: ";
 			int counter = ids.Count();
-			cout << counter << '  ';
+			cout << counter << " ";
 			cout << "RDY: ";
 			for (int j : ids)
 			{
-				cout << j << ' , ';
+				cout << j << ", ";
 			}
 			cout << "\n";
 		}
@@ -98,20 +99,20 @@ public:
 		for (RRobin* i : Rr)
 		{
 			ids = i->GetID();
-			cout << "processor " << i << "[RR ]: ";
+			cout << "processor " << c++ << "[RR ]: ";
 			int counter = ids.Count();
-			cout << counter << '  ';
+			cout << counter << " ";
 			cout << "RDY: ";
 			for (int j : ids)
 			{
-				cout << j << ' , ';
+				cout << j << ", ";
 			}
 			cout << "\n";
 		}
 
 		//-----------------------------------------------------------------------------------------
 		cout << "-------------   BLK Processes ----------" << "\n";
-		cout << BLK->BlockedIDsCount() << "BLK: " << BLK->BlockedIDs();
+		cout << BLK->BlockedIDsCount() << " BLK: " << BLK->BlockedIDs();
 
 		//----------------------------------------------------------------------------------------
 
@@ -181,8 +182,7 @@ public:
 		system("pause");
 	}
 
-	void displayEndLine() { //ending simulation message 
-
+	void displayEndLine() { //ending simulation message
 		cout << "Simualtion ends. Output file created.";
 		system("pause");
 	}

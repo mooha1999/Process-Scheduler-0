@@ -49,7 +49,7 @@ public:
 	{
 		Queue<Process*>temp = *Rdy;   //*Rdy to return the value of Rdy (copy)
 		Queue<int>ID;
-		while (temp.IsEmpty())
+		while (!temp.IsEmpty())
 		{
 			int x = temp.Pop()->getPID();  //return id
 			ID.Push(x); //push the id in the queue

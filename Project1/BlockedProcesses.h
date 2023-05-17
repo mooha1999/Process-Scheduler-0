@@ -19,14 +19,16 @@ public:
 			running->setIOT(0);
 			finished = nullptr;
 		}
-		else if (running->getIOT() == running->getPairs().Peek()->second) {
-			running->getPairs().Pop();
-			finished = running;
-			running = nullptr;
-		}
-		else if (running->getIOT() < running->getPairs().Peek()->second) {
-			running->incIOT();
-			finished = nullptr;
+		if (running) {
+			if (running->getIOT() == running->getPairs().Peek()->second) {
+				running->getPairs().Pop();
+				finished = running;
+				running = nullptr;
+			}
+			else if (running->getIOT() < running->getPairs().Peek()->second) {
+				running->incIOT();
+				finished = nullptr;
+			}
 		}
 	}
 	Process* GetCurrentProcess() {
