@@ -6,7 +6,7 @@ class Processor
 {
 public:
 	int TBT = 0; //total busy time of processes
-	int AR; //total turn around time of all processes
+	int AR = 0; //total turn around time of all processes
 	bool BUSY; //is the processor busy?
 	Process* RUN; // this process to assign the runnin process
 	Process* Finish; // this process to put the finished process

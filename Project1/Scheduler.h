@@ -75,6 +75,7 @@ class Scheduler {
 			// Add the pair to the vector
 
 			NEW.Push(new Process(pid, at, ct, ios));
+			totalProcessesNum++;
 			lastID = pid; //To generate unique ids for the forked processes
 		}
 	}
@@ -159,7 +160,8 @@ class Scheduler {
 		ofstream out("output.txt");
 		int twt = 0, trt = 0, ttrt = 0;
 		out << "TT\tPID\tAT\tCT\tIO_D\tWT\tRT\tTRT\n";
-		for (auto p : TRM) {
+		while (!TRM.IsEmpty()) {
+			Process* p = TRM.Pop();
 			out << p->getTT() << '\t';
 			out << p->getPID() << '\t';
 			out << p->getAT() << '\t';
@@ -190,9 +192,12 @@ class Scheduler {
 		out << "Processors Load\n";
 		int i = 1;
 		for (auto p : Processors) {
-			out << 'p' << i++ << '=' << (p->GetBusyTime() / p->GetTRT()) * 100 + '\t';
+			if (p->GetTRT() == 0)
+				out << 0 << '\t';
+			else
+				out << 'p' << i++ << '=' << (p->GetBusyTime() / p->GetTRT()) * 100 + '\t';
 		}
-		out << "\nProcessors Utiliz\n";
+		out << "\nProcessors Utilize\n";
 		i = 0;
 		int totalUtil = 0;
 		for (auto p : Processors) {
@@ -226,7 +231,7 @@ public:
 		int timestep = 0;
 		ui.displayMainMenu();
 		ui.getUserInput();
-		while (!NEW.IsEmpty() || !BLK->IsEmpty() || !sigKills.IsEmpty() || !isAllEmpty()) {
+		while (!NEW.IsEmpty() || !BLK->IsEmpty() || sigKills.IsEmpty() || !isAllEmpty()) { //SIGKILL CHECK EMPTY
 			//from NEW to RDY, a while loop because there might be more than one process arriving at the same time
 			while (!NEW.IsEmpty() && NEW.Peek()->getAT() == timestep) {
 				Processor* leastProcessor = getLeastWaitingProcessor();
@@ -251,6 +256,7 @@ public:
 			ui.display(timestep, fcfss, sjfs, rrobins, BLK, TRM);
 			timestep++;
 		}
+
 		generateOutputFile(timestep);
 		ui.displayEndLine();
 	}

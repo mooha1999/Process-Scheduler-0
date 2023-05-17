@@ -1,0 +1,11 @@
+TT	PID	AT	CT	IO_D	WT	RT	TRT
+21	1	3	5	2	13	16	18
+Processes: 3
+Avg WT = 4	Avg RT = 5	Avg TRT = 6	Forked Processes: 0
+Killed Processes: 0
+Processors: 3 [1 FCFS, 1 SJF, 1 RR]
+Processors Load
+p1=9p2=90	
+Processors Utilize
+p0=9p1=9p2=9
+Avg utilization = 0
