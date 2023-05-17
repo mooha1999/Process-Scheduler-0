@@ -37,7 +37,7 @@ public:
 				RUN = nullptr;
 			}
 			//case 1  if the execution time is equal to time slice
-			else if (RUN->getEX() % time_slice == 0) // reminder (
+			else if (RUN->getEX() != 0 && RUN->getEX() % time_slice == 0) // reminder (
 			{
 				RUN->incEX(); // hna 34an mayd5ol4 be nafs el ex-time (resulting infinte loop)
 				Rdy->Push(RUN);
