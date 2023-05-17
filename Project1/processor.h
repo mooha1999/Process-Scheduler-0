@@ -12,6 +12,22 @@ public:
 	Process* Finish; // this process to put the finished process
 	Process* Blk; // this for block , when requested io we get the first element in pairs to cmp with Ex-time
 
+	virtual Process* getBlk() {
+		return Blk;
+	}
+
+	virtual Process* getFinish() {
+		return Finish;
+	}
+
+	virtual void setBlk(Process* blk) {
+		Blk = blk;
+	}
+
+	virtual void setFinish(Process* finish) {
+		Finish = finish;
+	}
+
 	virtual void schedulago(int timestep) = 0;
 	virtual void push(Process* p) = 0;
 	virtual Queue<int> GetID() = 0;
