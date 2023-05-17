@@ -19,7 +19,7 @@ Process::Process(int pid, int at, int ct, Queue<Pair<int, int>*> q) {
 
 	//intializing the data members are not given as input in the constructor
 	data = 0;
-	Process* next = new Process; 
+	Process* next = new Process;
 	//this is the child created by FCFS in fork a child
 	RT = 0;
 	IOT = 0;
@@ -61,10 +61,10 @@ int Process::getTIOD() {
 }
 
 int Process::getRMT() {
-	return (CT-EX);
+	return (CT - EX);
 }
 
-Queue<Pair<int, int>*> Process::getPairs()
+Queue<Pair<int, int>*>* Process::getPairs()
 {
 	return Q;
 }

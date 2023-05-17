@@ -20,12 +20,12 @@ public:
 			finished = nullptr;
 		}
 		if (running) {
-			if (running->getIOT() == running->getPairs().Peek()->second) {
-				running->getPairs().Pop();
+			if (running->getIOT() == running->getPairs()->Peek()->second) {
+				running->getPairs()->Pop();
 				finished = running;
 				running = nullptr;
 			}
-			else if (running->getIOT() < running->getPairs().Peek()->second) {
+			else if (running->getIOT() < running->getPairs()->Peek()->second) {
 				running->incIOT();
 				finished = nullptr;
 			}
@@ -62,5 +62,8 @@ public:
 		}
 		return ret;
 	}
-	int BlockedIDsCount() { return blockedProcesses.Count() + running ? 1 : 0; }
+	int BlockedIDsCount() {
+		int c = running ? 1 : 0;
+		return blockedProcesses.Count() + c;
+	}
 };

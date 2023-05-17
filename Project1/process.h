@@ -14,9 +14,9 @@ private:
 	//int TRT;//turnaround duration
 	//int WT; //waiting time
 	//int N; //number of times the process requests the io
-	//int RMT; //remaining time 
+	//int RMT; //remaining time
 	int EX;
-	Queue<Pair<int, int>*> Q;
+	Queue<Pair<int, int>*>* Q;
 	int IOT; //io time //setter getter incremental
 	int TIOD; //Total IO Duration
 
@@ -39,7 +39,7 @@ public:
 	int getEX();
 	int getTIOD();
 	int getRMT();
-	Queue<Pair<int, int>*> getPairs();
+	Queue<Pair<int, int>*>* getPairs();
 
 	void setPID(int id);
 	void setAT(int at);
