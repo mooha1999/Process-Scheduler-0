@@ -62,6 +62,7 @@ public:
 
 	void interactivemode(int timestep, Queue<Processor*> Fcfs, Queue<Processor*>Sjf, Queue<Processor*>Rr)
 	{
+		cout << "You choose Interactive mode." << "\n";
 		cout << "Current Timestep:" << "  " << timestep<<"\n";
 		cout << "------------    RDY Processes -----------" << "\n";
 		Queue<int> ids;
@@ -169,7 +170,7 @@ public:
 
 
 	void silentmode(){
-
+		cout << "You choose Silent mode." << "\n";
 		cout << "--------Silent Mode-------" << "\n";
 		cout << "Simulation Starts" << "\n";
 		//calls scheduler class to print output text file
@@ -184,6 +185,7 @@ public:
 
 	void stepbystep(int timestep, Queue<Processor*> Fcfs, Queue<Processor*>Sjf, Queue<Processor*>Rr)
 	{
+		cout << "You choose Step-by-step mode." << "\n";
 		cout << "Current Timestep:" << "  " << timestep << "\n";
 		cout << "------------    RDY Processes -----------" << "\n";
 		Queue<int> ids;
