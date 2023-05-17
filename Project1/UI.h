@@ -87,8 +87,6 @@ public:
 			}
 			cout << "\n";
 			void pausesleep();
-
-			CountFcfs++;
 			
 		}
 		void pausesleep();
@@ -195,10 +193,6 @@ public:
 
 		cout << "Simualtion ends. Output file created.";
 	}
-	
-	
-	
-	
 	void exit()
 	{ //aborts program completely
 		abort();
