@@ -35,34 +35,32 @@ public:
 
 		cout << "Enter your choice: ";
 		cin >> choice;
-		return choice;
-	}
-	
 
-	//nouran: ya ganna el if condition de btt3ml fel main i guess 
-	void display(int timestep, Queue<Processor*> Fcfs, Queue<Processor*>Sjf, Queue<Processor*>Rr) // to get user what mood does the user need
-	{
-		int Uchoice = getUserInput();
-		if (Uchoice < 1 || Uchoice >3) // if he choose any number which is not between 1 and 4
+		if (choice < 1 || choice >3) // if he choose any number which is not between 1 and 3
 		{
 			cout << " Not a Valid Choice ";
 		}
 		else
 		{
-			if (Uchoice == 1)
+			return choice;
+		}
+	}
+	
+
+	void display(int timestep, Queue<Processor*> Fcfs, Queue<Processor*>Sjf, Queue<Processor*>Rr) // to get user what mood does the user need
+	{
+			if (choice == 1)
 			{
 				interactivemode( timestep, Fcfs,Sjf, Rr);
 			}
-			else if (Uchoice == 2)
+			else if (choice == 2)
 			{
 				stepbystep(timestep, Fcfs, Sjf, Rr);
 			}
-			else if (Uchoice == 3)
+			else if (choice == 3)
 			{
 				silentmode();
 			}
-	
-		}
 	}
 
 
