@@ -19,9 +19,6 @@ Process::Process(int pid, int at, int ct, Queue<Pair<int, int>*> q) {
 	//N = 1; //number of times the process requests the io
 }
 
-Process::Process() {
-}
-
 int Process::getIOT()
 {
 	return IOT;
@@ -101,7 +98,7 @@ Process* Process::fork(int t, int id) {
 	int oldct = getCT();
 	int exe = getEX();
 	int newct = oldct - exe;
-	kid = new Process(id, t, newct, Queue<Pair<int, int>*>());
+	kid = new Process(id, t, newct, Queue<Pair<int, int>*>(), TIOD);
 
 	return kid;
 }
