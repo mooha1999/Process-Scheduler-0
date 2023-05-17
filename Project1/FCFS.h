@@ -97,7 +97,14 @@ public:
 
 	virtual int Getidrun() //return the id of the running process
 	{
-		int r = RUN->getPID();
-		return r;
+		if (RUN->getPID() == NULL)
+		{
+			return -1;
+		}
+		else
+		{
+			int r = RUN->getPID();
+			return r;
+		}
 	}
 };
