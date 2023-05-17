@@ -34,7 +34,7 @@ public:
 				Finish = RUN;
 				RUN = nullptr;
 			}
-			else if (!RUN->getPairs().IsEmpty() && RUN->getEX() == RUN->getPairs().Peek()->first)
+			else if (!RUN->getPairs()->IsEmpty() && RUN->getEX() == RUN->getPairs()->Peek()->first)
 			{
 				Blk = RUN;
 				RUN = nullptr;
