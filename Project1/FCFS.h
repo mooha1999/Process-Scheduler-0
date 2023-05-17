@@ -6,7 +6,7 @@ class FCFS : public Processor
 {
 public:
 
-	Queue<Process*>* Rdy; // pointer Queue
+	Queue<Process*>* Rdy = new Queue<Process*>; // intializing pointer Queue
 	int countBlk = 0;
 
 	virtual void push(Process* p)
