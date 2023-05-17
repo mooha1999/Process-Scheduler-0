@@ -45,7 +45,6 @@ public:
 				RUN = nullptr;
 			}
 			else
-			else
 			{
 				RUN->incEX();
 			}
@@ -101,7 +100,7 @@ public:
 	}
 
 	virtual int getidrun() //return the id of the running process 
-    {
+	{
 		int r = RUN->getPID();
 		return r;
 	}
