@@ -27,6 +27,7 @@ public:
 	//this is the child created by FCFS in fork a child
 	Process* kid;
 	Process(int pid, int at, int rt, Queue<Pair<int, int>*> q);
+	Process();
 	int getIOT();
 	int getPID();
 	int getAT();

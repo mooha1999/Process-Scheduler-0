@@ -17,7 +17,14 @@ Process::Process(int pid, int at, int ct, Queue<Pair<int, int>*> q) {
 	//TRT = TT - AT; //turnaround duration
 	//WT = TRT - CT; //waiting time
 	//N = 1; //number of times the process requests the io
+
+	//intializing the data members are not given as input in the constructor
+	int data = 0;
+	Process* next = new Process; 
+	//this is the child created by FCFS in fork a child
+	Process* kid;
 }
+Process::Process() {}
 
 int Process::getIOT()
 {
