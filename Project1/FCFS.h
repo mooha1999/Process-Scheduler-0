@@ -15,35 +15,37 @@ public:
 	}
 
 	virtual void schedulago(int timestep)
-
-	{
-		if (!RUN)
+    {
+		if (!Rdy)
 		{
-			RUN = Rdy->Pop();   //return the value of the firt process in rdy list
-
-
-		}
-		else
-		{
-			BUSY = true; //busy when running
-			TBT++; //total busy time
-
-			if (RUN->getEX() == RUN->getCT())
+			if (!RUN)
 			{
-				RUN->setTT(timestep); //now the termination time of process is equal to current timestep
-				AR = AR + RUN->getTRT(); // total turn around time of all processes
-				Finish = RUN;
-				RUN = nullptr;
-				BUSY = false;
-			}
-			if (!RUN->getPairs().IsEmpty()&&RUN->getEX() == RUN->getPairs().Peek()->first)
-			{
-				Blk = RUN;
-				RUN = nullptr;
+				RUN = Rdy->Pop();   //return the value of the firt process in rdy list
+
+
 			}
 			else
 			{
-				RUN->incEX();
+				BUSY = true; //busy when running
+				TBT++; //total busy time
+
+				if (RUN->getEX() == RUN->getCT())
+				{
+					RUN->setTT(timestep); //now the termination time of process is equal to current timestep
+					AR = AR + RUN->getTRT(); // total turn around time of all processes
+					Finish = RUN;
+					RUN = nullptr;
+					BUSY = false;
+				}
+				if (!RUN->getPairs().IsEmpty() && RUN->getEX() == RUN->getPairs().Peek()->first)
+				{
+					Blk = RUN;
+					RUN = nullptr;
+				}
+				else
+				{
+					RUN->incEX();
+				}
 			}
 		}
 	}

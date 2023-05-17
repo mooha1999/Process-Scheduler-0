@@ -14,31 +14,34 @@ public:
 	}
 	virtual void schedulago(int timestep)
 	{
-		if (!RUN)
+		if (!Rdy) //check if rdy queue isn't empty 
 		{
-			RUN = Rdy->Pop();   //return the value of the firt process in rdy list
-	
-		}
-		else
-		{
-			BUSY = true; //busy when running
-			TBT++; //total busy time
+			if (!RUN) // check if there is no running process 
+			{
+				RUN = Rdy->Pop();   //return the value of the firt process in rdy list
 
-			if (RUN->getEX() == RUN->getCT())
-			{
-				RUN->setTT(timestep);
-				AR = AR + RUN->getTRT();
-				Finish = RUN;
-				RUN = nullptr;
-			}
-			if (!RUN->getPairs().IsEmpty() && RUN->getEX() == RUN->getPairs().Peek()->first)
-			{
-				Blk = RUN;
-				RUN = nullptr;
 			}
 			else
 			{
-				RUN->incEX();
+				BUSY = true; //busy when running
+				TBT++; //total busy time
+
+				if (RUN->getEX() == RUN->getCT())
+				{
+					RUN->setTT(timestep);
+					AR = AR + RUN->getTRT();
+					Finish = RUN;
+					RUN = nullptr;
+				}
+				if (!RUN->getPairs().IsEmpty() && RUN->getEX() == RUN->getPairs().Peek()->first)
+				{
+					Blk = RUN;
+					RUN = nullptr;
+				}
+				else
+				{
+					RUN->incEX();
+				}
 			}
 		}
 	}
