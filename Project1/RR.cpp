@@ -51,6 +51,7 @@ public:
 				Rdy->Push(RUN);
 				RUN = nullptr;
 			}
+			//RUN->getPairs().Peek()->first
 			// case 2
 			else
 			{
@@ -93,12 +94,10 @@ public:
 		return SumWT;
 	}
 
-	//nouran: get id of running processes 
-	virtual int getidrun() //return the id of the running process 
+	//nouran: get id of running processes
+	virtual int getidrun() //return the id of the running process
 	{
 		int r = RUN->getPID();
 		return r;
 	}
-
-
 };
