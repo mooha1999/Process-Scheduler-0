@@ -17,7 +17,8 @@ public:
 		if (!RUN)
 		{
 			RUN = Rdy->Pop();   //return the value of the firt process in rdy list
-	
+			RUN->setRT(timestep - (RUN->getAT()));
+			//Response time is difference between current timestep and the arrival time to the processor
 		}
 		else
 		{

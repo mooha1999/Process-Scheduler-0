@@ -23,7 +23,7 @@ public:
 		if (!RUN) // if the RUN process is not empty
 		{
 			RUN = Rdy->Pop();   //return the value of the firt process in rdy list
-
+			RUN->setRT(timestep - (RUN->getAT()));
 		}
 		else
 		{
