@@ -46,7 +46,7 @@ public:
 			}
 		}
 	}
-	virtual Queue<int> GetID() //used in interactive mode: code 1 
+	virtual Queue<int> GetID()
 	{
 		Queue<Process*>temp = *Rdy;   //*Rdy to return the value of Rdy (copy)
 		Queue<int>ID;
@@ -111,5 +111,16 @@ public:
 		return b;
 	}
 
-	
+	virtual string Getidblk() //convert all blocked ids into string
+	{
+		Queue<Process*>temp = *Rdy;   //*Rdy to return the value of Rdy (copy)
+		Queue<int>ID;
+		while (temp.IsEmpty())
+		{
+			int x = temp.Pop()->getPID();  //return id
+			ID.Push(x); //push the id in the queue
+		}
+		return ID;
+	}
+	virtual int GetTWT
 };
