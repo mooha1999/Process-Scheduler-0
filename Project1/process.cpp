@@ -12,7 +12,6 @@ Process::Process(int pid, int at, int ct, Queue<Pair<int, int>*> q) {
 	TIOD = 0;
 	for (auto i : q) {
 		TIOD += i->second;
-		RMT = 0;
 	}
 	//TRT = TT - AT; //turnaround duration
 	//WT = TRT - CT; //waiting time
@@ -88,9 +87,9 @@ void Process::setTT(int tt) {
 	TT = tt;
 }
 
-void Process::setRMT(int ct, int ex) {
-	RMT = ct - ex;
-}
+//void Process::setRMT(int ct, int ex) {
+	//RMT = ct - ex;
+//}
 //void process::setTRT(int tt, int at) {
 	//return (tt - at);
 //}

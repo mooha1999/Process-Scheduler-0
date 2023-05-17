@@ -73,7 +73,7 @@ public:
 		int SumWT = 0;
 		while (!temp.IsEmpty())
 		{
-			int x = temp.Pop()->getWT();  //return waiting time
+			int x = temp.Pop()->getRMT();  //return waiting time
 			SumWT = SumWT + x;
 		}
 		return SumWT;
