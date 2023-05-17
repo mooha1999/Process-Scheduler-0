@@ -14,6 +14,7 @@ private:
 	//int TRT;//turnaround duration
 	//int WT; //waiting time
 	//int N; //number of times the process requests the io
+	int RMT; //remaining time 
 	int EX;
 	Queue<Pair<int, int>*> Q;
 	int IOT; //io time //setter getter incremental
@@ -37,6 +38,7 @@ public:
 	int getWT();
 	int getEX();
 	int getTIOD();
+	int getRMT();
 	Queue<Pair<int, int>*> getPairs();
 
 	void setPID(int id);
@@ -48,7 +50,7 @@ public:
 	//void setWT(int tt, int at, int ct);
 	//void addpair(int r, int d);
 	void setIOT(int iot);
-
+	void setRMT(int ct, int ex);
 	//void setstate(); //fn that set the process state according to variables
 	//void getstate();
 
