@@ -86,7 +86,8 @@ public:
 		return Iterator(Head);
 	}
 
-	Iterator end() const {
+	Iterator end() const 
+	{
 		return Iterator(nullptr);
 	}
 

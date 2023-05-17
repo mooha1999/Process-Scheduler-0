@@ -1,7 +1,8 @@
 #include "process.h"
 #include "Processor.h"
 
-class FCFS : public Processor {
+class FCFS : public Processor 
+{
 public:
 
 	Queue<Process*>* Rdy; // pointer Queue

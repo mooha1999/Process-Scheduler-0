@@ -67,6 +67,8 @@ public:
 		{
 			ids = i->GetID();
 			cout << "processor 1 [FCFS]: " << "number of processes" << "RDY: ";
+			int counter = ids.Count();
+			cout << counter << '  ';
 			for (int j : ids)
 			{
 				
@@ -77,9 +79,11 @@ public:
 		}
 		for (Processor* i : Sjf)
 		{
-			ids = i->GetID();
+			ids = i->GetID(); // put the ID from the processsor in ids 
 			cout << "processor 2 [SJF ]: " << "number of processes" << "RDY: ";
-			for (int j:ids)
+			int counter = ids.Count(); // return number of ids
+			cout << counter << '  ';
+			for (int j:ids)   //cout each ID
 			{
 				cout << j << ' , ';
 			}
@@ -88,9 +92,10 @@ public:
 		for (Processor* i : Rr)
 		{
 			ids = i->GetID();
-			int count = i->Getcount();
+		
 			cout << "processor 3 [RR  ]: " << "number of processes" << "RDY: ";
-			cout << count;
+			int counter = ids.Count();
+			cout << counter << '  ';
 			for (int j : ids)
 			{
 				cout << j << ' , ';

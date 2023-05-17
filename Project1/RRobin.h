@@ -18,10 +18,10 @@ public:
 				//remove the pair from comparison
 				RUN->getPairs().Pop();
 			}
-		}
-		else
-		{
-			BUSY = true; //busy when running
-			TBT++; //total busy time
-
+		
+			else
+			{
+				BUSY = true; //busy when running
+				TBT++; //total busy time
+			}
 };

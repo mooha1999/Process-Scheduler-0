@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 #include"RRobin.h"
-
+/*
 
 void RRobin::settimeSlice(int TS)
 {
@@ -106,4 +106,4 @@ void RRobin::schedulealgo() //here i need to calculate num_of_jobs that will don
 
 		}
 	}
-
+	*/
