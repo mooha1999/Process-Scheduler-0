@@ -44,37 +44,38 @@ public:
 				RUN->incEX();
 			}
 		}
+	}
 
-		virtual Queue<int> GetID()
+	virtual Queue<int> GetID()
+	{
+		PriortyQueue<Process*>temp = *Rdy;
+		Queue<int>ID;
+		while (temp.IsEmpty())
 		{
-			PriortyQueue<Process*>temp = *Rdy;
-			Queue<int>ID;
-			while (temp.IsEmpty())
-			{
-				int x = temp.Pop()->getPID();  //return id
-				ID.Push(x);
-			}
-			return ID;
+			int x = temp.Pop()->getPID();  //return id
+			ID.Push(x);
 		}
-		virtual int GetTWT()
+		return ID;
+	}
+	virtual int GetTWT()
+	{
+		PriortyQueue<Process*>temp = *Rdy;
+		int SumWT = 0;
+		while (!temp.IsEmpty())
 		{
-			PriortyQueue<Process*>temp = *Rdy;
-			int SumWT = 0;
-			while (!temp.IsEmpty())
-			{
-				int x = temp.Pop()->getWT();  //return waiting time
-				SumWT = SumWT + x;
-			}
-			return SumWT;
+			int x = temp.Pop()->getWT();  //return waiting time
+			SumWT = SumWT + x;
 		}
-		virtual int GetCount()
-		{
-			return Rdy->Count();
-		}
+		return SumWT;
+	}
+	virtual int GetCount()
+	{
+		return Rdy->Count();
+	}
 
-		virtual int Getidrun()  //return the id of the running process
-		{
-			int r = RUN->getPID();
-			return r;
-		}
-	};
+	virtual int Getidrun()  //return the id of the running process
+	{
+		int r = RUN->getPID();
+		return r;
+	}
+};
