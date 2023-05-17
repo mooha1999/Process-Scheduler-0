@@ -20,8 +20,9 @@ public:
 	}
 	virtual void schedulago(int timestep)
 	{
-		if (!RUN) // if the RUN process is not empty
+		if (!Rdy) //check if rdy queue isn't empty 
 		{
+<<<<<<< HEAD
 			RUN = Rdy->Pop();   //return the value of the firt process in rdy list
 			RUN->setRT(timestep - (RUN->getAT()));
 		}
@@ -31,31 +32,45 @@ public:
 			TBT++; //total busy time
 
 			if (RUN->getEX() == RUN->getCT()) //Ex-time=CPU-time
+=======
+			if (!RUN) // if the RUN process is not empty
+>>>>>>> 19bc9017d074bb3344b58a72a84fbec0cdbb3643
 			{
-				RUN->setTT(timestep);
-				AR = AR + RUN->getTRT();
-				Finish = RUN;
-				RUN = nullptr;
-			}
-			//case 1  if the execution time is equal to time slice
-			if (RUN->getEX() % time_slice == 0) // reminder (
-			{
-				RUN->incEX(); // hna 34an mayd5ol4 be nafs el ex-time (resulting infinte loop)
-				Rdy->Push(RUN);
-				RUN = nullptr;
-			}
-			// case 2 when the ex time is equal to the first element(time step)in pairs 
-			// kman lw el pairs fadya 34an lw 3amal peek le 7aga fadya hay3mil error
-		    if (!RUN->getPairs().IsEmpty() && RUN->getEX() == RUN->getPairs().Peek()->first)
-		    {
-					Blk = RUN;
-					RUN = nullptr;
+				RUN = Rdy->Pop();   //return the value of the firt process in rdy list
+
 			}
 			else
 			{
-				RUN->incEX();
+				BUSY = true; //busy when running
+				TBT++; //total busy time
+
+				if (RUN->getEX() == RUN->getCT()) //Ex-time=CPU-time
+				{
+					RUN->setTT(timestep);
+					AR = AR + RUN->getTRT();
+					Finish = RUN;
+					RUN = nullptr;
+				}
+				//case 1  if the execution time is equal to time slice
+				if (RUN->getEX() % time_slice == 0) // reminder (
+				{
+					RUN->incEX(); // hna 34an mayd5ol4 be nafs el ex-time (resulting infinte loop)
+					Rdy->Push(RUN);
+					RUN = nullptr;
+				}
+				// case 2 when the ex time is equal to the first element(time step)in pairs 
+				// kman lw el pairs fadya 34an lw 3amal peek le 7aga fadya hay3mil error
+				if (!RUN->getPairs().IsEmpty() && RUN->getEX() == RUN->getPairs().Peek()->first)
+				{
+					Blk = RUN;
+					RUN = nullptr;
+				}
+				else
+				{
+					RUN->incEX();
+				}
+
 			}
-		
 		}
 	}
 
