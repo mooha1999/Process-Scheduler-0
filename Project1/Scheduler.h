@@ -10,7 +10,7 @@
 #include "RRobin.h"
 #include "processor.h"
 #include "BlockedProcesses.h"
-
+#include "UI.h"
 using namespace std;
 class Scheduler {
 public:
@@ -22,8 +22,10 @@ public:
 	Queue<FCFS*> fcfss;
 	Queue<SJF*> sjfs;
 	Queue<RRobin*> rrobins;
+	UserInterface ui;
 	int rtf, maxW, stl, forkProbability;
 	int lastID;
+	int totalProcessesNum = 0, totalKilled = 0, totalForked = 0;
 	void readFile() {
 		fstream inputFile("input.txt", ios::in);
 		defineProcessors(inputFile);
@@ -85,40 +87,80 @@ public:
 			lastID = pid; //To generate unique ids for the forked processes
 		}
 	}
-	void simulate() {
+	void StartSimulation() {
 		int timestep = 0;
-		while (!NEW.IsEmpty() || !BLK->IsEmpty() || !TRM.IsEmpty() || !sigKills.IsEmpty()) {
-			//from NEW to RDY
+		//ui.getmode()
+		while (!NEW.IsEmpty() || !BLK->IsEmpty() || !sigKills.IsEmpty()) {
+			//from NEW to RDY, a while loop because there might be more than one process arriving at the same time
 			while (!NEW.IsEmpty() && NEW.Peek()->getAT() == timestep) {
 				getLeastWaitingProcessor()->push(NEW.Pop());
 			}
 			//from BLK to RDY
-			if (BLK->getFinishedProcess()) {
-				getLeastWaitingProcessor()->push(BLK->getFinishedProcess());
+			if (BLK->GetFinishedProcess()) {
+				getLeastWaitingProcessor()->push(BLK->GetFinishedProcess());
 			}
 			//killing signals
-			while (!sigKills.IsEmpty() && sigKills.Peek()->first == timestep) {
-				Process* killedProcess = getKilledProcess(sigKills.Pop()->first);
-				if (killedProcess)
-					TRM.Push(killedProcess, killedProcess->getTT());
-			}
+			killSignal(timestep);
 			//forking process
-			for (Processor* p : fcfss) {
-				if (p->RUN && shouldFork()) {
-					Process* forkedProcess = p->RUN->fork(timestep, ++lastID);
-					getLeastWaitingFCFSProcessor()->push(forkedProcess);
-				}
+			forkProcesses(timestep);
+			//Schedule algorithms
+			scheduleAlgo(timestep);
+			//Increment IO time for blocked process
+			BLK->ScheduleAlgo();
+			Process* finishedBlockedProcess = BLK->GetFinishedProcess();
+			if (finishedBlockedProcess) {
+				getLeastWaitingProcessor()->push(finishedBlockedProcess);
 			}
-			//TODO Schedule algorithms
+			//ui.display(.....)
 			timestep++;
+		}
+		//ui.displayEnd()
+	}
+	void scheduleAlgo(int timestep)
+	{
+		for (Processor* p : Processors) {
+			p->schedulago();
+			Process* finishedProcess = p->Finish;
+			if (finishedProcess) {
+				finishedProcess->setTT(timestep);
+				TRM.Push(finishedProcess, finishedProcess->getTT() * -1);
+				p->Finish = nullptr;
+			}
+			Process* blockedProcess = p->Blk;
+			if (blockedProcess) {//TODO tell ganna/nouran to make it a getter
+				BLK->AddProcess(blockedProcess);
+				p->Blk = nullptr;
+			}
+		}
+	}
+	void killSignal(int timestep)
+	{
+		while (!sigKills.IsEmpty() && sigKills.Peek()->first == timestep) {
+			Process* killedProcess = getKilledProcess(sigKills.Pop()->first);
+			if (killedProcess) {
+				killedProcess->setTT(timestep);
+				totalKilled++;
+				TRM.Push(killedProcess, killedProcess->getTT());
+			}
+		}
+	}
+	void forkProcesses(int timestep)
+	{
+		for (Processor* p : fcfss) {
+			if (p->RUN && shouldFork()) {
+				Process* forkedProcess = p->RUN->fork(timestep, ++lastID);
+				getLeastWaitingFCFSProcessor()->push(forkedProcess);
+				totalProcessesNum++;
+				forkedProcess++;
+			}
 		}
 	}
 	Processor* getLeastWaitingProcessor() {
 		Processor* temp = nullptr;
 		int wt = INT_MAX;
 		for (auto i : Processors) {
-			if (i->GetWT() < wt) {
-				wt = i->GetWT();
+			if (i->GetTWT() < wt) {
+				wt = i->GetTWT();
 				temp = i;
 			}
 		}
@@ -128,8 +170,8 @@ public:
 		Processor* temp = nullptr;
 		int wt = INT_MAX;
 		for (auto i : fcfss) {
-			if (i->GetWT() < wt) {
-				wt = i->GetWT();
+			if (i->GetTWT() < wt) {
+				wt = i->GetTWT();
 				temp = i;
 			}
 		}
@@ -150,5 +192,40 @@ public:
 	}
 	bool shouldFork() {
 		return rand() % 100 < forkProbability;
+	}
+	void generateOutputFile(int timestep) {
+		ofstream out("output.txt");
+		int twt = 0, trt = 0, int ttrt = 0;
+		out << "TT\tPID\tAT\tCT\tIO_D\tWT\tRT\tTRT\n";
+		for (auto p : TRM) {
+			out << p->getTT() << '\t';
+			out << p->getPID() << '\t';
+			out << p->getAT() << '\t';
+			out << p->getCT() << '\t';
+			out << p->getTIOD() << '\t';
+			out << p->getWT() << '\t';
+			out << p->getRT() << '\t';
+			out << p->getTRT() << '\n';
+			twt += p->getWT();
+			trt += p->getRT();
+			ttrt += p->getTRT();
+		}
+
+		out << "Processes: " << totalProcessesNum << '\n';
+
+		out << "Avg WT = " << twt / totalProcessesNum << '\t';
+		out << "Avg RT = " << trt / totalProcessesNum << '\t';
+		out << "Avg TRT = " << ttrt / totalProcessesNum << '\t';
+
+		out << "Forked Processes: " << (totalForked / totalProcessesNum) * 100 << '\n';
+		out << "Killed Processes: " << (totalKilled / totalProcessesNum) * 100 << '\n';
+
+		out << "Processors: " << Processors.Count() << " [";
+		out << fcfss.Count() << " FCFS, ";
+		out << sjfs.Count() << " SJF, ";
+		out << rrobins.Count() << " RR]\n";
+
+		for (auto p : Processors) {
+		}
 	}
 };
