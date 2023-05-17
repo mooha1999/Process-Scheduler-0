@@ -6,7 +6,6 @@
     <ClCompile Include="Process.cpp" />
     <ClCompile Include="RR.cpp" />
     <ClCompile Include="RRobin.cpp" />
-    <ClCompile Include="SJF.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cicularqueue.h" />

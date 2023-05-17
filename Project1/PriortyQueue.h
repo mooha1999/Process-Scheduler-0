@@ -7,6 +7,26 @@ class PriortyQueue
 	PriorityNode<T, int>* front;
 	PriorityNode<T, int>* rear;
 	int size;
+	class Iterator {
+	private:
+		Node<T>* current;
+
+	public:
+		Iterator(Node<T>* node) : current(node) {}
+
+		T operator*() const {
+			return current->getItem();
+		}
+
+		Iterator& operator++() {
+			current = current->getNext();
+			return *this;
+		}
+
+		bool operator!=(const Iterator& other) const {
+			return current != other.current;
+		}
+	};
 public:
 
 	PriortyQueue()
@@ -54,4 +74,11 @@ public:
 		return size == 0;
 	}
 	int Count() { return size; }
+	Iterator begin() const {
+		return Iterator(Head);
+	}
+
+	Iterator end() const {
+		return Iterator(nullptr);
+	}
 };
