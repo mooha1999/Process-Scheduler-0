@@ -56,7 +56,7 @@ public:
 			}
 		}
 	}
-	Queue<int> *GetID()
+	Queue<int> GetID()
 	{
 		Queue<Process*>temp = *Rdy;   //*Rdy to return the value of Rdy (copy the rdy queue )
 		Queue<int>*Ids; //Id of each process
