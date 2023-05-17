@@ -65,15 +65,9 @@ public:
 
 	void activemode( int timestep, Queue<Processor*> Fcfs, Queue<Processor*>Sjf, Queue<Processor*>Rr)
 	{
-		int CountFcfs=0;
-		int countSjf=0;
-		int countRR=0;
-		
 		cout << "Current Timestep:" << "  " << timestep<<"\n";
 		cout << "------------    RDY Processes -----------" << "\n";
 		Queue<int> ids;
-		int counter = 0;
-	
 		for (Processor* i : Fcfs)
 		{
 			ids = i->GetID();
@@ -88,9 +82,6 @@ public:
 				
 			}
 			cout << "\n";
-			
-
-			CountFcfs++;
 			
 		}
 		
@@ -108,9 +99,6 @@ public:
 			}
 			cout << "\n";
 
-			
-
-			countSjf++;
 		}
 
 		
@@ -128,13 +116,7 @@ public:
 			}
 			cout << "\n";
 
-			
-
-			countRR;
 		}
-
-		
-
 
 		//-----------------------------------------------------------------------------------------
 		cout << "-------------   BLK Processes ----------" << "\n";
@@ -143,7 +125,7 @@ public:
 		//----------------------------------------------------------------------------------------
 	
 		cout << "-------------   RUN Processes ----------" << "\n";
-		int TNumP = CountFcfs + countRR + countSjf; //total number of processors
+		int TNumP = Fcfs.Count()+Sjf.Count()+ Rr.Count(); //total number of processors
 		cout << TNumP << "RUN: "; //for loop for run display
 	
 		//the three processors have the same counter 
