@@ -46,9 +46,9 @@ public:
 		}
 	}
 
-	void display(int timestep, Queue<Processor*> Fcfs, Queue<Processor*>Sjf, Queue<Processor*>Rr, Blocked* BLK) // to get user what mood does the user need
+	void display(int timestep, Queue<FCFS*> Fcfs, Queue<SJF*>Sjf, Queue<RRobin*>Rr, Blocked* BLK) // to get user what mood does the user need
 	{
-		if (choice == 1 || 2)
+		if (choice == 1 || choice == 2)
 		{
 			activemode(timestep, Fcfs, Sjf, Rr, BLK); //either interactive or stepbystep
 		}
@@ -62,12 +62,12 @@ public:
 		}
 	}
 
-	void activemode(int timestep, Queue<Processor*> Fcfs, Queue<Processor*>Sjf, Queue<Processor*>Rr, Blocked* BLK)
+	void activemode(int timestep, Queue<FCFS*> Fcfs, Queue<SJF*>Sjf, Queue<RRobin*>Rr, Blocked* BLK)
 	{
 		cout << "Current Timestep:" << "  " << timestep << "\n";
 		cout << "------------    RDY Processes -----------" << "\n";
 		Queue<int> ids;
-		for (Processor* i : Fcfs)
+		for (FCFS* i : Fcfs)
 		{
 			ids = i->GetID();
 			cout << "processor " << i << " [FCFS]: ";
@@ -81,7 +81,7 @@ public:
 			cout << "\n";
 		}
 
-		for (Processor* i : Sjf)
+		for (SJF* i : Sjf)
 		{
 			ids = i->GetID();
 			cout << "processor " << i << "[SJF ]: ";
@@ -95,7 +95,7 @@ public:
 			cout << "\n";
 		}
 
-		for (Processor* i : Rr)
+		for (RRobin* i : Rr)
 		{
 			ids = i->GetID();
 			cout << "processor " << i << "[RR ]: ";
@@ -122,7 +122,7 @@ public:
 		//the three processors have the same counter
 		//printing for running processes for FCFS
 		int j = 1;
-		for (Processor* i : Fcfs)
+		for (FCFS* i : Fcfs)
 		{
 			cout << i->Getidrun() << "(p" << j << ")" << " , ";
 			j++;
@@ -130,7 +130,7 @@ public:
 		cout << "\n";
 
 		//printing for running processes for SJF
-		for (Processor* i : Sjf)
+		for (SJF* i : Sjf)
 		{
 			cout << i->Getidrun() << "(p" << j << ")" << " , ";
 			j++;
@@ -138,7 +138,7 @@ public:
 		cout << "\n";
 
 		//printing for running processes for RRobin
-		for (Processor* i : Rr)
+		for (RRobin* i : Rr)
 		{
 			cout << i->Getidrun() << "(p" << j << ")" << " , ";
 			j++;
@@ -151,16 +151,13 @@ public:
 		cout << "number of processes in run" << "RUN: " << ""; //for loop for trm display
 		//priority queue of processes, .count for TRM processes
 		//print IDs using for loop
-		void endline();
+		endline();
 	}
 
 	void silentmode() {
 		cout << "You choose Silent mode." << "\n";
 		cout << "--------Silent Mode-------" << "\n";
 		cout << "Simulation Starts" << "\n";
-		//calls scheduler class to print output text file
-
-		cout << "Simualtion ends. Output file created.";
 	}
 	void exit()
 	{ //aborts program completely
@@ -181,6 +178,12 @@ public:
 		//and the program waits for the user's key press
 
 		cout << "PRESS ANY KEY TO MOVE TO NEXT STEP !";
+		system("pause");
+	}
+
+	void displayEndLine() { //ending simulation message 
+
+		cout << "Simualtion ends. Output file created.";
 		system("pause");
 	}
 };
