@@ -16,5 +16,6 @@ public:
 	virtual Queue<int> GetID() = 0;
 	virtual int GetCount() = 0;
 	virtual int GetWT() = 0;
+	virtual int getidrun() = 0;
 	//virtual int GetBT(bool BUSY) = 0; //calculate busy time
 };
