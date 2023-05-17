@@ -14,7 +14,7 @@ public:
 	}
 	virtual void schedulago(int timestep)
 	{
-		if (!Rdy) //check if rdy queue isn't empty 
+		if (!Rdy->IsEmpty() && !RUN) //check if rdy queue isn't empty 
 		{
 			RUN = Rdy->Pop();   //return the value of the firt process in rdy list
 			RUN->setRT(timestep - (RUN->getAT()));

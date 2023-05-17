@@ -16,7 +16,7 @@ public:
 
 	virtual void schedulago(int timestep)
     {
-		if (!Rdy)
+		if (!Rdy->IsEmpty() && !RUN)
 		{
 			RUN = Rdy->Pop();   //return the value of the firt process in rdy list
 			RUN->setRT(timestep - (RUN->getAT())); 

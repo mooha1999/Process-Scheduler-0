@@ -20,7 +20,7 @@ public:
 	}
 	virtual void schedulago()
 	{
-		if (!RUN) // if the RUN process is not empty
+		if (!Rdy->IsEmpty() && !RUN)// if the RUN process is not empty
 		{
 			RUN = Rdy->Pop();   //return the value of the firt process in rdy list
 
