@@ -4,7 +4,6 @@
 #include <sstream>
 
 #include "Queue.h"
-#include "process.h"
 #include "FCFS.h"
 #include "SJF.h"
 #include "RRobin.h"
@@ -187,6 +186,7 @@ public:
 	Process* forkedProcess() {
 		for (auto p : fcfss) {
 			if (p->RUN && shouldFork()) {
+				//p->RUN()
 			}
 		}
 	}
@@ -195,7 +195,7 @@ public:
 	}
 	void generateOutputFile(int timestep) {
 		ofstream out("output.txt");
-		int twt = 0, trt = 0, int ttrt = 0;
+		int twt = 0, trt = 0, ttrt = 0;
 		out << "TT\tPID\tAT\tCT\tIO_D\tWT\tRT\tTRT\n";
 		for (auto p : TRM) {
 			out << p->getTT() << '\t';
@@ -225,7 +225,10 @@ public:
 		out << sjfs.Count() << " SJF, ";
 		out << rrobins.Count() << " RR]\n";
 
+		out << "Processors Load\n";
+		int i = 1;
 		for (auto p : Processors) {
+			out << 'p' << i << '=' << p;
 		}
 	}
 };
