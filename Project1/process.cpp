@@ -1,4 +1,3 @@
-
 #include "process.h"
 
 Process::Process(int pid, int at, int ct, Queue<Pair<int, int>*> q) {
@@ -61,6 +60,10 @@ int Process::getTIOD() {
 	return TIOD;
 }
 
+int Process::getRMT() {
+	return (CT-EX);
+}
+
 Queue<Pair<int, int>*> Process::getPairs()
 {
 	return Q;
@@ -83,6 +86,10 @@ void Process::setIOT(int iot) {
 void Process::setTT(int tt) {
 	TT = tt;
 }
+
+//void Process::setRMT(int ct, int ex) {
+	//RMT = ct - ex;
+//}
 //void process::setTRT(int tt, int at) {
 	//return (tt - at);
 //}
