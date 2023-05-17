@@ -49,11 +49,14 @@ public:
 
 	void display(int timestep, Queue<Processor*> Fcfs, Queue<Processor*>Sjf, Queue<Processor*>Rr) // to get user what mood does the user need
 	{
-			if (choice == 1|| choice == 2)
+			if (choice == 1 || 2)
 			{
-				interactivemode( timestep, Fcfs,Sjf, Rr);
+				activemode(choice, timestep, Fcfs,Sjf, Rr); //either interactive or stepbystep
 			}
-			
+			else if (choice == 2)
+			{
+				stepbystep(timestep, Fcfs, Sjf, Rr);
+			}
 			else if (choice == 3)
 			{
 				silentmode();
@@ -62,7 +65,7 @@ public:
 
 
 
-	void interactivemode(int timestep, Queue<Processor*> Fcfs, Queue<Processor*>Sjf, Queue<Processor*>Rr)
+	void activemode(int choice, int timestep, Queue<Processor*> Fcfs, Queue<Processor*>Sjf, Queue<Processor*>Rr)
 	{
 		cout << "You choose Interactive mode." << "\n";
 		cout << "Current Timestep:" << "  " << timestep<<"\n";
@@ -84,13 +87,22 @@ public:
 				
 			}
 			cout << "\n";
-			//pause until enter key is pressed 
+			if (choice == 1) { //interactive mode waits for key
+				//pause until enter key is pressed 
+				system("pause");
+			}
+			else if (choice == 2) { //step by step mode waits for 1 second and continues automatically
+				Sleep(1000);
+			}
+			
+		}
+		if (choice == 1) { //interactive mode waits for key
+				//pause until enter key is pressed 
 			system("pause");
 		}
-
-		//pause until enter key is pressed 
-		system("pause");
-
+		else if (choice == 2) { //step by step mode waits for 1 second and continues automatically
+			Sleep(1000);
+		}
 
 		for (Processor* i : Sjf)
 		{
@@ -104,11 +116,23 @@ public:
 				cout << j << ' , ';
 			}
 			cout << "\n";
-			system("pause");
+
+			if (choice == 1) { //interactive mode waits for key
+				//pause until enter key is pressed 
+				system("pause");
+			}
+			else if (choice == 2) { //step by step mode waits for 1 second and continues automatically
+				Sleep(1000);
+			}
 		}
 
-		//pause until enter key is pressed 
-		system("pause");
+		if (choice == 1) { //interactive mode waits for key
+						//pause until enter key is pressed 
+			system("pause");
+		}
+		else if (choice == 2) { //step by step mode waits for 1 second and continues automatically
+			Sleep(1000);
+		}
 
 
 		for (Processor* i : Rr)
@@ -123,17 +147,34 @@ public:
 				cout << j << ' , ';
 			}
 			cout << "\n";
-			system("pause");
+
+			if (choice == 1) { //interactive mode waits for key
+				//pause until enter key is pressed 
+				system("pause");
+			}
+			else if (choice == 2) { //step by step mode waits for 1 second and continues automatically
+				Sleep(1000);
+			}
 		}
 
-		//pause until enter key is pressed 
-		system("pause");
+		if (choice == 1) { //interactive mode waits for key
+				//pause until enter key is pressed 
+			system("pause");
+		}
+		else if (choice == 2) { //step by step mode waits for 1 second and continues automatically
+			Sleep(1000);
+		}
 		
 		cout << "-------------   BLK Processes ----------" << "\n";
 		cout << "number of processes from blk" << "BLK: " << "IDs of processes in blk";
 
-		//pause until enter key is pressed 
-		system("pause");
+		if (choice == 1) { //interactive mode waits for key
+				//pause until enter key is pressed 
+			system("pause");
+		}
+		else if (choice == 2) { //step by step mode waits for 1 second and continues automatically
+			Sleep(1000);
+		}
 
 		cout << "-------------   RUN Processes ----------" << "\n";
 		cout << "number of processes in run" << "RUN: "; //for loop for run display
@@ -145,8 +186,16 @@ public:
 			cout << i->Getidrun() << "(p" << j << ")"<<" , ";
 			j++;
 		}
+		cout <<"\n";
 
-
+		if (choice == 1) { //interactive mode waits for key
+				//pause until enter key is pressed 
+			system("pause");
+		}
+		else if (choice == 2) { //step by step mode waits for 1 second and continues automatically
+			Sleep(1000);
+		}
+		
 		//printing for running processes for SJF
 		for (Processor* i : Sjf)
 		{
@@ -154,6 +203,13 @@ public:
 			j++;
 		}
 		cout << "\n";
+		if (choice == 1) { //interactive mode waits for key
+				//pause until enter key is pressed 
+			system("pause");
+		}
+		else if (choice == 2) { //step by step mode waits for 1 second and continues automatically
+			Sleep(1000);
+		}
 
 		//printing for running processes for RRobin
 		for (Processor* i : Rr)
@@ -162,18 +218,27 @@ public:
 			j++;
 		}
 		cout << "\n";
+		if (choice == 1) { //interactive mode waits for key
+				//pause until enter key is pressed 
+			system("pause");
+		}
+		else if (choice == 2) { //step by step mode waits for 1 second and continues automatically
+			Sleep(1000);
+		}
 
-
-
-		//pause until enter key is pressed 
-		system("pause");
 
 		cout << "------------    TRM Processes ----------" << "\n";
 		cout << "number of processes in run" << "RUN: " << ""; //for loop for trm display
 		cout << "PRESS ANY KEY TO MOVE TO NEXT STEP !";
 
-		//pause until enter key is pressed 
-		system("pause");
+		if (choice == 1) { //interactive mode waits for key
+				//pause until enter key is pressed 
+			system("pause");
+		}
+		else if (choice == 2) { //step by step mode waits for 1 second and continues automatically
+			Sleep(1000);
+		}
+
 	} 
 
 
