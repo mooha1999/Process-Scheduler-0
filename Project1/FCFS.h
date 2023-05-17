@@ -14,7 +14,7 @@ public:
 		Rdy->Push(p);
 	}
 
-	virtual void schedulago()
+	virtual void schedulago(int timestep)
 
 	{
 		if (!RUN)
@@ -30,12 +30,13 @@ public:
 
 			if (RUN->getEX() == RUN->getCT())
 			{
+				RUN->setTT(timestep); //now the termination time of process is equal to current timestep
 				AR = AR + RUN->getTRT(); // total turn around time of all processes
 				Finish = RUN;
 				RUN = nullptr;
 				BUSY = false;
 			}
-			if (RUN->getEX() == RUN->getPairs().Peek()->first && !RUN->getPairs().IsEmpty())
+			if (!RUN->getPairs().IsEmpty()&&RUN->getEX() == RUN->getPairs().Peek()->first)
 			{
 				Blk = RUN;
 				RUN = nullptr;
@@ -95,20 +96,13 @@ public:
 	{
 		return Rdy->Count();
 	}
-	virtual int Getcountblk()// to calculated the total number of blk in FcFS
-	{
-		return countBlk;
-	}
+
 	virtual int Getidrun() //return the id of the running process 
 	{
 		int r = RUN->getPID();
 		return r;
 	}
 
-	virtual int Getidblk() //return the id of the blocked process 
-	{
-		int b = Blk->getPID();
-		return b;
-	}
+
 
 };

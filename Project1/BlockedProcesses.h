@@ -48,6 +48,7 @@ public:
 		if (ret.size() > 0) {
 			ret.pop_back();
 			ret.pop_back();
+
 		}
 		return ret;
 	}

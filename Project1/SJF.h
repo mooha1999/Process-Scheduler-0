@@ -8,12 +8,11 @@ class SJF :public Processor
 public:
 
 	PriortyQueue<Process*>* Rdy;
-	int countBlk = 0;
 	virtual void push(Process* p)
 	{
 		Rdy->Push(p, p->getCT()); // take the process and the cpu time
 	}
-	virtual void schedulago()
+	virtual void schedulago(int timestep)
 	{
 		if (!RUN)
 		{
@@ -27,11 +26,12 @@ public:
 
 			if (RUN->getEX() == RUN->getCT())
 			{
+				RUN->setTT(timestep);
 				AR = AR + RUN->getTRT();
 				Finish = RUN;
 				RUN = nullptr;
 			}
-			if (RUN->getEX() == RUN->getPairs().Peek()->first && !RUN->getPairs().IsEmpty())
+			if (!RUN->getPairs().IsEmpty() && RUN->getEX() == RUN->getPairs().Peek()->first)
 			{
 				Blk = RUN;
 				RUN = nullptr;
@@ -70,20 +70,11 @@ public:
 		return Rdy->Count();
 	}
 
-	virtual int Getcountblk()// to calculated the total number of blk in sjf
-	{
-		return countBlk;
-	}
 	virtual int Getidrun()  //return the id of the running process 
 	{
 		int r = RUN->getPID();
 		return r;
 	}
 
-	virtual int Getidblk() //return the id of the blocked process 
-	{
-		int b = Blk->getPID();
-		return b;
-	}
 
 };

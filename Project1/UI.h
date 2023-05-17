@@ -20,6 +20,7 @@ using namespace std;
 class UserInterface {
 public:
 	int choice; //user choice from main menu
+	Blocked* BLK;
 	void displayMainMenu() 
 	{
 		cout << "Process Scheduler Program \n";
@@ -64,15 +65,9 @@ public:
 
 	void activemode( int timestep, Queue<Processor*> Fcfs, Queue<Processor*>Sjf, Queue<Processor*>Rr)
 	{
-		int CountFcfs=0;
-		int countSjf=0;
-		int countRR=0;
-		
 		cout << "Current Timestep:" << "  " << timestep<<"\n";
 		cout << "------------    RDY Processes -----------" << "\n";
 		Queue<int> ids;
-		int counter = 0;
-	
 		for (Processor* i : Fcfs)
 		{
 			ids = i->GetID();
@@ -87,9 +82,6 @@ public:
 				
 			}
 			cout << "\n";
-			
-
-			CountFcfs++;
 			
 		}
 		
@@ -107,9 +99,6 @@ public:
 			}
 			cout << "\n";
 
-			
-
-			countSjf++;
 		}
 
 		
@@ -127,24 +116,16 @@ public:
 			}
 			cout << "\n";
 
-			
-
-			countRR;
 		}
-
-		
-
 
 		//-----------------------------------------------------------------------------------------
 		cout << "-------------   BLK Processes ----------" << "\n";
-		cout << "number of processes from blk" << "BLK: " << "IDs of processes in blk";
-
-		
+		cout << BLK->BlockedIDsCount() << "BLK: " << BLK->BlockedIDs();
 
 		//----------------------------------------------------------------------------------------
 	
 		cout << "-------------   RUN Processes ----------" << "\n";
-		int TNumP = CountFcfs + countRR + countSjf; //total number of processors
+		int TNumP = Fcfs.Count()+Sjf.Count()+ Rr.Count(); //total number of processors
 		cout << TNumP << "RUN: "; //for loop for run display
 	
 		//the three processors have the same counter 
@@ -152,7 +133,6 @@ public:
 		int j = 1;
 		for (Processor* i : Fcfs)
 		{
-			cout << CountFcfs;
 			cout << i->Getidrun() << "(p" << j << ")"<<" , ";
 			j++;
 		}
@@ -181,10 +161,10 @@ public:
 
 		cout << "------------    TRM Processes ----------" << "\n";
 		cout << "number of processes in run" << "RUN: " << ""; //for loop for trm display
-		cout << "PRESS ANY KEY TO MOVE TO NEXT STEP !";
-
 		//priority queue of processes, .count for TRM processes 
 		//print IDs using for loop 
+		void endline();
+		
 
 	} 
 
@@ -197,10 +177,6 @@ public:
 
 		cout << "Simualtion ends. Output file created.";
 	}
-	
-	
-	
-	
 	void exit()
 	{ //aborts program completely
 		abort();
@@ -215,4 +191,12 @@ public:
 			Sleep(1000);
 		}
 	}
+
+	void endline() { //in either modes interactive or stepbystep, this line is printed 
+		//and the program waits for the user's key press 
+
+		cout << "PRESS ANY KEY TO MOVE TO NEXT STEP !";
+		system("pause");
+	}
+
 };
