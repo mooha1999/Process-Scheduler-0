@@ -46,11 +46,11 @@ public:
 		}
 	}
 
-	void display(int timestep, Queue<FCFS*> Fcfs, Queue<SJF*>Sjf, Queue<RRobin*>Rr, Blocked* BLK) // to get user what mood does the user need
+	void display(int timestep, Queue<FCFS*> Fcfs, Queue<SJF*>Sjf, Queue<RRobin*>Rr, Blocked* BLK, PriortyQueue<Process*> TRM) // to get user what mood does the user need
 	{
 		if (choice == 1 || choice == 2)
 		{
-			activemode(timestep, Fcfs, Sjf, Rr, BLK); //either interactive or stepbystep
+			activemode(timestep, Fcfs, Sjf, Rr, BLK, TRM); //either interactive or stepbystep
 		}
 		else if (choice == 3)
 		{
@@ -62,7 +62,7 @@ public:
 		}
 	}
 
-	void activemode(int timestep, Queue<FCFS*> Fcfs, Queue<SJF*>Sjf, Queue<RRobin*>Rr, Blocked* BLK)
+	void activemode(int timestep, Queue<FCFS*> Fcfs, Queue<SJF*>Sjf, Queue<RRobin*>Rr, Blocked* BLK, PriortyQueue<Process*> TRM)
 	{
 		cout << "Current Timestep:" << "  " << timestep << "\n";
 		cout << "------------    RDY Processes -----------" << "\n";

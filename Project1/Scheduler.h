@@ -247,7 +247,7 @@ public:
 			if (finishedBlockedProcess) {
 				getLeastWaitingProcessor()->push(finishedBlockedProcess);
 			}
-			ui.display(timestep, fcfss, sjfs, rrobins, BLK);
+			ui.display(timestep, fcfss, sjfs, rrobins, BLK, TRM);
 			timestep++;
 		}
 		generateOutputFile(timestep);
