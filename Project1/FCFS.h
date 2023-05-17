@@ -92,4 +92,11 @@ public:
 	int GetCount() {
 		return Rdy->Count();
 	}
+
+	virtual int getidrun() //return the id of the running process 
+    {
+		int r = RUN->getPID();
+		return r;
+	}
+
 };
