@@ -102,7 +102,7 @@ public:
 		return r;
 	}
 
-	virtual string GetIDS() //used in stepbystep mode: code 2 
+	virtual string GetIDs() //used in stepbystep mode: code 2 
 	{
 		string y;
 		Queue<Process*>temp = *Rdy;   //*Rdy to return the value of Rdy (copy)

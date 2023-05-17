@@ -63,7 +63,8 @@ public:
 		}
 		return SumWT;
 	}
-	int GetCount() {
+	virtual int GetCount()
+	{
 		return Rdy->Count();
 	}
 
