@@ -50,7 +50,7 @@ public:
 	{
 		PriortyQueue<Process*>temp = *Rdy;
 		Queue<int>ID;
-		while (temp.IsEmpty())
+		while (!temp.IsEmpty())
 		{
 			int x = temp.Pop()->getPID();  //return id
 			ID.Push(x);
