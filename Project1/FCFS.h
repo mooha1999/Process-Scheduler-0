@@ -1,5 +1,6 @@
 #include "process.h"
 #include "Processor.h"
+#pragma once
 
 class FCFS : public Processor 
 {

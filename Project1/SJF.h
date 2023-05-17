@@ -1,6 +1,8 @@
 #include "processor.h"
 #include"process.h"
 #include"PriortyQueue.h"
+#pragma once 
+
 class SJF :public Processor
 {
 public:
