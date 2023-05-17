@@ -98,7 +98,7 @@ Process* Process::fork(int t, int id) {
 	int oldct = getCT();
 	int exe = getEX();
 	int newct = oldct - exe;
-	kid = new Process(id, t, newct, Queue<Pair<int, int>*>(), TIOD);
+	kid = new Process(id, t, newct, Queue<Pair<int, int>*>());
 
 	return kid;
 }
