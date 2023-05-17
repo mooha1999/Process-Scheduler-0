@@ -41,7 +41,7 @@ public:
 		}
 	}
 
-	Queue<int> GetID()
+	virtual Queue<int> GetID()
 	{
 		PriortyQueue<Process*>temp = *Rdy;
 		Queue<int>ID;
@@ -68,7 +68,7 @@ public:
 	}
 
 	//nouran: get id of running processes 
-	virtual int getidrun() //return the id of the running process 
+	virtual int Getidrun() //return the id of the running process 
 	{
 		int r = RUN->getPID();
 		return r;

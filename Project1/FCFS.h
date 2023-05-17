@@ -46,7 +46,7 @@ public:
 			}
 		}
 	}
-	Queue<int> GetID() //used in interactive mode: code 1 
+	virtual Queue<int> GetID() //used in interactive mode: code 1 
 	{
 		Queue<Process*>temp = *Rdy;   //*Rdy to return the value of Rdy (copy)
 		Queue<int>ID;
@@ -91,11 +91,12 @@ public:
 
 		return nullptr;
 	}
-	int GetCount() {
+	virtual int GetCount() 
+	{
 		return Rdy->Count();
 	}
 
-	virtual int getidrun() //return the id of the running process 
+	virtual int Getidrun() //return the id of the running process 
 	{
 		int r = RUN->getPID();
 		return r;

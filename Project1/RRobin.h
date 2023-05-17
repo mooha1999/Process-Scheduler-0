@@ -68,7 +68,7 @@ public:
 		}
 		return Ids;
 	}
-	virtual int GetWT()
+	virtual int GetTWT()
 	{
 		Queue<Process*>temp = *Rdy;
 		int SumWT = 0;
@@ -78,6 +78,11 @@ public:
 			SumWT = SumWT + x;
 		}
 		return SumWT;
+	}
+	virtual int Getidrun() //return the id of the running process 
+	{
+		int r = RUN->getPID();
+		return r;
 	}
 	int GetCount() {
 		return Rdy->Count();
