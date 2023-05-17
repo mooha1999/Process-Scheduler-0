@@ -30,7 +30,7 @@ public:
 
 			if (RUN->getEX() == RUN->getCT())
 			{
-				RUN->setTT(timestep);
+				RUN->setTT(timestep); //now the termination time of process is equal to current timestep
 				AR = AR + RUN->getTRT(); // total turn around time of all processes
 				Finish = RUN;
 				RUN = nullptr;
