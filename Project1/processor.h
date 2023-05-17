@@ -30,7 +30,7 @@ public:
 
 	virtual void schedulago(int timestep) = 0;
 	virtual void push(Process* p) = 0;
-	virtual Queue<int> GetID() = 0;
+	virtual Queue<int> *GetID() = 0;
 	virtual int GetCount() = 0;
 	virtual int GetTWT() = 0;
 	virtual int Getidrun() = 0;
