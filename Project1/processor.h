@@ -18,5 +18,6 @@ public:
 	virtual int GetCount() = 0;
 	virtual int GetTWT() = 0;
 	virtual int Getidrun() = 0;
+	virtual string Getidruns() = 0;
 	//virtual int GetBT(bool BUSY) = 0; //calculate busy time
 };

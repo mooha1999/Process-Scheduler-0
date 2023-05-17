@@ -10,6 +10,10 @@ Process::Process(int pid, int at, int ct, Queue<Pair<int, int>*> q) {
 	Process* kid = nullptr;
 	RT = 0; //response time
 	TT = 0; //termination time
+	TIOD = 0;
+	for (auto i : q) {
+		TIOD += i->second;
+	}
 	//TRT = TT - AT; //turnaround duration
 	//WT = TRT - CT; //waiting time
 	//N = 1; //number of times the process requests the io
@@ -47,6 +51,10 @@ int Process::getWT() {
 int Process::getEX() {
 	return EX;
 }
+int Process::getTIOD() {
+	return TIOD;
+}
+
 Queue<Pair<int, int>*> Process::getPairs()
 {
 	return Q;

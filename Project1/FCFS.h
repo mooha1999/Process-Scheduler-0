@@ -115,4 +115,11 @@ public:
 		return y;
 	}
 
+	virtual string Getidruns() //get running id, used in stepbystep mode: code 2
+	{
+		int w = RUN->getPID();
+		string u = to_string(w);
+		return u;
+	}
+
 };
