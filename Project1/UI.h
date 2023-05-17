@@ -86,12 +86,12 @@ public:
 				
 			}
 			cout << "\n";
-			void pausesleep();
+			
 
 			CountFcfs++;
 			
 		}
-		void pausesleep();
+		
 		           
 		for (Processor* i : Sjf)
 		{
@@ -106,12 +106,12 @@ public:
 			}
 			cout << "\n";
 
-			void pausesleep();
+			
 
 			countSjf++;
 		}
 
-		void pausesleep();
+		
 
 		for (Processor* i : Rr)
 		{
@@ -126,19 +126,19 @@ public:
 			}
 			cout << "\n";
 
-			void pausesleep();
+			
 
 			countRR;
 		}
 
-		void pausesleep();
+		
 
 
 		//-----------------------------------------------------------------------------------------
 		cout << "-------------   BLK Processes ----------" << "\n";
 		cout << "number of processes from blk" << "BLK: " << "IDs of processes in blk";
 
-		void pausesleep();
+		
 
 		//----------------------------------------------------------------------------------------
 	
@@ -157,7 +157,7 @@ public:
 		}
 		cout <<"\n";
 
-		void pausesleep();
+		
 
 		//printing for running processes for SJF
 		for (Processor* i : Sjf)
@@ -166,7 +166,7 @@ public:
 			j++;
 		}
 		cout << "\n";
-		void pausesleep();
+		
 
 		//printing for running processes for RRobin
 		for (Processor* i : Rr)
@@ -175,14 +175,14 @@ public:
 			j++;
 		}
 		cout << "\n";
-		void pausesleep();
+		
 //------------------------------------------------------------------------------------------
 
 		cout << "------------    TRM Processes ----------" << "\n";
 		cout << "number of processes in run" << "RUN: " << ""; //for loop for trm display
 		cout << "PRESS ANY KEY TO MOVE TO NEXT STEP !";
 
-		void pausesleep();
+		
 
 	} 
 
