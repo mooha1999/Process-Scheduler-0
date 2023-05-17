@@ -1,5 +1,5 @@
 #pragma once
-
+//written by nouran wisam and ganna salah
 #include <iostream>
 #include "Scheduler.h"
 #include "FCFS.h"
@@ -18,7 +18,9 @@
 using namespace std;
 
 class UserInterface {
+
 public:
+	UserInterface* UI;
 	int choice; //user choice from main menu
 	Blocked* BLK;
 	void displayMainMenu() 

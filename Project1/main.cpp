@@ -1,45 +1,34 @@
+//nouran wisam 
 #include <iostream>
 #include <fstream>
-#include <vector>
 #include "process.h"
 #include <string>
 #include <sstream>
 #include "Queue.h"
 #include "Pair.h"
 #include "Scheduler.h"
-#pragma
+#include "UI.h"
+#include <stdlib.h>
+
 #pragma once
 
 using namespace std;
+void main() {
 
-//function for ready list, generating random values
-void probRDY(Process x) {
-	int p = rand() % 100;
-	//for () { iteration on all process from input file
-	if (p >= 1 && p <= 15) {
-		//LinkedList::movenode(process** BLK, process **RUN); function from linkedlist class
-	}
-	if (p >= 20 && p <= 30) {}
-	if (p >= 50 && p <= 60) {}
-	//}
+	UserInterface UI;
+	
+	UI.displayMainMenu(); //user chooses a mode 
+	UI.getUserInput(); //now we have user's choice 
+	int x = UI.getUserInput(); //now user's choice assigned to x
+
+	system("cls"); // clear the screen for better UX :) 
+
+	//UI.display(_____); //fill in by inputs for function
+
+	UI.endline(); //line: "PRESS ANY KEY...."
+
+	//functions by scheduler that prints out the output files
+
+
+	
 };
-
-void probBLK() {
-	int p = rand() % 100;
-	if (p < 10) {}
-};
-
-int main()
-{
-	/*Scheduler* scheduler = new Scheduler();
-	scheduler->readFile();
-	scheduler->simulate();*/
-	Queue<int> q;
-	q.Push(1);
-	q.Push(2);
-	q.Push(3);
-	q.Remove(2);
-	for (int i : q)
-		cout << i << ' ';
-	return 0;
-}
