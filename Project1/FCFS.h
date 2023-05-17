@@ -2,7 +2,7 @@
 #include "Processor.h"
 #pragma once
 
-class FCFS : public Processor 
+class FCFS : public Processor
 {
 public:
 
@@ -21,7 +21,7 @@ public:
 		{
 			RUN = Rdy->Pop();   //return the value of the firt process in rdy list
 
-	
+
 		}
 		else
 		{
@@ -91,11 +91,11 @@ public:
 
 		return nullptr;
 	}
-	virtual int GetCount() 
+	virtual int GetCount()
 	{
 		return Rdy->Count();
 	}
-    virtual int Getcountblk()// to calculated the total number of blk in FcFS
+	virtual int Getcountblk()// to calculated the total number of blk in FcFS
 	{
 		return countBlk;
 	}
@@ -111,16 +111,4 @@ public:
 		return b;
 	}
 
-	virtual string Getidblk() //convert all blocked ids into string
-	{
-		Queue<Process*>temp = *Rdy;   //*Rdy to return the value of Rdy (copy)
-		Queue<int>ID;
-		while (temp.IsEmpty())
-		{
-			int x = temp.Pop()->getPID();  //return id
-			ID.Push(x); //push the id in the queue
-		}
-		return ID;
-	}
-	virtual int GetTWT
 };
