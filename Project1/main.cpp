@@ -12,7 +12,8 @@
 #pragma once
 
 using namespace std;
-void main() {
+void main() 
+{
 	Scheduler* scheduler = new Scheduler();
 	scheduler->readFile();
 	scheduler->StartSimulation();

@@ -29,7 +29,6 @@ public:
 
 			if (RUN->getEX() == RUN->getCT())
 			if (!RUN)
-
 			{
 				RUN = Rdy->Pop();   //return the value of the firt process in rdy list
 
