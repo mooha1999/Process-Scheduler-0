@@ -59,11 +59,11 @@ public:
 	Queue<int> GetID()
 	{
 		Queue<Process*>temp = *Rdy;   //*Rdy to return the value of Rdy (copy the rdy queue )
-		Queue<int>*Ids; //Id of each process
+		Queue<int> Ids; //Id of each process
 		while (!temp.IsEmpty())
 		{
 			int x = temp.Pop()->getPID();  //return id
-			Ids->Push(x); //push the id in the queue
+			Ids.Push(x); //push the id in the queue
 		}
 		return Ids;
 	}
