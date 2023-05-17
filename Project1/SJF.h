@@ -68,8 +68,8 @@ public:
 		return Rdy->Count();
 	}
 
-	//nouran: get id of running processes 
-	virtual int Getidrun() //return the id of the running process 
+
+	virtual int Getidrun()  //return the id of the running process 
 	{
 		int r = RUN->getPID();
 		return r;

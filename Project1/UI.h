@@ -126,7 +126,7 @@ public:
 			{
 				cout << j << ' , ';
 			}
-			cout <<' '<< counter << "\n";
+		
 		}
 
 		//pause until enter key is pressed 
@@ -145,7 +145,7 @@ public:
 		int j = 1;
 		for (Processor* i : Fcfs)
 		{
-			cout << i->getidrun() << "(p" << j << ")"<<" , ";
+			cout << i->Getidrun() << "(p" << j << ")"<<" , ";
 			j++;
 		}
 
@@ -153,7 +153,7 @@ public:
 		//printing for running processes for SJF
 		for (Processor* i : Sjf)
 		{
-			cout << i->getidrun() << "(p" << j << ")" << " , ";
+			cout << i->Getidrun() << "(p" << j << ")" << " , ";
 			j++;
 		}
 		cout << "\n";
@@ -161,7 +161,7 @@ public:
 		//printing for running processes for RRobin
 		for (Processor* i : Rr)
 		{
-			cout << i->getidrun() << "(p" << j << ")" << " , ";
+			cout << i->Getidrun() << "(p" << j << ")" << " , ";
 			j++;
 		}
 		cout << "\n";
@@ -270,7 +270,7 @@ public:
 		int j = 1;
 		for (Processor* i : Fcfs)
 		{
-			cout << i->getidrun() << "(p" << j << ")" << " , ";
+			cout << i->Getidrun() << "(p" << j << ")" << " , ";
 			j++;
 		}
 
@@ -278,7 +278,7 @@ public:
 		//printing for running processes for SJF
 		for (Processor* i : Sjf)
 		{
-			cout << i->getidrun() << "(p" << j << ")" << " , ";
+			cout << i->Getidrun() << "(p" << j << ")" << " , ";
 			j++;
 		}
 		cout << "\n";
@@ -286,7 +286,7 @@ public:
 		//printing for running processes for RRobin
 		for (Processor* i : Rr)
 		{
-			cout << i->getidrun() << "(p" << j << ")" << " , ";
+			cout << i->Getidrun() << "(p" << j << ")" << " , ";
 			j++;
 		}
 		cout << "\n";
