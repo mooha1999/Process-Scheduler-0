@@ -22,7 +22,7 @@ public:
 	{
 		if (!Rdy) //check if rdy queue isn't empty 
 		{
-<<<<<<< HEAD
+
 			RUN = Rdy->Pop();   //return the value of the firt process in rdy list
 			RUN->setRT(timestep - (RUN->getAT()));
 		}
@@ -32,9 +32,9 @@ public:
 			TBT++; //total busy time
 
 			if (RUN->getEX() == RUN->getCT()) //Ex-time=CPU-time
-=======
+
 			if (!RUN) // if the RUN process is not empty
->>>>>>> 19bc9017d074bb3344b58a72a84fbec0cdbb3643
+
 			{
 				RUN = Rdy->Pop();   //return the value of the firt process in rdy list
 

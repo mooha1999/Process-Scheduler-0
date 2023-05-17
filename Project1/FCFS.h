@@ -18,7 +18,6 @@ public:
     {
 		if (!Rdy)
 		{
-<<<<<<< HEAD
 			RUN = Rdy->Pop();   //return the value of the firt process in rdy list
 			RUN->setRT(timestep - (RUN->getAT())); 
 			//Response time is difference between current timestep and the arrival time to the processor
@@ -29,9 +28,8 @@ public:
 			TBT++; //total busy time
 
 			if (RUN->getEX() == RUN->getCT())
-=======
 			if (!RUN)
->>>>>>> 19bc9017d074bb3344b58a72a84fbec0cdbb3643
+
 			{
 				RUN = Rdy->Pop();   //return the value of the firt process in rdy list
 

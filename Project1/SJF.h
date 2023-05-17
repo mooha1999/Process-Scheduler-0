@@ -16,7 +16,6 @@ public:
 	{
 		if (!Rdy) //check if rdy queue isn't empty 
 		{
-<<<<<<< HEAD
 			RUN = Rdy->Pop();   //return the value of the firt process in rdy list
 			RUN->setRT(timestep - (RUN->getAT()));
 			//Response time is difference between current timestep and the arrival time to the processor
@@ -25,13 +24,12 @@ public:
 		{
 			BUSY = true; //busy when running
 			TBT++; //total busy time
-=======
+
 			if (!RUN) // check if there is no running process 
 			{
 				RUN = Rdy->Pop();   //return the value of the firt process in rdy list
->>>>>>> 19bc9017d074bb3344b58a72a84fbec0cdbb3643
-
 			}
+
 			else
 			{
 				BUSY = true; //busy when running
