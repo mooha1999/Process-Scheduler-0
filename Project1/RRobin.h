@@ -45,7 +45,7 @@ public:
 			}
 			// case 2 when the ex time is equal to the first element(time step)in pairs 
 			// kman lw el pairs fadya 34an lw 3amal peek le 7aga fadya hay3mil error
-		    if (RUN->getEX() == RUN->getPairs().Peek()->first && !RUN->getPairs().IsEmpty())
+		    if (!RUN->getPairs().IsEmpty() && RUN->getEX() == RUN->getPairs().Peek()->first)
 		    {
 					Blk = RUN;
 					RUN = nullptr;
