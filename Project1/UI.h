@@ -46,16 +46,22 @@ public:
 		}
 	}
 	
+	void ChoiceSelected()// to know which mode the user will choose 
+	{
+		if (choice == 1)
+		{
+			system("pause");
+		}
+		else if (choice == 2) { //step by step mode waits for 1 second and continues automatically
+			Sleep(1000);
+		}
 
+	}
 	void display(int timestep, Queue<Processor*> Fcfs, Queue<Processor*>Sjf, Queue<Processor*>Rr) // to get user what mood does the user need
 	{
 			if (choice == 1 || 2)
 			{
-				activemode(choice, timestep, Fcfs,Sjf, Rr); //either interactive or stepbystep
-			}
-			else if (choice == 2)
-			{
-				stepbystep(timestep, Fcfs, Sjf, Rr);
+				activemode( timestep, Fcfs,Sjf, Rr); //either interactive or stepbystep
 			}
 			else if (choice == 3)
 			{
@@ -65,7 +71,7 @@ public:
 
 
 
-	void activemode(int choice, int timestep, Queue<Processor*> Fcfs, Queue<Processor*>Sjf, Queue<Processor*>Rr)
+	void activemode( int timestep, Queue<Processor*> Fcfs, Queue<Processor*>Sjf, Queue<Processor*>Rr)
 	{
 		cout << "You choose Interactive mode." << "\n";
 		cout << "Current Timestep:" << "  " << timestep<<"\n";
@@ -96,14 +102,14 @@ public:
 			}
 			
 		}
-		if (choice == 1) { //interactive mode waits for key
-				//pause until enter key is pressed 
+		if (choice == 1) 
+		{ 
 			system("pause");
 		}
 		else if (choice == 2) { //step by step mode waits for 1 second and continues automatically
 			Sleep(1000);
 		}
-
+		           
 		for (Processor* i : Sjf)
 		{
 			ids = i->GetID();
@@ -164,7 +170,9 @@ public:
 		else if (choice == 2) { //step by step mode waits for 1 second and continues automatically
 			Sleep(1000);
 		}
-		
+
+
+		//-----------------------------------------------------------------------------------------
 		cout << "-------------   BLK Processes ----------" << "\n";
 		cout << "number of processes from blk" << "BLK: " << "IDs of processes in blk";
 
@@ -175,6 +183,9 @@ public:
 		else if (choice == 2) { //step by step mode waits for 1 second and continues automatically
 			Sleep(1000);
 		}
+
+
+		//----------------------------------------------------------------------------------------
 
 		cout << "-------------   RUN Processes ----------" << "\n";
 		cout << "number of processes in run" << "RUN: "; //for loop for run display
@@ -195,7 +206,6 @@ public:
 		else if (choice == 2) { //step by step mode waits for 1 second and continues automatically
 			Sleep(1000);
 		}
-		
 		//printing for running processes for SJF
 		for (Processor* i : Sjf)
 		{
@@ -225,7 +235,7 @@ public:
 		else if (choice == 2) { //step by step mode waits for 1 second and continues automatically
 			Sleep(1000);
 		}
-
+//------------------------------------------------------------------------------------------
 
 		cout << "------------    TRM Processes ----------" << "\n";
 		cout << "number of processes in run" << "RUN: " << ""; //for loop for trm display
