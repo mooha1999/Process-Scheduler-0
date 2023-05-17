@@ -49,14 +49,11 @@ public:
 
 	void display(int timestep, Queue<Processor*> Fcfs, Queue<Processor*>Sjf, Queue<Processor*>Rr) // to get user what mood does the user need
 	{
-			if (choice == 1)
+			if (choice == 1|| choice == 2)
 			{
 				interactivemode( timestep, Fcfs,Sjf, Rr);
 			}
-			else if (choice == 2)
-			{
-				stepbystep(timestep, Fcfs, Sjf, Rr);
-			}
+			
 			else if (choice == 3)
 			{
 				silentmode();
