@@ -28,10 +28,10 @@ public:
 		}
 		else if (RUN)
 		{
-				BUSY = true; //busy when running
-				TBT++; //total busy time
-
-				if (RUN->getEX() == RUN->getCT()) //Ex-time=CPU-time
+			BUSY = true; //busy when running
+			TBT++; //total busy time
+		}
+				else if (RUN->getEX() == RUN->getCT()) //Ex-time=CPU-time
 				{
 					RUN->setTT(timestep);
 					AR = AR + RUN->getTRT();
@@ -39,7 +39,7 @@ public:
 					RUN = nullptr;
 				}
 				//case 1  if the execution time is equal to time slice
-				if (RUN->getEX() % time_slice == 0) // reminder (
+				else if (RUN->getEX() % time_slice == 0) // reminder (
 				{
 					RUN->incEX(); // hna 34an mayd5ol4 be nafs el ex-time (resulting infinte loop)
 					Rdy->Push(RUN);
@@ -47,7 +47,7 @@ public:
 				}
 				// case 2 when the ex time is equal to the first element(time step)in pairs 
 				// kman lw el pairs fadya 34an lw 3amal peek le 7aga fadya hay3mil error
-				if (!RUN->getPairs().IsEmpty() && RUN->getEX() == RUN->getPairs().Peek()->first)
+				else if (!RUN->getPairs().IsEmpty() && RUN->getEX() == RUN->getPairs().Peek()->first)
 				{
 					Blk = RUN;
 					RUN = nullptr;
@@ -58,7 +58,6 @@ public:
 				}
 
 			}
-	}
 
 	Queue<int> GetID()
 	{

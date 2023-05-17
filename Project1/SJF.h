@@ -22,29 +22,30 @@ public:
 			RUN->setRT(timestep - (RUN->getAT()));
 			//Response time is difference between current timestep and the arrival time to the processor
 		}
-			else if (RUN)
-			{
-				BUSY = true; //busy when running
-				TBT++; //total busy time
+		else if (RUN)
+		{
+			BUSY = true; //busy when running
+			TBT++; //total busy time
+		}
 
-				if (RUN->getEX() == RUN->getCT())
+			else if (RUN->getEX() == RUN->getCT())
 				{
 					RUN->setTT(timestep);
 					AR = AR + RUN->getTRT();
 					Finish = RUN;
 					RUN = nullptr;
 				}
-				if (!RUN->getPairs().IsEmpty() && RUN->getEX() == RUN->getPairs().Peek()->first)
+			else if (!RUN->getPairs().IsEmpty() && RUN->getEX() == RUN->getPairs().Peek()->first)
 				{
 					Blk = RUN;
 					RUN = nullptr;
 				}
-				else
+			else
 				{
 					RUN->incEX();
 				}
 			}
-		}
+
 
 virtual Queue<int> GetID()
 	{

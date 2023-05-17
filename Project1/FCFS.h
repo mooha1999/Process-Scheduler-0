@@ -24,11 +24,11 @@ public:
 		}
 		else if (RUN)
 		{
-			{
-				BUSY = true; //busy when running
-				TBT++; //total busy time
+			BUSY = true; //busy when running
+			TBT++; //total busy time
+		}
 
-				if (RUN->getEX() == RUN->getCT())
+		else if (RUN->getEX() == RUN->getCT())
 				{
 					RUN->setTT(timestep); //now the termination time of process is equal to current timestep
 					AR = AR + RUN->getTRT(); // total turn around time of all processes
@@ -36,7 +36,7 @@ public:
 					RUN = nullptr;
 					BUSY = false;
 				}
-				if (!RUN->getPairs().IsEmpty() && RUN->getEX() == RUN->getPairs().Peek()->first)
+				else if (!RUN->getPairs().IsEmpty() && RUN->getEX() == RUN->getPairs().Peek()->first)
 				{
 					Blk = RUN;
 					RUN = nullptr;
@@ -46,8 +46,6 @@ public:
 					RUN->incEX();
 				}
 			}
-		}
-	}
 	virtual Queue<int> GetID()
 	{
 		Queue<Process*>temp = *Rdy;   //*Rdy to return the value of Rdy (copy)
