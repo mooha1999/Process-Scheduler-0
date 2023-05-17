@@ -84,7 +84,7 @@ public:
 			cout << "\n";
 			if (i->RUN)
 			{
-				TRP++; // hna hat2kid fe Running process wala la 
+				TRP++; // hna hat2kid fe Running process wala la
 			}
 		}
 
@@ -126,13 +126,13 @@ public:
 
 		//-----------------------------------------------------------------------------------------
 		cout << "-------------   BLK Processes ----------" << "\n";
-		cout << BLK->BlockedIDsCount() << " BLK: " << BLK->BlockedIDs();
+		cout << BLK->BlockedIDsCount() << " BLK: " << BLK->BlockedIDs() << endl;
 
 		//----------------------------------------------------------------------------------------
 
 		cout << "-------------   RUN Processes ----------" << "\n";
-		
-		cout << TRP  << "RUN: "; //for loop for run display
+
+		cout << TRP << " RUN: "; //for loop for run display
 
 		//the three processors have the same counter
 		//printing for running processes for FCFS
@@ -142,7 +142,6 @@ public:
 			cout << i->Getidrun() << "(p" << j << ")" << " , ";
 			j++;
 		}
-		cout << "\n";
 
 		//printing for running processes for SJF
 		for (SJF* i : Sjf)
@@ -150,7 +149,6 @@ public:
 			cout << i->Getidrun() << "(p" << j << ")" << " , ";
 			j++;
 		}
-		cout << "\n";
 
 		//printing for running processes for RRobin
 		for (RRobin* i : Rr)
@@ -163,12 +161,11 @@ public:
 		//------------------------------------------------------------------------------------------
 
 		cout << "------------    TRM Processes ----------" << "\n";
-		cout << TRM.Count() << "TRM: " << ""; //for loop for trm display
-		
+		cout << TRM.Count() << " TRM: " << ""; //for loop for trm display
+
 		for (Process* i : TRM)
 		{
-		   cout<< i->getPID() <<" , ";
-
+			cout << i->getPID() << " , ";
 		}
 		cout << "\n";
 
@@ -200,8 +197,8 @@ public:
 	void endline() { //in either modes interactive or stepbystep, this line is printed
 		//and the program waits for the user's key press
 
-		cout << "PRESS ANY KEY TO MOVE TO NEXT STEP !";
-		system("pause");
+		cout << "PRESS ANY KEY TO MOVE TO NEXT STEP !\n";
+		getchar();
 	}
 
 	void displayEndLine() { //ending simulation message

@@ -48,6 +48,10 @@ public:
 	}
 	string BlockedIDs() {
 		string ret = "";
+		if (running) {
+			ret += to_string(running->getPID());
+			ret += ", ";
+		}
 		for (auto i : blockedProcesses) {
 			ret += to_string(i->getPID());
 			ret += ", ";

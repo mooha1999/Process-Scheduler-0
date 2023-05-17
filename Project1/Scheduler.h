@@ -229,7 +229,8 @@ public:
 		while (!NEW.IsEmpty() || !BLK->IsEmpty() || !sigKills.IsEmpty() || !isAllEmpty()) {
 			//from NEW to RDY, a while loop because there might be more than one process arriving at the same time
 			while (!NEW.IsEmpty() && NEW.Peek()->getAT() == timestep) {
-				getLeastWaitingProcessor()->push(NEW.Pop());
+				Processor* leastProcessor = getLeastWaitingProcessor();
+				leastProcessor->push(NEW.Pop());
 			}
 			//from BLK to RDY
 			if (BLK->GetFinishedProcess()) {
