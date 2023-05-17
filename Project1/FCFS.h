@@ -34,7 +34,7 @@ public:
 
 			if (RUN->getEX() == RUN->getCT())
 			{
-				AR = AR + RUN->getTRT();
+				AR = AR + RUN->getTRT(); // total turn around time of all processes
 				Finish = RUN;
 				RUN = nullptr;
 				BUSY = false;
@@ -50,7 +50,7 @@ public:
 			}
 		}
 	}
-	Queue<int> GetID()
+	Queue<int> GetID() //used in interactive mode: code 1 
 	{
 		Queue<Process*>temp = *Rdy;   //*Rdy to return the value of Rdy (copy)
 		Queue<int>ID;
@@ -104,5 +104,7 @@ public:
 		int r = RUN->getPID();
 		return r;
 	}
+
+
 
 };
