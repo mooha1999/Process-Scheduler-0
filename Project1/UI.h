@@ -10,6 +10,7 @@
 #include "Queue.h"
 #include <string>
 #include<windows.h> 
+#include "BlockedProcesses.h"
 //used for sleep function for delay in step by step
 //Sleep (1000); for one second 1000 millisecond 
 #include <stdlib.h> //library for abort function
@@ -182,7 +183,8 @@ public:
 		cout << "number of processes in run" << "RUN: " << ""; //for loop for trm display
 		cout << "PRESS ANY KEY TO MOVE TO NEXT STEP !";
 
-		
+		//priority queue of processes, .count for TRM processes 
+		//print IDs using for loop 
 
 	} 
 
