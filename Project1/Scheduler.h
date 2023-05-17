@@ -235,9 +235,10 @@ public:
 			if (finishedBlockedProcess) {
 				getLeastWaitingProcessor()->push(finishedBlockedProcess);
 			}
-			//ui.display(.....)
+			ui.display(timestep, fcfss, sjfs, rrs, BLK);
 			timestep++;
 		}
-		//ui.displayEnd()
+		generateOutputFile(timestep);
+		ui.displayEndLine();
 	}
 };

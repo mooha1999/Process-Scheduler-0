@@ -8,21 +8,20 @@
 #include "RRobin.h"
 #include "Queue.h"
 #include <string>
-#include<windows.h> 
+#include<windows.h>
 #include "BlockedProcesses.h"
 //used for sleep function for delay in step by step
-//Sleep (1000); for one second 1000 millisecond 
+//Sleep (1000); for one second 1000 millisecond
 #include <stdlib.h> //library for abort function
 
 using namespace std;
 
 class UserInterface {
-
 public:
 	UserInterface* UI;
 	int choice; //user choice from main menu
-	Blocked* BLK;
-	void displayMainMenu() 
+
+	void displayMainMenu()
 	{
 		cout << "Process Scheduler Program \n";
 		cout << "Please choose from the interface modes: \n";
@@ -34,7 +33,6 @@ public:
 
 	int getUserInput()
 	{
-
 		cout << "Enter your choice: ";
 		cin >> choice;
 
@@ -47,26 +45,26 @@ public:
 			return choice;
 		}
 	}
-	
-	void display(int timestep, Queue<Processor*> Fcfs, Queue<Processor*>Sjf, Queue<Processor*>Rr) // to get user what mood does the user need
+
+	void display(int timestep, Queue<Processor*> Fcfs, Queue<Processor*>Sjf, Queue<Processor*>Rr, Blocked* BLK) // to get user what mood does the user need
 	{
-			if (choice == 1 || 2)
-			{
-				activemode( timestep, Fcfs,Sjf, Rr); //either interactive or stepbystep
-			}
-			else if (choice == 3)
-			{
-				silentmode();
-			}
-			else
-			{
-				exit();
-			}
+		if (choice == 1 || 2)
+		{
+			activemode(timestep, Fcfs, Sjf, Rr, BLK); //either interactive or stepbystep
+		}
+		else if (choice == 3)
+		{
+			silentmode();
+		}
+		else
+		{
+			exit();
+		}
 	}
 
-	void activemode( int timestep, Queue<Processor*> Fcfs, Queue<Processor*>Sjf, Queue<Processor*>Rr)
+	void activemode(int timestep, Queue<Processor*> Fcfs, Queue<Processor*>Sjf, Queue<Processor*>Rr, Blocked* BLK)
 	{
-		cout << "Current Timestep:" << "  " << timestep<<"\n";
+		cout << "Current Timestep:" << "  " << timestep << "\n";
 		cout << "------------    RDY Processes -----------" << "\n";
 		Queue<int> ids;
 		for (Processor* i : Fcfs)
@@ -78,15 +76,11 @@ public:
 			cout << "RDY: ";
 			for (int j : ids)
 			{
-				
 				cout << j << ' , ';
-				
 			}
 			cout << "\n";
-			
 		}
-		
-		           
+
 		for (Processor* i : Sjf)
 		{
 			ids = i->GetID();
@@ -94,21 +88,18 @@ public:
 			int counter = ids.Count();
 			cout << counter << '  ';
 			cout << "RDY: ";
-			for (int j:ids)
+			for (int j : ids)
 			{
 				cout << j << ' , ';
 			}
 			cout << "\n";
-
 		}
-
-		
 
 		for (Processor* i : Rr)
 		{
 			ids = i->GetID();
 			cout << "processor " << i << "[RR ]: ";
-			int counter = ids.Count(); 
+			int counter = ids.Count();
 			cout << counter << '  ';
 			cout << "RDY: ";
 			for (int j : ids)
@@ -116,7 +107,6 @@ public:
 				cout << j << ' , ';
 			}
 			cout << "\n";
-
 		}
 
 		//-----------------------------------------------------------------------------------------
@@ -124,22 +114,20 @@ public:
 		cout << BLK->BlockedIDsCount() << "BLK: " << BLK->BlockedIDs();
 
 		//----------------------------------------------------------------------------------------
-	
+
 		cout << "-------------   RUN Processes ----------" << "\n";
-		int TNumP = Fcfs.Count()+Sjf.Count()+ Rr.Count(); //total number of processors
+		int TNumP = Fcfs.Count() + Sjf.Count() + Rr.Count(); //total number of processors
 		cout << TNumP << "RUN: "; //for loop for run display
-	
-		//the three processors have the same counter 
+
+		//the three processors have the same counter
 		//printing for running processes for FCFS
 		int j = 1;
 		for (Processor* i : Fcfs)
 		{
-			cout << i->Getidrun() << "(p" << j << ")"<<" , ";
+			cout << i->Getidrun() << "(p" << j << ")" << " , ";
 			j++;
 		}
-		cout <<"\n";
-
-		
+		cout << "\n";
 
 		//printing for running processes for SJF
 		for (Processor* i : Sjf)
@@ -148,7 +136,6 @@ public:
 			j++;
 		}
 		cout << "\n";
-		
 
 		//printing for running processes for RRobin
 		for (Processor* i : Rr)
@@ -157,20 +144,17 @@ public:
 			j++;
 		}
 		cout << "\n";
-		
-//------------------------------------------------------------------------------------------
+
+		//------------------------------------------------------------------------------------------
 
 		cout << "------------    TRM Processes ----------" << "\n";
 		cout << "number of processes in run" << "RUN: " << ""; //for loop for trm display
-		//priority queue of processes, .count for TRM processes 
-		//print IDs using for loop 
+		//priority queue of processes, .count for TRM processes
+		//print IDs using for loop
 		void endline();
-		
+	}
 
-	} 
-
-
-	void silentmode(){
+	void silentmode() {
 		cout << "You choose Silent mode." << "\n";
 		cout << "--------Silent Mode-------" << "\n";
 		cout << "Simulation Starts" << "\n";
@@ -183,9 +167,9 @@ public:
 		abort();
 	}
 
-	void pausesleep() { //depending on user choice, program either sleep or pause 
+	void pausesleep() { //depending on user choice, program either sleep or pause
 		if (choice == 1) { //interactive mode waits for key
-				//pause until enter key is pressed 
+				//pause until enter key is pressed
 			system("pause");
 		}
 		else if (choice == 2) { //step by step mode waits for 1 second and continues automatically
@@ -193,11 +177,10 @@ public:
 		}
 	}
 
-	void endline() { //in either modes interactive or stepbystep, this line is printed 
-		//and the program waits for the user's key press 
+	void endline() { //in either modes interactive or stepbystep, this line is printed
+		//and the program waits for the user's key press
 
 		cout << "PRESS ANY KEY TO MOVE TO NEXT STEP !";
 		system("pause");
 	}
-
 };
