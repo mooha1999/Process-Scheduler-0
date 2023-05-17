@@ -10,6 +10,7 @@
 #include "Queue.h"
 #include <string>
 #include<windows.h> 
+#include "BlockedProcesses.h"
 //used for sleep function for delay in step by step
 //Sleep (1000); for one second 1000 millisecond 
 #include <stdlib.h> //library for abort function
@@ -19,6 +20,7 @@ using namespace std;
 class UserInterface {
 public:
 	int choice; //user choice from main menu
+	Blocked* BLK;
 	void displayMainMenu() 
 	{
 		cout << "Process Scheduler Program \n";
@@ -86,10 +88,12 @@ public:
 				
 			}
 			cout << "\n";
-			void pausesleep();
+			
+
+			CountFcfs++;
 			
 		}
-		void pausesleep();
+		
 		           
 		for (Processor* i : Sjf)
 		{
@@ -104,12 +108,12 @@ public:
 			}
 			cout << "\n";
 
-			void pausesleep();
+			
 
 			countSjf++;
 		}
 
-		void pausesleep();
+		
 
 		for (Processor* i : Rr)
 		{
@@ -124,25 +128,23 @@ public:
 			}
 			cout << "\n";
 
-			void pausesleep();
+			
 
 			countRR;
 		}
 
-		void pausesleep();
+		
 
 
 		//-----------------------------------------------------------------------------------------
 		cout << "-------------   BLK Processes ----------" << "\n";
-		cout << "number of processes from blk" << "BLK: " << "IDs of processes in blk";
-
-		void pausesleep();
+		cout << BLK->BlockedIDsCount() << "BLK: " << BLK->BlockedIDs();
 
 		//----------------------------------------------------------------------------------------
 	
 		cout << "-------------   RUN Processes ----------" << "\n";
 		int TNumP = CountFcfs + countRR + countSjf; //total number of processors
-		cout << TNumP <<"number of processes in run" << "RUN: "; //for loop for run display
+		cout << TNumP << "RUN: "; //for loop for run display
 	
 		//the three processors have the same counter 
 		//printing for running processes for FCFS
@@ -155,7 +157,7 @@ public:
 		}
 		cout <<"\n";
 
-		void pausesleep();
+		
 
 		//printing for running processes for SJF
 		for (Processor* i : Sjf)
@@ -164,7 +166,7 @@ public:
 			j++;
 		}
 		cout << "\n";
-		void pausesleep();
+		
 
 		//printing for running processes for RRobin
 		for (Processor* i : Rr)
@@ -173,14 +175,15 @@ public:
 			j++;
 		}
 		cout << "\n";
-		void pausesleep();
+		
 //------------------------------------------------------------------------------------------
 
 		cout << "------------    TRM Processes ----------" << "\n";
 		cout << "number of processes in run" << "RUN: " << ""; //for loop for trm display
 		cout << "PRESS ANY KEY TO MOVE TO NEXT STEP !";
 
-		void pausesleep();
+		//priority queue of processes, .count for TRM processes 
+		//print IDs using for loop 
 
 	} 
 
@@ -198,7 +201,7 @@ public:
 		abort();
 	}
 
-	void pausesleep() {
+	void pausesleep() { //depending on user choice, program either sleep or pause 
 		if (choice == 1) { //interactive mode waits for key
 				//pause until enter key is pressed 
 			system("pause");
