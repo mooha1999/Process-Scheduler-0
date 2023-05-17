@@ -22,7 +22,7 @@ public:
 	{
 		return TBT;
 	}
-	int GetTRT()
+	int GetTRT() //total turn around time (TT-AT)
 	{
 		return AR;
 	}
