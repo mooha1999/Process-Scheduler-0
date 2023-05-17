@@ -37,12 +37,11 @@ public:
 				Finish = RUN;
 				RUN = nullptr;
 			}
-			if (RUN->getEX() == RUN->getPairs().Peek()->first)
+			if (RUN->getEX() == RUN->getPairs().Peek()->first && !RUN->getPairs().IsEmpty())
 			{
 				Blk = RUN;
 				RUN = nullptr;
 			}
-		
 			else
 			{
 				RUN->incEX();

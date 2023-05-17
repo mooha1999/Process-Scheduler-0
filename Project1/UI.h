@@ -18,8 +18,10 @@ using namespace std;
 
 class UserInterface {
 public:
+	int choice; //user choice from main menu
 
-	void displayMainMenu() {
+	void displayMainMenu() 
+	{
 		cout << "Process Scheduler Program \n";
 		cout << "Please choose from the interface modes: \n";
 		cout << "1. Interactive mode.\n";
@@ -28,8 +30,9 @@ public:
 		cout << "4. Exit the program.\n";
 	}
 
-	int getUserInput() {
-		int choice; //user choice from main menu
+	int getUserInput()
+	{
+
 		cout << "Enter your choice: ";
 		cin >> choice;
 		return choice;
@@ -37,10 +40,10 @@ public:
 	
 
 	//nouran: ya ganna el if condition de btt3ml fel main i guess 
-	void Userchoice() // to get user what mood does the user need
+	void display(int timestep, Queue<Processor*> Fcfs, Queue<Processor*>Sjf, Queue<Processor*>Rr) // to get user what mood does the user need
 	{
 		int Uchoice = getUserInput();
-		if (Uchoice < 1 || Uchoice >4) // if he choose any number which is not between 1 and 4
+		if (Uchoice < 1 || Uchoice >3) // if he choose any number which is not between 1 and 4
 		{
 			cout << " Not a Valid Choice ";
 		}
@@ -48,13 +51,17 @@ public:
 		{
 			if (Uchoice == 1)
 			{
+				interactivemode( timestep, Fcfs,Sjf, Rr);
 			}
 			else if (Uchoice == 2)
 			{
+				stepbystep(timestep, Fcfs, Sjf, Rr);
 			}
 			else if (Uchoice == 3)
 			{
+				silentmode();
 			}
+	
 		}
 	}
 
@@ -184,14 +191,10 @@ public:
 		cout << "Simualtion ends. Output file created.";
 	}
 	
-	void exit() { //aborts program completely
-		abort();
-	}
-
-
+	
 	void stepbystep(int timestep, Queue<Processor*> Fcfs, Queue<Processor*>Sjf, Queue<Processor*>Rr)
 	{
-		cout << "You choose Step-by-step mode." << "\n";
+		cout << "You choose Interactive mode." << "\n";
 		cout << "Current Timestep:" << "  " << timestep << "\n";
 		cout << "------------    RDY Processes -----------" << "\n";
 		Queue<int> ids;
@@ -202,6 +205,9 @@ public:
 		for (Processor* i : Fcfs)
 		{
 			ids = i->GetID();
+			cout << "processor 1 [FCFS]: " << "number of processes" << "RDY: ";
+			int counter = ids.Count(); //return the num of ids in the queue
+			cout << counter << '  ';
 			for (int j : ids)
 			{
 
@@ -211,7 +217,7 @@ public:
 			cout << "\n";
 		}
 
-		//pause for 1 second, 1000 milliseconds 
+		//pause until enter key is pressed 
 		Sleep(1000);
 
 		//Printing processes from SJF processor 
@@ -221,6 +227,9 @@ public:
 		for (Processor* i : Sjf)
 		{
 			ids = i->GetID();
+			cout << "processor 2 [SJF ]: " << "number of processes" << "RDY: ";
+			int counter = ids.Count();
+			cout << counter << '  ';
 			for (int j : ids)
 			{
 				cout << j << ' , ';
@@ -228,7 +237,7 @@ public:
 			cout << "\n";
 		}
 
-		//pause for 1 second, 1000 milliseconds 
+		//pause until enter key is pressed 
 		Sleep(1000);
 
 		//Printing processes from RR processor 
@@ -238,9 +247,8 @@ public:
 		for (Processor* i : Rr)
 		{
 			ids = i->GetID();
-			int count = i->Getcount();
-			cout << "processor 3 [RR  ]: " << "number of processes" << "RDY: ";
-			cout << count;
+			int counter = ids.Count();
+			cout << counter << '  ';
 			for (int j : ids)
 			{
 				cout << j << ' , ';
@@ -248,13 +256,13 @@ public:
 			cout << ' ' << counter << "\n";
 		}
 
-		//pause for 1 second, 1000 milliseconds 
+		//pause until enter key is pressed 
 		Sleep(1000);
 
 		cout << "-------------   BLK Processes ----------" << "\n";
 		cout << "number of processes from blk" << "BLK: " << "IDs of processes in blk";
 
-		//pause for 1 second, 1000 milliseconds 
+		//pause until enter key is pressed 
 		Sleep(1000);
 
 		cout << "-------------   RUN Processes ----------" << "\n";
@@ -286,16 +294,21 @@ public:
 		cout << "\n";
 
 
-		//pause for 1 second, 1000 milliseconds 
+
+		//pause until enter key is pressed 
 		Sleep(1000);
 
 		cout << "------------    TRM Processes ----------" << "\n";
 		cout << "number of processes in run" << "RUN: " << ""; //for loop for trm display
 		cout << "PRESS ANY KEY TO MOVE TO NEXT STEP !";
-		//pause for 1 second, 1000 milliseconds 
+
+		//pause until enter key is pressed 
 		Sleep(1000);
 		system("pause");
 	}
-
+	void exit()
+	{ //aborts program completely
+		abort();
+	}
 
 };

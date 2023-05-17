@@ -24,14 +24,6 @@ public:
 		{
 			RUN = Rdy->Pop();   //return the value of the firt process in rdy list
 
-			//execution time and pair comparison
-			int a = RUN->getPairs().Peek()->first;
-			int b = RUN->getEX();
-			if (a == b)
-			{
-				//remove the pair from comparison
-				RUN->getPairs().Pop();
-			}
 		}
 		else
 		{
@@ -52,10 +44,11 @@ public:
 				RUN = nullptr;
 			}
 			// case 2 when the ex time is equal to the first element(time step)in pairs 
-			if (RUN->getEX() == RUN->getPairs().Peek()->first)
-			{
-				Blk = RUN;
-				RUN = nullptr;
+			// kman lw el pairs fadya 34an lw 3amal peek le 7aga fadya hay3mil error
+		    if (RUN->getEX() == RUN->getPairs().Peek()->first && !RUN->getPairs().IsEmpty())
+		    {
+					Blk = RUN;
+					RUN = nullptr;
 			}
 			else
 			{
