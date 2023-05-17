@@ -7,6 +7,9 @@ class Blocked
 	Process* running;
 	Process* finished;
 public:
+	Blocked() {
+		finished = running = nullptr;
+	}
 	void AddProcess(Process* process) {
 		blockedProcesses.Push(process);
 	}
@@ -32,6 +35,8 @@ public:
 		return ret;
 	}
 	Process* GetFinishedProcess() {
+		if (!finished)
+			return nullptr;
 		Process* ret = finished;
 		finished = nullptr;
 		return ret;
@@ -48,7 +53,6 @@ public:
 		if (ret.size() > 0) {
 			ret.pop_back();
 			ret.pop_back();
-
 		}
 		return ret;
 	}

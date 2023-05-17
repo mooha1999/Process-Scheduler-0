@@ -13,7 +13,7 @@
 using namespace std;
 class Scheduler {
 	Queue<Process*> NEW;
-	Blocked* BLK;
+	Blocked* BLK = new Blocked();
 	PriortyQueue<Process*> TRM;
 	Queue<Pair<int, int>*> sigKills;
 	Queue<Processor*> Processors;
@@ -64,10 +64,13 @@ class Scheduler {
 			while (getline(ss, numString, ',')) {
 				nums.Push(stoi(numString));
 			}
-			while (!nums.IsEmpty()) {
-				int f = nums.Pop();
-				int s = nums.Pop();
-				ios.Push(new Pair<>(f, s));
+
+			if (nums.Count() > 1) {
+				while (!nums.IsEmpty()) {
+					int f = nums.Pop();
+					int s = nums.Pop();
+					ios.Push(new Pair<>(f, s));
+				}
 			}
 			// Add the pair to the vector
 
