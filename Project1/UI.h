@@ -163,11 +163,10 @@ public:
 		cout << "------------    TRM Processes ----------" << "\n";
 		cout << TRM.Count() << " TRM: " << ""; //for loop for trm display
 
-		for (Process* i : TRM)
+		while (!TRM.IsEmpty())
 		{
-			cout << i->getPID() << " , ";
+			cout << TRM.Pop()->getPID();
 		}
-		cout << "\n";
 
 		//priority queue of processes, .count for TRM processes
 		//print IDs using for loop
