@@ -72,15 +72,14 @@ public:
 		cout << "------------    RDY Processes -----------" << "\n";
 		Queue<int> ids;
 		int counter = 0;
-		//Printing processes from FCFS
-			cout << "processor 1 [FCFS]: "; //then cout number of processors
-			cout << "RDY: ";
+	
 		for (Processor* i : Fcfs)
 		{
 			ids = i->GetID();
-			cout << "processor 1 [FCFS]: " << "number of processes" << "RDY: ";
+			cout << "processor " << i << " [FCFS]: ";
 			int counter = ids.Count(); //return the num of ids in the queue
 			cout << counter << '  ';
+			cout << "RDY: ";
 			for (int j : ids)
 			{
 				
@@ -88,45 +87,46 @@ public:
 				
 			}
 			cout << "\n";
+			//pause until enter key is pressed 
+			system("pause");
 		}
 
 		//pause until enter key is pressed 
 		system("pause");
 
-		//Printing processes from SJF processor 
-		cout << "processor 2 [SJF ]: "; //then cout number of processors
-		cout << "RDY: ";
 
 		for (Processor* i : Sjf)
 		{
 			ids = i->GetID();
-			cout << "processor 2 [SJF ]: " << "number of processes" << "RDY: ";
+			cout << "processor " << i << "[SJF ]: ";
 			int counter = ids.Count();
 			cout << counter << '  ';
+			cout << "RDY: ";
 			for (int j:ids)
 			{
 				cout << j << ' , ';
 			}
 			cout << "\n";
+			system("pause");
 		}
 
 		//pause until enter key is pressed 
 		system("pause");
 
-		//Printing processes from RR processor 
-		cout << "processor 3 [RR  ]: "; //cout the number of processors 
-		cout << "RDY: ";
 
 		for (Processor* i : Rr)
 		{
 			ids = i->GetID();
+			cout << "processor " << i << "[RR ]: ";
 			int counter = ids.Count(); 
 			cout << counter << '  ';
+			cout << "RDY: ";
 			for (int j : ids)
 			{
 				cout << j << ' , ';
 			}
-		
+			cout << "\n";
+			system("pause");
 		}
 
 		//pause until enter key is pressed 
@@ -190,120 +190,8 @@ public:
 	}
 	
 	
-	void stepbystep(int timestep, Queue<Processor*> Fcfs, Queue<Processor*>Sjf, Queue<Processor*>Rr)
-	{
-		cout << "You choose Interactive mode." << "\n";
-		cout << "Current Timestep:" << "  " << timestep << "\n";
-		cout << "------------    RDY Processes -----------" << "\n";
-		Queue<int> ids;
-		int counter = 0;
-		//Printing processes from FCFS
-		cout << "processor 1 [FCFS]: "; //then cout number of processors
-		cout << "RDY: ";
-		for (Processor* i : Fcfs)
-		{
-			ids = i->GetID();
-			cout << "processor 1 [FCFS]: " << "number of processes" << "RDY: ";
-			int counter = ids.Count(); //return the num of ids in the queue
-			cout << counter << '  ';
-			for (int j : ids)
-			{
-
-				cout << j << ' , ';
-
-			}
-			cout << "\n";
-		}
-
-		//pause until enter key is pressed 
-		Sleep(1000);
-
-		//Printing processes from SJF processor 
-		cout << "processor 2 [SJF ]: "; //then cout number of processors
-		cout << "RDY: ";
-
-		for (Processor* i : Sjf)
-		{
-			ids = i->GetID();
-			cout << "processor 2 [SJF ]: " << "number of processes" << "RDY: ";
-			int counter = ids.Count();
-			cout << counter << '  ';
-			for (int j : ids)
-			{
-				cout << j << ' , ';
-			}
-			cout << "\n";
-		}
-
-		//pause until enter key is pressed 
-		Sleep(1000);
-
-		//Printing processes from RR processor 
-		cout << "processor 3 [RR  ]: "; //cout the number of processors 
-		cout << "RDY: ";
-
-		for (Processor* i : Rr)
-		{
-			ids = i->GetID();
-			int counter = ids.Count();
-			cout << counter << '  ';
-			for (int j : ids)
-			{
-				cout << j << ' , ';
-			}
-			cout << ' ' << counter << "\n";
-		}
-
-		//pause until enter key is pressed 
-		Sleep(1000);
-
-		cout << "-------------   BLK Processes ----------" << "\n";
-		cout << "number of processes from blk" << "BLK: " << "IDs of processes in blk";
-
-		//pause until enter key is pressed 
-		Sleep(1000);
-
-		cout << "-------------   RUN Processes ----------" << "\n";
-		cout << "number of processes in run" << "RUN: "; //for loop for run display
-		//the three processors have the same counter 
-		//printing for running processes for FCFS
-		int j = 1;
-		for (Processor* i : Fcfs)
-		{
-			cout << i->Getidrun() << "(p" << j << ")" << " , ";
-			j++;
-		}
-
-
-		//printing for running processes for SJF
-		for (Processor* i : Sjf)
-		{
-			cout << i->Getidrun() << "(p" << j << ")" << " , ";
-			j++;
-		}
-		cout << "\n";
-
-		//printing for running processes for RRobin
-		for (Processor* i : Rr)
-		{
-			cout << i->Getidrun() << "(p" << j << ")" << " , ";
-			j++;
-		}
-		cout << "\n";
-
-
-
-		//pause until enter key is pressed 
-		Sleep(1000);
-
-		cout << "------------    TRM Processes ----------" << "\n";
-		cout << "number of processes in run" << "RUN: " << ""; //for loop for trm display
-		cout << "PRESS ANY KEY TO MOVE TO NEXT STEP !";
-
-		//pause until enter key is pressed 
-		Sleep(1000);
-		system("pause");
-	}
+	
+	
 	void exit()
 	{ //aborts program completely
 		abort();
