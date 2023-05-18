@@ -85,7 +85,7 @@ class Scheduler {
 			p->schedulago(timestep);
 			Process* finishedProcess = p->Finish;
 			if (finishedProcess) {
-				TRM.Push(finishedProcess, finishedProcess->getTT() * -1);
+				TRM.Push(finishedProcess, finishedProcess->getTT());
 				p->Finish = nullptr;
 			}
 			Process* blockedProcess = p->Blk;
@@ -193,9 +193,9 @@ class Scheduler {
 		int i = 1;
 		for (auto p : Processors) {
 			if (p->GetTRT() == 0)
-				out << 0 << '\t';
+				out << 'p' << i++ << " = " << 0 << "%\t";
 			else
-				out << 'p' << i++ << '=' << (p->GetBusyTime() / p->GetTRT()) * 100 + '\t';
+				out << 'p' << i++ << " = " << (p->GetBusyTime() / p->GetTRT()) * 100 << "%\t";
 		}
 		out << "\nProcessors Utilize\n";
 		i = 0;
@@ -203,9 +203,9 @@ class Scheduler {
 		for (auto p : Processors) {
 			int util = (p->GetBusyTime() / timestep) * 100;
 			totalUtil += util;
-			out << 'p' << i++ << '=' << util + '\t';
+			out << 'p' << i++ << '=' << util << "%\t";
 		}
-		out << "\nAvg utilization = " << (totalUtil / Processors.Count()) * 100;
+		out << "\nAvg utilization = " << (totalUtil / Processors.Count()) * 100 << "%\n";
 	}
 	bool isAllEmpty() {
 		for (auto p : Processors) {

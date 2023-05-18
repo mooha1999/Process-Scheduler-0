@@ -165,9 +165,9 @@ public:
 
 		while (!TRM.IsEmpty())
 		{
-			cout << TRM.Pop()->getPID();
+			cout << TRM.Pop()->getPID() << ", ";
 		}
-
+		cout << endl;
 		//priority queue of processes, .count for TRM processes
 		//print IDs using for loop
 		endline();

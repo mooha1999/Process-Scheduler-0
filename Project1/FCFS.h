@@ -62,7 +62,7 @@ public:
 		int SumWT = 0;
 		while (!temp.IsEmpty())
 		{
-			int x = temp.Pop()->getRMT();  //return remaining time 
+			int x = temp.Pop()->getRMT();  //return remaining time
 			SumWT = SumWT + x;
 		}
 		return SumWT;
@@ -70,12 +70,14 @@ public:
 
 	Process* kill(int id) {
 		//for running processes
-		int z = RUN->getPID();  //return id of running process
-		if (z == id) {
-			Process* killPR = RUN;
-			RUN = nullptr;
-			BUSY = false;
-			return killPR;
+		if (RUN) {
+			int z = RUN->getPID();  //return id of running process
+			if (z == id) {
+				Process* killPR = RUN;
+				RUN = nullptr;
+				BUSY = false;
+				return killPR;
+			}
 		}
 		//for rdy processes
 		for (Process* i : *Rdy) {
@@ -97,7 +99,7 @@ public:
 
 	virtual int Getidrun() //return the id of the running process
 	{
-		if (!RUN) //RUN==nullptr  
+		if (!RUN) //RUN==nullptr
 		{
 			return -1;
 		}
