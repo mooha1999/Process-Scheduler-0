@@ -32,25 +32,30 @@ public:
 	PriortyQueue()
 	{
 		front = nullptr;
+		rear = nullptr;
 		size = 0;
 	}
 
 	void Push(T data, int prio)
 	{
-		PriorityNode<T, int>* temp = front;
-		PriorityNode<T, int>* newnode = new PriorityNode<T, int>(data, prio);
-		if (front == nullptr || prio < front->getPriority())
-		{
-			newnode->setNext(front);
-			front = newnode;
+		PriorityNode<T, int>* temp = new PriorityNode<T, int>(data, prio);
+		if (size == 0)
+			front = rear = temp;
+		else if (prio <= front->getPriority()) {
+			temp->setNext(front);
+			front = temp;
 		}
-		else
-		{
-			while (temp->getNext() != nullptr && temp->getNext()->getPriority() <= prio)
-			{
-				temp = temp->getNext();
-				newnode->setNext(temp->getNext());
-				temp->setNext(newnode);
+		else if (prio >= rear->getPriority()) {
+			rear->setNext(temp);
+			rear = temp;
+		}
+		else {
+			for (PriorityNode<T, int>* i = front; i; i = i->getNext()) {
+				if (prio < i->getNext()->getPriority()) {
+					temp->setNext(i->getNext());
+					i->setNext(temp);
+					break;
+				}
 			}
 		}
 		size++;

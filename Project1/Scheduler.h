@@ -231,7 +231,7 @@ public:
 		int timestep = 0;
 		ui.displayMainMenu();
 		ui.getUserInput();
-		while (!NEW.IsEmpty() || !BLK->IsEmpty() || sigKills.IsEmpty() || !isAllEmpty()) { //SIGKILL CHECK EMPTY
+		while (!NEW.IsEmpty() || !BLK->IsEmpty() || !sigKills.IsEmpty() || !isAllEmpty()) { //SIGKILL CHECK EMPTY
 			//from NEW to RDY, a while loop because there might be more than one process arriving at the same time
 			while (!NEW.IsEmpty() && NEW.Peek()->getAT() == timestep) {
 				Processor* leastProcessor = getLeastWaitingProcessor();
@@ -242,9 +242,9 @@ public:
 				getLeastWaitingProcessor()->push(BLK->GetFinishedProcess());
 			}
 			//killing signals
-			//killSignal(timestep);
+			killSignal(timestep);
 			//forking process
-			//forkProcesses(timestep);
+			forkProcesses(timestep);
 			//Schedule algorithms
 			scheduleAlgo(timestep);
 			//Increment IO time for blocked process
