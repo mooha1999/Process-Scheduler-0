@@ -98,7 +98,7 @@ class Scheduler {
 	void killSignal(int timestep)
 	{
 		while (!sigKills.IsEmpty() && sigKills.Peek()->first == timestep) {
-			Process* killedProcess = getKilledProcess(sigKills.Pop()->first);
+			Process* killedProcess = getKilledProcess(sigKills.Pop()->second);
 			if (killedProcess) {
 				killedProcess->setTT(timestep);
 				totalKilled++;
