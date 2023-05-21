@@ -181,8 +181,8 @@ class Scheduler {
 		out << "Avg RT = " << trt / totalProcessesNum << '\t';
 		out << "Avg TRT = " << ttrt / totalProcessesNum << '\t';
 
-		out << "Forked Processes: " << (totalForked / totalProcessesNum) * 100 << '\n';
-		out << "Killed Processes: " << (totalKilled / totalProcessesNum) * 100 << '\n';
+		out << "Forked Processes: " << ((float)totalForked / (float)totalProcessesNum) * 100 << '\n';
+		out << "Killed Processes: " << ((float)totalKilled / (float)totalProcessesNum) * 100 << '\n';
 
 		out << "Processors: " << Processors.Count() << " [";
 		out << fcfss.Count() << " FCFS, ";
@@ -195,17 +195,17 @@ class Scheduler {
 			if (p->GetTRT() == 0)
 				out << 'p' << i++ << " = " << 0 << "%\t";
 			else
-				out << 'p' << i++ << " = " << (p->GetBusyTime() / p->GetTRT()) * 100 << "%\t";
+				out << 'p' << i++ << " = " << ((float)p->GetBusyTime() / (float)p->GetTRT()) * 100 << "%\t";
 		}
 		out << "\nProcessors Utilize\n";
 		i = 0;
-		int totalUtil = 0;
+		float totalUtil = 0;
 		for (auto p : Processors) {
-			int util = (p->GetBusyTime() / timestep) * 100;
-			totalUtil += util;
+			float util = ((float)p->GetBusyTime() / (float)timestep) * 100;
+			totalUtil += util / 100;
 			out << 'p' << i++ << '=' << util << "%\t";
 		}
-		out << "\nAvg utilization = " << (totalUtil / Processors.Count()) * 100 << "%\n";
+		out << "\nAvg utilization = " << ((float)totalUtil / (float)Processors.Count()) * 100 << "%\n";
 	}
 	bool isAllEmpty() {
 		for (auto p : Processors) {
